@@ -30,8 +30,8 @@ const heroImages = [
           <div class="hero-slide">
             <img src={image.src} alt={image.alt} class="hero-slide-image" />
             <div class="hero-slide-content">
-              <h1 class="hero-title">{image.title}</h1>
-              <p class="hero-subtitle">{image.subtitle}</p>
+              <h1 class="hero-title" data-title={image.title}>{image.title}</h1>
+              <p class="hero-subtitle" data-subtitle={image.subtitle}>{image.subtitle}</p>
             </div>
           </div>
         </div>
@@ -99,6 +99,16 @@ const heroImages = [
     color: #ffffff;
   }
 
+  .hero-title .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .hero-title.animate .char {
+    animation: fadeInChar 0.6s ease forwards;
+  }
+
   .hero-subtitle {
     font-size: 24px;
     font-weight: 400;
@@ -111,6 +121,25 @@ const heroImages = [
       1px 1px 3px rgba(0, 0, 0, 0.8),
       -1px -1px 3px rgba(0, 0, 0, 0.8);
     color: #ffffff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s;
+  }
+
+  .hero-subtitle.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  @keyframes fadeInChar {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .swiper-pagination {
