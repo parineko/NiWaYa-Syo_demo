@@ -12,7 +12,7 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
         <div class="container u-container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
                 <p class="zen-serif" style="font-size: 18px; line-height: 1.8; color: #2a2a2a; margin: 0 0 20px 0;">
-                    「笑顔が活きる空間に」をモットーに、2016年に「庭や笑」として開業。和・洋にとらわれずお客様の生活スタイルに合わせた庭をご提案いたします。
+                    「笑顔が活きる空間に」をモットーに、2016年に「庭や笑」として開業。<br /><br />和・洋にとらわれずお客様の生活スタイルに合わせた庭をご提案いたします。
                 </p>
                 <p class="zen-serif" style="font-size: 18px; line-height: 1.8; color: #2a2a2a; margin: 0;">
                     屋外に大小関係なく楽しんだり和んだりできる空間作り、人々が健やかに生きていけるように少しでも力になれればと思っております。
@@ -21,10 +21,24 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
         </div>
     </section>
 
-    <!-- スタッフ紹介 -->
-    <section class="staff-section u-section" style="padding: 100px 0; background: #f5f5f5;">
+    <!-- 作業風景 -->
+    <section class="work-scene-section u-section" style="padding: 40px 0 100px 0; background: #ffffff;">
         <div class="container u-container">
-            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">スタッフ紹介</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto 0 auto;">
+                <figure style="margin: 0; height: 320px; border-radius: 10px; overflow: hidden;">
+                    <img src="/images/takegakirifomu-04s03.jpg" alt="作業風景" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                </figure>
+                <figure style="margin: 0; height: 320px; border-radius: 10px; overflow: hidden;">
+                    <img src="/images/sagyoutyuu-01s03.jpg" alt="作業風景" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="staff-section u-section" style="padding: 100px 0; background: #ffffff;">
+        <div class="container u-container">
+            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; text-align: left; margin: 0 0 20px 0;">スタッフ紹介</h2>
             <div class="staff-grid u-grid">
                 <div class="staff-card u-card fade-up">
                     <div class="staff-avatar">
@@ -53,19 +67,26 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
                     </div>
                 </div>
             </div>
-            <div class="divider fade-up"></div>
         </div>
     </section>
 
 
     <!-- お客様の声 -->
-    <section class="testimonials-section u-section" style="padding: 100px 0; background: #f5f5f5;">
+    <section class="testimonials-section u-section" style="padding: 100px 0; background: #ffffff;">
         <div class="container u-container">
-            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">お客様の声</h2>
+            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; text-align: left; margin: 0 0 20px 0;">お客様の声</h2>
             <ul class="testimonials-list" style="max-width: 800px; margin: 0 auto;">
+                <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
+                    <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">古賀市のお客様</div>
+                    <p class="testimonial-text" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">草刈りと話し相手にいつもありがとう。</p>
+                </li>
                 <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
                     <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">福岡市 N様</div>
                     <p class="testimonial-text" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">庭の草刈り整地と砂利を引いてもらうだけでこんなにスッキリ広くなるとは思いませんでした。</p>
+                </li>
+                <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
+                    <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">福岡県大野城市 T様</div>
+                    <p class="testimonial-text" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">整い過ぎず自然に、一部は綺麗に整えて、細かい注文に答えてもらいありがとうございます。</p>
                 </li>
                 <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
                     <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">福岡市 Y様</div>
