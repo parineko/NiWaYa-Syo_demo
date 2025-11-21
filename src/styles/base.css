@@ -961,7 +961,6 @@ section:not(.u-section) {
 .page-header {
     background: transparent !important;
     padding: 20px 0 !important;
-    text-align: center;
     margin: 0 0 10px 0 !important;
 }
 
@@ -969,11 +968,10 @@ section:not(.u-section) {
 .page-header .page-title {
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
-    font-family: 'Noto Serif JP', serif;
+    font-family: 'Shippori Mincho', serif !important;
     color: #000000;
-    text-align: center;
 }
 
 .page-title {
