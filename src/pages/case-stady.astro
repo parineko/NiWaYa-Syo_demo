@@ -1,13 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 ---
 
 <BaseLayout title="施行例 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="case-stady">
-    <div class="page-header u-section u-section--tight">
-        <div class="container u-container">
-            <h1 class="page-title">施行例</h1>
-        </div>
-    </div>
+    <PageHeader title="施行例" />
 
     <!-- 紹介文 -->
     <section class="case-intro-section u-section">
@@ -23,7 +21,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="case-study-image-wrapper">
                 <img src="/images/竹垣施工.jpg" alt="" class="case-study-image" />
             </div>
-            <h2 class="case-study-description">庭園に施された竹垣は、日本の伝統的な風景を彷彿とさせる落ち着きと格調高さを演出しています。<br />この竹垣は、自然との一体感を大切にしながらも境界線ではなく自然と生活空間を確保できます。</h2>
+            <p class="case-study-description" style="text-align: center; margin-top: 20px;">
+                <a href="/bamboo-fence" class="btn btn-primary">詳しくはこちら</a>
+            </p>
         </div>
     </section>
 
@@ -39,7 +39,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <img src="/images/店舗_坪庭_アプローチ1.jpg" alt="" class="case-study-image" />
                 </div>
             </div>
-            <h2 class="case-study-description">機能性と外観の両方を考慮して施工いたしました、赤茶色の舗装タイルを使うことで、雨水がたまりにくく、一年中快適に歩けるようになりました。タイルは地面にしっかりと設置され、滑りにくい素材を選ぶことで安全にも配慮しています。</h2>
+            <p class="case-study-description" style="text-align: center; margin-top: 20px;">
+                <a href="/garden-tile" class="btn btn-primary">詳しくはこちら</a>
+            </p>
         </div>
     </section>
 
@@ -50,7 +52,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="case-study-image-wrapper">
                 <img src="/images/紅葉.jpg" alt="" class="case-study-image" />
             </div>
-            <h2 class="case-study-description">店舗にこのような坪庭を取り入れることで、季節感と笑顔での時間の過ごし方日本の伝統美を身近に感じて頂けると思います。</h2>
+            <p class="case-study-description" style="text-align: center; margin-top: 20px;">
+                <a href="/shop-garden" class="btn btn-primary">詳しくはこちら</a>
+            </p>
         </div>
     </section>
 
@@ -264,24 +268,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
     <!-- お問い合わせCTA -->
-    <section class="contact-section u-section">
-        <div class="container u-container">
-            <h3 class="contact-title fade-up">無料お見積だけでも<br />お気軽にお問い合わせください。</h3>
-            <div class="divider fade-up"></div>
-            <div class="case-contact-icons">
-                <a href="tel:0925150747">
-                    <img src="/images/niwaya_tel_icon.png" alt="電話を掛ける" />
-                </a>
-                <a href="mailto:zouen@niwaya-syo.com">
-                    <img src="/images/niwaya_tel_icon_m.png" alt="メールを送信する" />
-                </a>
-            </div>
-            <div class="contact-form-button">
-                <a href="/contact" class="btn btn-primary">問い合わせ</a>
-            </div>
-            <div class="line-button-mobile">
-                <a href="https://line.me/ti/p/N0BiuufFhv" class="btn btn-line">LINE 問い合わせ</a>
-            </div>
-        </div>
-    </section>
+    <ContactCTA />
 </BaseLayout>

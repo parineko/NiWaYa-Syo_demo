@@ -1,13 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 ---
 
 <BaseLayout title="料金 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="prices">
-    <div class="page-header u-section u-section--tight">
-        <div class="container u-container">
-            <h1 class="page-title">お庭の事なら何でもお任せ下さい！</h1>
-        </div>
-    </div>
+    <PageHeader title="お庭の事なら何でもお任せ下さい！" />
 
     <!-- トップ画像セクション -->
     <section class="prices-top-images u-section">
@@ -43,17 +41,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <span style="color: #000000;">時代と共に変わっていく庭の形、それぞれの生活スタイルや価値観によって違う庭の形。私たちは屋外に大小関係なく楽しんだり和んだりできる空間作り、人々が健やかに生きていけるように少しでも力になれればと思っております。</span>
                     </p>
                     <p class="price-intro" style="text-align: left;">
-                        <span style="color: #000000;">・1本から承っております。剪定は一部だけでも対応いたします。</span>
-                    </p>
-                    <p class="price-intro" style="text-align: left;">
-                        <span style="color: #000000;">・お客様の要望、植物の生態、花の時期、主屋と庭とのバランスを考えながら、ご相談させていただき、お庭の管理・施工をいたします。</span>
+                        <span style="color: #000000;">・1本から承っております。剪定は一部だけでも対応いたします。お客様の要望、植物の生態、花の時期、主屋と庭とのバランスを考えながら、ご相談させていただき、お庭の管理・施工をいたします。</span>
                     </p>
                 </div>
 
                 <div class="price-categories">
                     <div class="price-category">
                         <h3 class="price-category-title">剪定</h3>
-                        <p class="price-category-subtitle">1本から承ります。</p>
                         <div class="price-table-wrapper">
                             <table class="price-table">
                                 <thead>
@@ -94,7 +88,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                     <div class="price-category">
                         <h3 class="price-category-title">伐採</h3>
-                        <p class="price-category-subtitle">1本から承ります。</p>
                         <div class="price-table-wrapper">
                             <table class="price-table">
                                 <thead>
@@ -219,35 +212,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- お問い合わせセクション -->
-    <section class="contact-section u-section">
-        <div class="container u-container">
-            <h3 class="contact-title fade-up">無料お見積だけでも<br />お気軽にお問い合わせください。</h3>
-            <div class="divider fade-up"></div>
-        </div>
-    </section>
-
-    <!-- お問い合わせボタン -->
-    <section class="contact-buttons-section u-section">
-        <div class="container u-container">
-            <div class="contact-buttons-grid">
-                <div class="contact-button-item">
-                    <a href="tel:0925150747" class="fade-up">
-                        <img src="/images/niwaya_tel_icon.png" alt="電話を掛ける" />
-                    </a>
-                </div>
-                <div class="contact-button-item">
-                    <a href="mailto:zouen@niwaya-syo.com" class="fade-up">
-                        <img src="/images/niwaya_tel_icon_m.png" alt="メールを送信する" />
-                    </a>
-                </div>
-            </div>
-            <div class="contact-form-button">
-                <a href="/contact" class="btn btn-primary">問い合わせ</a>
-            </div>
-            <div class="line-button-mobile">
-                <a href="https://line.me/ti/p/N0BiuufFhv" class="btn btn-line">LINE 問い合わせ</a>
-            </div>
-        </div>
-    </section>
+    <!-- お問い合わせCTA -->
+    <ContactCTA />
 </BaseLayout>

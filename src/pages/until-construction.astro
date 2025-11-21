@@ -1,13 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactCTA from '../components/ContactCTA.astro';
 ---
 
 <BaseLayout title="受付から施行まで - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="until-construction">
-    <div class="page-header u-section u-section--tight">
-        <div class="container u-container">
-            <h1 class="page-title">お庭のお手入れ施工終了まで安心してお任せ下さい。</h1>
-        </div>
-    </div>
+    <PageHeader title="お庭のお手入れ施工終了まで安心してお任せ下さい。" />
 
     <!-- トップ画像 -->
     <section class="process-top-image u-section u-section--tight">
@@ -22,8 +20,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="process-intro u-section u-section--alt">
         <div class="container u-container">
             <p class="process-intro-text">
-                私達にとっての庭とは、生活されている方がちょっとした時間に眺めたり休憩したり<br />
-                友人を招いて話をしたり、その場に居るだけで<strong>心が癒され安らげる</strong>屋外空間すべてが庭だと思っています。
+                お客様が<strong>心が癒され安らげる</strong>屋外空間を造らせていただきます。
             </p>
         </div>
     </section>
@@ -72,35 +69,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
     </section>
 
-    <!-- お問い合わせセクション -->
-    <section class="contact-section u-section">
-        <div class="container u-container">
-            <h3 class="contact-title fade-up">無料お見積だけでも<br />お気軽にお問い合わせください。</h3>
-            <div class="divider fade-up"></div>
-        </div>
-    </section>
-
-    <!-- お問い合わせボタン -->
-    <section class="contact-buttons-section u-section">
-        <div class="container u-container">
-            <div class="contact-buttons-grid">
-                <div class="contact-button-item">
-                    <a href="tel:0925150747" class="fade-up">
-                        <img src="/images/niwaya_tel_icon.png" alt="電話を掛ける" />
-                    </a>
-                </div>
-                <div class="contact-button-item">
-                    <a href="mailto:zouen@niwaya-syo.com" class="fade-up">
-                        <img src="/images/niwaya_tel_icon_m.png" alt="メールを送信する" />
-                    </a>
-                </div>
-            </div>
-            <div class="contact-form-button">
-                <a href="/contact" class="btn btn-primary">問い合わせ</a>
-            </div>
-            <div class="line-button-mobile">
-                <a href="https://line.me/ti/p/N0BiuufFhv" class="btn btn-line">LINE 問い合わせ</a>
-            </div>
-        </div>
-    </section>
+    <!-- お問い合わせCTA -->
+    <ContactCTA />
 </BaseLayout>
