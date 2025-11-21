@@ -6,6 +6,46 @@
 
 このプロジェクトは、HTML版の「庭や・笑」ウェブサイトをAstroフレームワークで再構築したものです。モダンな開発体験とパフォーマンス最適化を実現しています。
 
+## 📊 プロジェクト統計
+
+### ファイル構成と行数
+
+**スタイルファイル**
+- `src/styles/base.css`: **1,616行** ⚠️ 要分割
+- `src/styles/extra.css`: 2行
+
+**レイアウト・コンポーネント**
+- `src/layouts/BaseLayout.astro`: 132行
+- `src/components/CaseStudySlider.astro`: 154行
+- `src/components/HeroSlider.astro`: 156行
+- `src/components/FloatingContactButton.astro`: 84行
+- `src/components/Header.astro`: 40行
+- `src/components/Footer.astro`: 14行
+- `src/components/PageHeader.astro`: 13行
+
+**ページファイル**
+- `src/pages/prices.astro`: 163行
+- `src/pages/about.astro`: 93行
+- `src/pages/contact.astro`: 76行
+- `src/pages/trouble.astro`: 62行
+- `src/pages/tree-pruning.astro`: 47行
+- `src/pages/bamboo-fence-renovation.astro`: 47行
+- `src/pages/weed-sheet-gravel.astro`: 47行
+- `src/pages/concrete-floor.astro`: 47行
+- `src/pages/garden-tile.astro`: 45行
+- `src/pages/garden-pruning.astro`: 44行
+- `src/pages/shop-garden.astro`: 44行
+- `src/pages/bamboo-fence.astro`: 40行
+- `src/pages/kadomatsu.astro`: 37行
+- `src/pages/index.astro`: 27行
+- `src/pages/case-stady.astro`: 19行
+
+**スクリプト**
+- `src/scripts/initCaseStudySlider.ts`: 29行
+- `src/scripts/initHeroSlider.ts`: 21行
+
+**合計**: 約3,100行（コメント・空行含む）
+
 ## 🚀 セットアップ
 
 ### 必要な環境
@@ -47,28 +87,28 @@ npm run preview
 page_astro_version/
 ├── src/
 │   ├── components/          # 再利用可能なコンポーネント
-│   │   ├── CaseStudySlider.astro
-│   │   ├── FloatingContactButton.astro
-│   │   ├── Footer.astro
-│   │   ├── Header.astro
-│   │   ├── HeroSlider.astro
-│   │   └── PageHeader.astro
+│   │   ├── CaseStudySlider.astro (154行)
+│   │   ├── FloatingContactButton.astro (84行)
+│   │   ├── Footer.astro (14行)
+│   │   ├── Header.astro (40行)
+│   │   ├── HeroSlider.astro (156行)
+│   │   └── PageHeader.astro (13行)
 │   ├── layouts/            # レイアウトコンポーネント
-│   │   └── BaseLayout.astro
+│   │   └── BaseLayout.astro (132行)
 │   ├── pages/              # ページファイル（ルーティング）
-│   │   ├── index.astro           # トップページ
-│   │   ├── about.astro            # 会社について
-│   │   ├── case-stady.astro       # 施工例一覧
-│   │   ├── prices.astro           # 料金表
-│   │   ├── trouble.astro          # お庭でお困りの方へ
-│   │   ├── contact.astro          # お問い合わせ
-│   │   └── [個別施工例ページ]
+│   │   ├── index.astro (27行)
+│   │   ├── about.astro (93行)
+│   │   ├── case-stady.astro (19行)
+│   │   ├── prices.astro (163行)
+│   │   ├── trouble.astro (62行)
+│   │   ├── contact.astro (76行)
+│   │   └── [個別施工例ページ 9件: 37-47行]
 │   ├── scripts/            # TypeScriptスクリプト
-│   │   ├── initCaseStudySlider.ts
-│   │   └── initHeroSlider.ts
+│   │   ├── initCaseStudySlider.ts (29行)
+│   │   └── initHeroSlider.ts (21行)
 │   └── styles/             # スタイルシート
-│       ├── base.css        # メインスタイル
-│       └── extra.css       # 追加スタイル（予備）
+│       ├── base.css (1,616行) ⚠️
+│       └── extra.css (2行)
 ├── public/                 # 静的ファイル
 │   └── images/            # 画像ファイル
 ├── package.json
