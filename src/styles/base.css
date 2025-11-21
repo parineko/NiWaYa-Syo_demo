@@ -1288,10 +1288,10 @@ main > *:first-child {
 }
 
 .price-category {
-    background-color: var(--bg-light);
-    padding: 30px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background-color: transparent;
+    padding: 30px 0;
+    border-radius: 0;
+    margin-bottom: 40px;
 }
 
 .price-category-title {
@@ -1317,38 +1317,90 @@ main > *:first-child {
 .price-table-wrapper {
     margin: 20px 0;
     overflow-x: auto;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .price-table {
     width: 100%;
-    border-collapse: collapse;
-    background-color: var(--bg-white);
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #f8f8f8;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    margin: 0 auto;
 }
 
 .price-table thead {
-    background-color: var(--primary-color);
+    background-color: #666666;
     color: var(--bg-white);
 }
 
+.price-table tr {
+    min-height: 48px;
+}
+
 .price-table th {
-    padding: 15px;
-    text-align: left;
+    padding: 15px 16px;
+    text-align: center;
     font-weight: 600;
     font-size: 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table thead tr:first-child th:first-child {
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table thead tr:first-child th:last-child {
+    border-top: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.price-table th:first-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table th:last-child {
+    border-right: 1px solid #e0e0e0;
 }
 
 .price-table td {
-    padding: 15px;
-    border-bottom: 1px solid var(--border-color);
+    padding: 15px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
     font-size: 15px;
     color: var(--text-color);
+    text-align: center;
+}
+
+.price-table td:first-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table td:last-child {
+    border-right: 1px solid #e0e0e0;
 }
 
 .price-table tbody tr:last-child td {
-    border-bottom: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:last-child td:first-child {
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:last-child td:last-child {
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
 }
 
 .price-table tbody tr:hover {
@@ -1358,8 +1410,9 @@ main > *:first-child {
 .price-note {
     margin-top: 40px;
     padding: 20px;
-    background-color: var(--bg-light);
+    background-color: #f8f8f8;
     border-radius: 8px;
+    border-left: 4px solid #666666;
     font-size: 14px;
     line-height: 1.8;
     color: var(--text-color);
@@ -1963,6 +2016,22 @@ small,
 
     .post-navigation {
         flex-direction: column;
+    }
+
+    /* 料金表のモバイル表示 */
+    .price-table-wrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .price-table {
+        font-size: 14px;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: 12px 12px;
+        font-size: 14px;
     }
 }
 
