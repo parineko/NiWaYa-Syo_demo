@@ -1244,11 +1244,13 @@ main > *:first-child {
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 5px;
+    font-family: 'Noto Serif JP', serif;
 }
 
 .post-nav-link .nav-title {
     font-size: 18px;
     line-height: 1.4;
+    font-family: 'Shippori Mincho', serif;
 }
 
 .post-nav-link.next {
