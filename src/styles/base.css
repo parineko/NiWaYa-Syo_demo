@@ -552,8 +552,9 @@ section:not(.u-section) {
 /* 繝｢繝・ヨ繝ｼ繧ｻ繧ｯ繧ｷ繝ｧ繝ｳ */
 .motto-section {
     position: relative;
-    padding: 80px 0;
-    min-height: 400px;
+    padding: 10px 0 !important;
+    margin-bottom: 0 !important;
+    min-height: auto !important;
 }
 
 .motto-section .wrapper {
@@ -840,7 +841,8 @@ section:not(.u-section) {
 .scroll-top-icon {
     width: 26px;
     height: 16px;
-    fill: var(--bg-white);
+    fill: #ffffff;
+    color: #ffffff;
 }
 
 /* 繝ｬ繧ｹ繝昴Φ繧ｷ繝悶ョ繧ｶ繧､繝ｳ */
