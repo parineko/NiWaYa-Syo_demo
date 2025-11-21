@@ -1,104 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import ContactCTA from '../components/ContactCTA.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
 
 <BaseLayout title="お庭でお困りの方 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="trouble">
     <PageHeader title="お庭でお困りの方" />
 
-    <section class="trouble-section u-section u-section--alt">
+    <section class="trouble-section u-section" style="padding: 100px 0; background: #ffffff;">
         <div class="container u-container">
-            <div class="trouble-hero">
-                <img src="/images/zouen_sagyou_01.jpg" alt="" />
-            </div>
-
-            <div class="trouble-highlight">
-                <p>お客様の生活スタイルに合わせた庭をご提案いたします。</p>
-            </div>
-
             <div class="trouble-content">
-                <h2 class="section-title fade-up">お庭の事・造園作業のノウハウでお困りの方</h2>
-                <div class="divider fade-up"></div>
+                <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">お庭の事・造園作業のノウハウでお困りの方</h2>
 
-                <div class="trouble-list">
-                    <div class="trouble-item">
-                        <h3 class="trouble-item-title">庭木・雑草が伸びすぎて手に負えない</h3>
-                        <p class="trouble-item-description">
-                            剪定・伐採・草刈・防草工事までまとめて対応いたします。
-                        </p>
+                <div class="trouble-list" style="max-width: 800px; margin: 0 auto 60px;">
+                    <div class="trouble-item" style="margin-bottom: 30px; padding: 30px; background: #f5f5f5; border-radius: 8px;">
+                        <h3 class="trouble-item-title" style="font-size: 20px; font-weight: 600; color: #000000; margin-bottom: 10px;">庭木・雑草が伸びすぎて手に負えない</h3>
+                        <p class="trouble-item-description" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">剪定・伐採・草刈・防草工事までまとめて対応いたします。</p>
                     </div>
-                    <div class="trouble-item">
-                        <h3 class="trouble-item-title">お庭に水たまりができる</h3>
-                        <p class="trouble-item-description">
-                            土の整地や排水計画で、水が溜まりにくい環境へ整えます。
-                        </p>
+                    <div class="trouble-item" style="margin-bottom: 30px; padding: 30px; background: #f5f5f5; border-radius: 8px;">
+                        <h3 class="trouble-item-title" style="font-size: 20px; font-weight: 600; color: #000000; margin-bottom: 10px;">お庭にキレイな花や木を植えたい</h3>
+                        <p class="trouble-item-description" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">花壇造りや植栽工事で、季節を感じる空間をご提案します。</p>
                     </div>
-                    <div class="trouble-item">
-                        <h3 class="trouble-item-title">お庭にキレイな花や木を植えたい</h3>
-                        <p class="trouble-item-description">
-                            花壇造りや植栽工事で、季節を感じる空間をご提案します。
-                        </p>
-                    </div>
-                    <div class="trouble-item">
-                        <h3 class="trouble-item-title">お庭だった所を駐車場にしたい</h3>
-                        <p class="trouble-item-description">
-                            土間工事・石張り工事で、使いやすいスペースに生まれ変わらせます。
-                        </p>
-                    </div>
-                    <div class="trouble-item">
-                        <h3 class="trouble-item-title">お庭をもっと好みの風景にしたい</h3>
-                        <p class="trouble-item-description">
-                            お庭のリフォーム工事で、理想の景色を実現いたします。
-                        </p>
+                    <div class="trouble-item" style="margin-bottom: 30px; padding: 30px; background: #f5f5f5; border-radius: 8px;">
+                        <h3 class="trouble-item-title" style="font-size: 20px; font-weight: 600; color: #000000; margin-bottom: 10px;">お庭をもっと好みの風景にしたい</h3>
+                        <p class="trouble-item-description" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">お庭のリフォーム工事で、理想の景色を実現いたします。</p>
                     </div>
                 </div>
 
-                <div class="solution-box">
-                    <h3 class="solution-title">庭や・笑にお任せください</h3>
-                    <p class="solution-description">
-                        どんな小さなお悩みでも、お気軽にご相談ください。<br />
-                        無料お見積もりも承っております。まずはお問い合わせください。
-                    </p>
-                </div>
-
-                <div class="before-after-grid">
-                    <figure>
-                        <img src="/images/zouen_sagyou_02.jpg" alt="" />
-                        <figcaption>Before</figcaption>
+                <div class="before-after-grid" style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <figure style="margin: 0;">
+                        <img src="/images/zouen_sagyou_02.jpg" alt="" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a;">Before</figcaption>
                     </figure>
-                    <figure>
-                        <img src="/images/zouen_sagyou_03.jpg" alt="" />
-                        <figcaption>After</figcaption>
+                    <figure style="margin: 0;">
+                        <img src="/images/zouen_sagyou_03.jpg" alt="" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a;">After</figcaption>
                     </figure>
                 </div>
-
-                <div class="testimonials">
-                    <h2 class="section-title fade-up">お客様の声</h2>
-                    <div class="divider fade-up"></div>
-                    <ul class="testimonials-list">
-                        <li class="testimonial-item">
-                            <div class="testimonial-title">古賀市のお客様</div>
-                            <p class="testimonial-text">草刈りと話し相手にいつもありがとう。</p>
-                        </li>
-                        <li class="testimonial-item">
-                            <div class="testimonial-title">福岡市 N様</div>
-                            <p class="testimonial-text">庭の草刈り整地と砂利を引いてもらうだけでこんなにスッキリ広くなるとは思いませんでした。</p>
-                        </li>
-                        <li class="testimonial-item">
-                            <div class="testimonial-title">福岡県大野城市 T様</div>
-                            <p class="testimonial-text">整い過ぎず自然に、一部は綺麗に整えて、細かい注文に答えてもらいありがとうございます。</p>
-                        </li>
-                        <li class="testimonial-item">
-                            <div class="testimonial-title">福岡市 Y様</div>
-                            <p class="testimonial-text">初めて剪定を少しだけお願いしましたが、次の夏もまたお願いします。</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- お問い合わせCTA -->
-                <ContactCTA />
             </div>
         </div>
     </section>
+
+    <FloatingContactButton />
 </BaseLayout>

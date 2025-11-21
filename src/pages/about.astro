@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
+---
+
+<BaseLayout title="会社について - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="about">
+    <PageHeader title="会社について" />
+
+    <!-- モットー・理念（3行以内） -->
+    <section class="motto-section u-section" style="padding: 100px 0; background: #ffffff;">
+        <div class="container u-container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 36px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; margin-bottom: 20px;">
+                    「笑顔が活きる空間に」をモットーに
+                </h2>
+                <p style="font-size: 18px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                    2016年に「庭や笑」として開業。和・洋にとらわれずお客様の生活スタイルに合わせた庭をご提案いたします。<br />
+                    屋外に大小関係なく楽しんだり和んだりできる空間作り、人々が健やかに生きていけるように少しでも力になれればと思っております。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="staff-section u-section" style="padding: 100px 0; background: #f5f5f5;">
+        <div class="container u-container">
+            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">スタッフ紹介</h2>
+            <div class="staff-grid u-grid">
+                <div class="staff-card u-card fade-up">
+                    <div class="staff-avatar">
+                        <img src="/images/kasuya_zouen_fukuoka_001.5-300x300.jpg" alt="権藤 伸一郎" />
+                    </div>
+                    <div class="staff-info">
+                        <h4 class="staff-name">
+                            <div class="niwa">庭や・笑</div> 権藤 伸一郎
+                        </h4>
+                        <div class="staff-bio">
+                            <p>樹形を生かした自然風な剪定が得意です。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="staff-card u-card fade-up">
+                    <div class="staff-avatar">
+                        <img src="/images/kasuya_zouen_fukuoka_002.5-300x300.jpg" alt="権藤 辰仁" />
+                    </div>
+                    <div class="staff-info">
+                        <h4 class="staff-name">
+                            <div class="niwa">庭や・笑</div> 権藤 辰仁
+                        </h4>
+                        <div class="staff-bio">
+                            <p>自然石を使った庭を造るのが好きです。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider fade-up"></div>
+        </div>
+    </section>
+
+
+    <!-- お客様の声 -->
+    <section class="testimonials-section u-section" style="padding: 100px 0; background: #f5f5f5;">
+        <div class="container u-container">
+            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">お客様の声</h2>
+            <ul class="testimonials-list" style="max-width: 800px; margin: 0 auto;">
+                <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
+                    <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">福岡市 N様</div>
+                    <p class="testimonial-text" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">庭の草刈り整地と砂利を引いてもらうだけでこんなにスッキリ広くなるとは思いませんでした。</p>
+                </li>
+                <li class="testimonial-item" style="margin-bottom: 30px; padding: 30px; background: #ffffff; border-radius: 8px;">
+                    <div class="testimonial-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 10px;">福岡市 Y様</div>
+                    <p class="testimonial-text" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">初めて剪定を少しだけお願いしましたが、次の夏もまたお願いします。</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ご依頼の流れ -->
+    <section class="process-section u-section" style="padding: 100px 0; background: #ffffff;">
+        <div class="container u-container">
+            <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; text-align: center; margin-top: 40px; margin-bottom: 20px;">ご依頼の流れ</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 15px; padding: 15px; background: #f5f5f5; border-radius: 8px;">Step.1 お問い合わせ：電話またはメールにてご連絡ください。</p>
+                <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 15px; padding: 15px; background: #f5f5f5; border-radius: 8px;">Step.2 お見積もり：お客様のお家などにお伺いして、詳細なご要望をお聞きします。</p>
+                <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 15px; padding: 15px; background: #f5f5f5; border-radius: 8px;">Step.3 施工：ご都合のよい施工日を決めていただき、当日作業いたします。</p>
+            </div>
+        </div>
+    </section>
+
+    <FloatingContactButton />
+</BaseLayout>
+

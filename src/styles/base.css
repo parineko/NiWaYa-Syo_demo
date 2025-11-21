@@ -9,15 +9,15 @@
     --brand-green: #345C45;
     --brand-green-light: #3E6F52;
     --brand-accent: #C8B9A1;
-    --u-brand-deep-green: #264533;
-    --primary-color: var(--brand-green);
+    --u-brand-deep-green: #1e3d2f;
+    --primary-color: #1e3d2f;
     --primary-hover: var(--brand-green-light);
     --text-dark: #2A2A2A;
     --text-color: #2A2A2A;
     --text-body: #575757;
     --bg-white: #FFFFFF;
-    --bg-light: #F5F3EF;
-    --bg-alt: #F5F3EF;
+    --bg-light: #F5F5F5;
+    --bg-alt: #F5F5F5;
     --border-color: #D1D5DB;
     /* Utility palette */
     --u-brand-green: var(--brand-green);
@@ -25,17 +25,23 @@
     --u-text-dark: var(--text-dark);
     --u-text-body: var(--text-body);
     --u-text-muted: #9CA3AF;
-    --u-bg-muted: #F5F3EF;
+    --u-bg-muted: #F5F5F5;
     --u-shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 body {
-    font-family: 'Kosugi Maru', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.65;
     color: var(--text-body);
     background-color: var(--bg-white);
     letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    color: #000000;
 }
 
 a {
@@ -83,8 +89,8 @@ img {
 }
 
 .u-section--dark {
-    background-color: var(--u-brand-green);
-    color: var(--bg-white);
+    background-color: #333333;
+    color: #ffffff;
 }
 
 .u-heading-1,
@@ -108,14 +114,14 @@ img {
 }
 
 .u-link {
-    color: var(--u-brand-green);
+    color: #000000;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .u-link:hover,
 .u-link:focus {
-    color: var(--u-brand-amber);
+    color: #333333;
 }
 
 .u-btn {
@@ -130,25 +136,26 @@ img {
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background: linear-gradient(135deg, var(--u-brand-green), var(--u-brand-amber));
-    color: var(--bg-white);
+    background: #666666;
+    color: #ffffff;
     box-shadow: var(--u-shadow-soft);
 }
 
 .u-btn:hover {
     transform: translateY(-2px);
+    background: #555555;
 }
 
 .u-btn--outline {
     background: transparent;
-    border: 2px solid var(--u-brand-green);
-    color: var(--u-brand-green);
+    border: 2px solid #666666;
+    color: #000000;
     box-shadow: none;
 }
 
 .u-btn--outline:hover {
-    background: var(--u-brand-green);
-    color: var(--bg-white);
+    background: #666666;
+    color: #ffffff;
 }
 
 .u-card {
@@ -372,13 +379,13 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--u-brand-deep-green);
+    background-color: #000000;
     transition: width 0.3s;
 }
 
 .menu-item a:hover,
 .menu-item.current-menu-item a {
-    color: var(--u-brand-deep-green);
+    color: #000000;
 }
 
 .menu-item a:hover::after,
@@ -486,7 +493,7 @@ section:not(.u-section) {
 }
 
 .blog-title a:hover {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .blog-excerpt {
@@ -796,14 +803,14 @@ section:not(.u-section) {
     font-size: 14px;
 }
 
-/* 繧ｹ繧ｯ繝ｭ繝ｼ繝ｫ繝医ャ繝励・繧ｿ繝ｳ */
+/* スクロールトップボタン（左下に配置） */
 .scroll-top {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     width: 50px;
     height: 50px;
-    background-color: var(--primary-color);
+    background-color: #666666;
     border-radius: 4px;
     display: none;
     align-items: center;
@@ -814,7 +821,7 @@ section:not(.u-section) {
 }
 
 .scroll-top:hover {
-    background-color: var(--primary-hover);
+    background-color: #555555;
     transform: translateY(-3px);
 }
 
@@ -915,7 +922,7 @@ section:not(.u-section) {
 
     .scroll-top {
         bottom: 20px;
-        right: 20px;
+        left: 20px;
         width: 45px;
         height: 45px;
     }
@@ -1015,13 +1022,13 @@ section:not(.u-section) {
 .case-study-title-large {
     font-size: 30px;
     font-weight: 600;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    padding: 15px 30px;
+    background-color: transparent;
+    color: #000000;
+    padding: 0;
     margin: 20px 0;
-    display: inline-block;
+    display: block;
     line-height: 1.5em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-shadow: none;
 }
 
 .case-study-title-large .kadomastu1 {
@@ -1033,8 +1040,8 @@ section:not(.u-section) {
     font-size: 20px;
     font-weight: 500;
     margin-left: 12px;
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    text-shadow: none;
 }
 
 .case-study-image-wrapper {
@@ -1372,8 +1379,8 @@ small,
 }
 
 .solution-box {
-    background-color: var(--u-brand-deep-green);
-    color: var(--bg-white);
+    background-color: #f5f5f5;
+    color: #000000;
     padding: 40px;
     border-radius: 8px;
     text-align: center;
@@ -1384,13 +1391,13 @@ small,
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 15px;
-    color: var(--bg-white);
+    color: #000000;
 }
 
 .solution-description {
     font-size: 16px;
     line-height: 1.8;
-    color: var(--bg-white);
+    color: #000000;
 }
 
 .before-after-grid {
@@ -1413,7 +1420,7 @@ small,
 .before-after-grid figcaption {
     margin-top: 10px;
     font-weight: 600;
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .testimonials-list {
@@ -1842,7 +1849,7 @@ small,
 }
 
 .sitemap-list a:hover {
-    color: var(--primary-color);
+    color: #000000;
 }
 
 /* 繝ｬ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢懶ｼ郁ｿｽ蜉・・*/
@@ -2047,8 +2054,8 @@ body {
 .u-btn,
 button,
 input[type="submit"] {
-    background: var(--brand-green);
-    color: #fff;
+    background: #666666;
+    color: #ffffff;
     border: none;
     border-radius: 9999px;
     padding: 14px 28px;
@@ -2061,27 +2068,27 @@ input[type="submit"] {
 .u-btn:hover,
 button:hover,
 input[type="submit"]:hover {
-    background: var(--brand-green-light);
+    background: #555555;
     transform: translateY(-2px);
 }
 
 .btn--outline,
 .u-btn--outline {
     background: transparent;
-    color: var(--brand-green);
-    border: 2px solid var(--brand-green);
+    color: #000000;
+    border: 2px solid #666666;
 }
 
 .btn--outline:hover,
 .u-btn--outline:hover {
-    background: var(--brand-green);
-    color: #fff;
+    background: #666666;
+    color: #ffffff;
 }
 
 .btn-line,
 .u-btn-line {
-    background: var(--brand-green);
-    color: #fff !important;
+    background: #666666;
+    color: #ffffff !important;
 }
 
 .u-card {
@@ -2163,7 +2170,7 @@ a {
 }
 
 a:hover {
-    color: var(--brand-green);
+    color: #333333;
 }
 
 

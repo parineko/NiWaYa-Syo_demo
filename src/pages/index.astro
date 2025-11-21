@@ -1,180 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
 
 <BaseLayout title="福岡 粕屋の造園 庭の事なら「庭や・笑」（にわやしょう）" currentPage="home">
-    <!-- トップ画像 -->
-    <section class="top-image-section u-section u-section--tight">
-        <img src="/images/niwaya_topImg.jpg" alt="niwaya_topImg" class="top-image" />
-    </section>
+    <!-- ヒーロースライダー -->
+    <HeroSlider client:load />
 
-    <!-- BLOG・最新情報 -->
-    <section class="blog-section u-section">
+    <!-- モットーセクション（1文のみ） -->
+    <section class="motto-section u-section" style="padding: 100px 0; background: #ffffff;">
         <div class="container u-container">
-            <h2 class="section-title fade-up">BLOG・最新情報</h2>
-            <div class="divider fade-up"></div>
-            <div class="blog-grid u-grid">
-                <article class="blog-card u-card fade-up">
-                    <a href="/garden-tile" class="blog-thumbnail-link">
-                        <div class="blog-thumbnail">
-                            <img src="/images/店舗_坪庭_アプローチ2-300x240.jpg" alt="" />
-                        </div>
-                    </a>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="/garden-tile">庭アプローチの通路作り</a>
-                        </h3>
-                        <div class="blog-excerpt">
-                            <p>機能性と外観の両方を考慮して施</p>
-                        </div>
-                        <a href="/garden-tile" class="read-more">Read More »</a>
-                    </div>
-                </article>
-                <article class="blog-card u-card fade-up">
-                    <a href="/bamboo-fence" class="blog-thumbnail-link">
-                        <div class="blog-thumbnail">
-                            <img src="/images/竹垣施工-300x240.jpg" alt="" />
-                        </div>
-                    </a>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="/bamboo-fence">庭園の竹垣の施工</a>
-                        </h3>
-                        <div class="blog-excerpt">
-                            <p>庭園に施された竹垣は、日本の伝</p>
-                        </div>
-                        <a href="/bamboo-fence" class="read-more">Read More »</a>
-                    </div>
-                </article>
-                <article class="blog-card u-card fade-up">
-                    <a href="/shop-garden" class="blog-thumbnail-link">
-                        <div class="blog-thumbnail">
-                            <img src="/images/紅葉-300x240.jpg" alt="" />
-                        </div>
-                    </a>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="/shop-garden">店舗・飲食店 坪庭作り</a>
-                        </h3>
-                        <div class="blog-excerpt">
-                            <p>店舗にこのような坪庭を取り入れ</p>
-                        </div>
-                        <a href="/shop-garden" class="read-more">Read More »</a>
-                    </div>
-                </article>
+            <div style="text-align: center;">
+                <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; margin: 0;">
+                    「笑顔が活きる空間に」をモットーに、和・洋にとらわれずお客様の生活スタイルに合わせた庭をご提案いたします。
+                </h2>
             </div>
-            <div class="divider fade-up"></div>
-        </div>
-    </section>
-
-    <!-- 施工例画像 -->
-    <section class="work-example-section u-section u-section--alt">
-        <div class="container u-container">
-            <div class="work-example-grid u-grid">
-                <div class="work-example-item fade-up">
-                    <a href="/images/oniwasenteigo-01s02.jpg" class="work-image-link">
-                        <img src="/images/oniwasenteigo-01s02.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="work-example-item fade-up">
-                    <a href="/images/oniwasennteigo-02s02.jpg" class="work-image-link">
-                        <img src="/images/oniwasennteigo-02s02.jpg" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div class="divider fade-up"></div>
-        </div>
-    </section>
-
-    <!-- モットーセクション -->
-    <section class="motto-section u-section">
-        <div class="wrapper">
-            <div class="inner">
-                <div class="motto"><h3>「笑顔が活きる空間に」をモットーに</h3></div>和・洋にとらわれずお客様の生活スタイルに合わせた庭をご提案させて頂き、ご自宅に一番合う世界に一つだけの庭を造らせていただきます。
-            </div>
-        </div>
-    </section>
-
-    <!-- 作業中の画像 -->
-    <section class="work-in-progress-section u-section u-section--alt">
-        <div class="container u-container">
-            <div class="work-in-progress-grid">
-                <div class="work-in-progress-item fade-up">
-                    <a href="/images/sagyoutyuu-01s03.jpg" class="work-image-link">
-                        <img src="/images/sagyoutyuu-01s03.jpg" alt="権藤辰仁" />
-                    </a>
-                </div>
-                <div class="work-in-progress-item fade-up">
-                    <a href="/images/sagyoutyuu-02s03-1.jpg" class="work-image-link">
-                        <img src="/images/sagyoutyuu-02s03-1.jpg" alt="sagyoutyuu-02s03" />
-                    </a>
-                </div>
-                <div class="work-in-progress-item fade-up">
-                    <a href="/images/sagyoutyuu-03s03.jpg" class="work-image-link">
-                        <img src="/images/sagyoutyuu-03s03.jpg" alt="zouen-takegakirifomu" />
-                    </a>
-                </div>
-            </div>
-            <div class="divider fade-up"></div>
-        </div>
-    </section>
-
-    <!-- 会社紹介 -->
-    <section class="company-intro-section u-section">
-        <div class="container u-container">
-            <div class="company-intro-content fade-up">
-                <h3>2016年に「庭や笑」</h3>
-                <h4>として開業いたしました。</h4>
-                <h4>"笑顔が活きる空間に"をモットーに、幅広いニーズと特色に応じて、プロデュース&サポート致します。</h4>
-            </div>
-        </div>
-    </section>
-
-    <!-- スタッフ紹介 -->
-    <section class="staff-section u-section u-section--alt">
-        <div class="container u-container">
-            <div class="staff-grid u-grid">
-                <div class="staff-card u-card fade-up">
-                    <div class="staff-avatar">
-                        <img src="/images/kasuya_zouen_fukuoka_001.5-300x300.jpg" alt="権藤 伸一郎" />
-                    </div>
-                    <div class="staff-info">
-                        <h4 class="staff-name">
-                            <div class="niwa">庭や・笑</div> 権藤 伸一郎
-                        </h4>
-                        <div class="staff-bio">
-                            <p>樹形を生かした自然風な剪定が得意です。<br>
-                            花や実、紅葉などの季節を感じて、庭を楽しんで頂けるように、心を込めて作業させて頂きます。よろしくお願い致します。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="staff-card u-card fade-up">
-                    <div class="staff-avatar">
-                        <img src="/images/kasuya_zouen_fukuoka_002.5-300x300.jpg" alt="権藤 辰仁" />
-                    </div>
-                    <div class="staff-info">
-                        <h4 class="staff-name">
-                            <div class="niwa">庭や・笑</div> 権藤 辰仁
-                        </h4>
-                        <div class="staff-bio">
-                            <p>自然石を使った庭を造るのが好きです。色々な形をした石や植物とそこにちょっとした遊び心を入れながら、お客様が笑顔になって頂けるようなお庭を造らせて頂きます。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="divider fade-up"></div>
         </div>
     </section>
 
     <!-- お問い合わせCTA -->
     <ContactCTA />
 
-    <!-- フッター画像 -->
-    <section class="footer-image-section u-section u-section--tight">
-        <div class="container u-container">
-            <img src="/images/niwayasyou-02s01.jpg" alt="niwayasyou-02s01" class="footer-image" />
-        </div>
-    </section>
+    <FloatingContactButton />
 </BaseLayout>
 

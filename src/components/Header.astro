@@ -19,7 +19,7 @@ const { currentPage = '' } = Astro.props;
             </button>
             <ul class="menu-list">
                 <li class={`menu-item ${currentPage === 'home' ? 'current-menu-item' : ''}`}>
-                    <a href="/">home</a>
+                    <a href="/">HOME</a>
                 </li>
                 <li class={`menu-item ${currentPage === 'case-stady' ? 'current-menu-item' : ''}`}>
                     <a href="/case-stady">施行例</a>
@@ -27,17 +27,14 @@ const { currentPage = '' } = Astro.props;
                 <li class={`menu-item ${currentPage === 'prices' ? 'current-menu-item' : ''}`}>
                     <a href="/prices">料金</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'trouble' ? 'current-menu-item' : ''}`}>
-                    <a href="/trouble">お庭でお困りの方</a>
+                <li class={`menu-item ${currentPage === 'about' ? 'current-menu-item' : ''}`}>
+                    <a href="/about">会社について</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'until-construction' ? 'current-menu-item' : ''}`}>
-                    <a href="/until-construction">受付から施行まで</a>
+                <li class={`menu-item ${currentPage === 'trouble' ? 'current-menu-item' : ''}`}>
+                    <a href="/trouble">お困りの方</a>
                 </li>
                 <li class={`menu-item ${currentPage === 'contact' ? 'current-menu-item' : ''}`}>
                     <a href="/contact">お問い合わせ</a>
-                </li>
-                <li class={`menu-item ${currentPage === 'sitemap' ? 'current-menu-item' : ''}`}>
-                    <a href="/sitemap">サイトマップ</a>
                 </li>
             </ul>
         </nav>

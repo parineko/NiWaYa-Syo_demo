@@ -1,0 +1,127 @@
+---
+// 施工例の配列（2件のみ）
+const caseStudies = [
+  {
+    id: 'bamboo-fence',
+    title: '庭園 竹垣施工',
+    image: '/images/竹垣施工.jpg',
+    link: '/bamboo-fence'
+  },
+  {
+    id: 'garden-tile',
+    title: '庭のアプローチ',
+    image: '/images/店舗_坪庭_アプローチ2.jpg',
+    link: '/garden-tile'
+  }
+];
+---
+
+<div class="case-study-slider-wrapper">
+  <div class="swiper case-study-swiper">
+    <div class="swiper-wrapper">
+      {caseStudies.map((caseStudy) => (
+        <div class="swiper-slide">
+          <div class="case-study-slide">
+            <img src={caseStudy.image} alt={caseStudy.title} class="case-study-slide-image" />
+            <div class="case-study-slide-content">
+              <h3 class="case-study-slide-title">{caseStudy.title}</h3>
+              <a href={caseStudy.link} class="btn btn-primary case-study-slide-button">詳しく見る</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<style>
+  .case-study-slider-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    margin: 60px 0;
+  }
+
+  .case-study-swiper {
+    width: 100%;
+    padding-bottom: 50px;
+  }
+
+  .case-study-slide {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .case-study-slide-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .case-study-slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .case-study-slide-title {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Noto Serif JP', serif;
+    color: #000000;
+    margin: 0 0 20px 0;
+  }
+
+  .case-study-slide-button {
+    display: inline-block;
+  }
+
+  .swiper-pagination {
+    bottom: 10px !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #666666;
+    opacity: 0.5;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #666666;
+  }
+
+  @media (max-width: 768px) {
+    .case-study-slide {
+      height: 500px;
+    }
+
+    .case-study-slide-title {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<script>
+  import initCaseStudySlider from '../scripts/initCaseStudySlider';
+  
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCaseStudySlider);
+    } else {
+      initCaseStudySlider();
+    }
+  }
+</script>
+

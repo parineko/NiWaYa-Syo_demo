@@ -1,0 +1,74 @@
+---
+---
+<!-- フローティングお問い合わせボタン -->
+<div class="floating-contact-button">
+    <a href="tel:0925150747" class="floating-button-link" aria-label="お電話でお問い合わせ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span class="floating-button-text">お問い合わせ</span>
+    </a>
+</div>
+
+<style>
+    .floating-contact-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+    }
+
+    .floating-button-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #666666;
+        color: #ffffff;
+        padding: 16px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .floating-button-link:hover {
+        background-color: #555555;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-button-link svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .floating-button-text {
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        .floating-contact-button {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .floating-button-link {
+            padding: 14px 20px;
+            font-size: 14px;
+        }
+
+        .floating-button-text {
+            display: none;
+        }
+
+        .floating-button-link svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+</style>
+

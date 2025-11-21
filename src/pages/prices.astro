@@ -1,47 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import ContactCTA from '../components/ContactCTA.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
 
 <BaseLayout title="料金 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="prices">
     <PageHeader title="お庭の事なら何でもお任せ下さい！" />
 
-    <!-- トップ画像セクション -->
-    <section class="prices-top-images u-section">
-        <div class="container u-container">
-            <div class="prices-images-grid">
-                <div class="prices-image-item">
-                    <a href="/images/niwakouji-02s02.jpg" class="prices-image-link">
-                        <img src="/images/niwakouji-02s02.jpg" alt="niwakouji-02s02" />
-                    </a>
-                </div>
-                <div class="prices-image-item">
-                    <a href="/images/niwanosentei-02s02.jpg" class="prices-image-link">
-                        <img src="/images/niwanosentei-02s02.jpg" alt="庭の剪定" />
-                    </a>
-                </div>
-                <div class="prices-image-item">
-                    <a href="/images/senteiryoukin-02s02.jpg" class="prices-image-link">
-                        <img src="/images/senteiryoukin-02s02.jpg" alt="senteiryoukin-02s02" />
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="prices-section u-section u-section--alt">
+    <section class="prices-section u-section" style="padding: 100px 0; background: #ffffff;">
         <div class="container u-container">
             <div class="prices-content">
-                <h2 class="section-title fade-up" style="font-size: 1.8rem;">業務内容<br />剪定・伐採・草刈・防草対策<br />庭造り・リフォーム・フェンス・外構工事<br />竹垣・門松</h2>
-                <div class="divider fade-up"></div>
+                <h2 class="section-title fade-up" style="font-size: 1.8rem; color: #000000; font-family: 'Noto Serif JP', serif; text-align: center; margin-top: 40px; margin-bottom: 20px;">業務内容<br />剪定・伐採・草刈・防草対策<br />庭造り・リフォーム・フェンス・外構工事<br />竹垣・門松</h2>
                 
-                <div class="price-info">
-                    <p class="price-intro">
-                        <span style="color: #000000;">時代と共に変わっていく庭の形、それぞれの生活スタイルや価値観によって違う庭の形。私たちは屋外に大小関係なく楽しんだり和んだりできる空間作り、人々が健やかに生きていけるように少しでも力になれればと思っております。</span>
-                    </p>
-                    <p class="price-intro" style="text-align: left;">
-                        <span style="color: #000000;">・1本から承っております。剪定は一部だけでも対応いたします。お客様の要望、植物の生態、花の時期、主屋と庭とのバランスを考えながら、ご相談させていただき、お庭の管理・施工をいたします。</span>
+                <div class="price-info" style="text-align: center; margin-bottom: 40px;">
+                    <p class="price-intro" style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                        1本から承っております。剪定は一部だけでも対応いたします。
                     </p>
                 </div>
 
@@ -194,24 +167,5 @@ import ContactCTA from '../components/ContactCTA.astro';
         </div>
     </section>
 
-    <!-- 下部画像セクション -->
-    <section class="prices-bottom-images u-section">
-        <div class="container u-container">
-            <div class="prices-bottom-grid">
-                <div class="prices-bottom-image-item">
-                    <a href="/images/niwanosentei-02s02.jpg" class="prices-image-link">
-                        <img src="/images/niwanosentei-02s02.jpg" alt="庭の剪定" />
-                    </a>
-                </div>
-                <div class="prices-bottom-image-item">
-                    <a href="/images/konkuritodoma-02s02.jpg" class="prices-image-link">
-                        <img src="/images/konkuritodoma-02s02.jpg" alt="建屋周辺作業後" />
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- お問い合わせCTA -->
-    <ContactCTA />
+    <FloatingContactButton />
 </BaseLayout>
