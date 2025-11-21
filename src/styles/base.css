@@ -77,11 +77,19 @@ img {
 .u-section {
     padding: 80px 0;
     margin-bottom: 80px;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.u-section:first-of-type {
+    padding-top: 10px !important;
 }
 
 .u-section--tight {
-    padding: 48px 0;
-    margin-bottom: 48px;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 .u-section--light {
@@ -930,16 +938,38 @@ section:not(.u-section) {
 
 /* 繝壹・繧ｸ繝倥ャ繝繝ｼ */
 .page-header {
-    background-color: var(--bg-light);
-    padding: 60px 0;
+    background: transparent !important;
+    padding: 20px 0 !important;
     text-align: center;
-    margin-bottom: 60px;
+    margin: 0 0 10px 0 !important;
+}
+
+.page-header h1,
+.page-header .page-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 28px;
+    font-weight: 600;
+    font-family: 'Noto Serif JP', serif;
+    color: #000000;
+    text-align: center;
 }
 
 .page-title {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 600;
     color: var(--text-dark);
+}
+
+/* グローバル余白の強制リセット */
+section:first-of-type {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+}
+
+main > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 /* 繧ｱ繝ｼ繧ｹ繧ｹ繧ｿ繝・ぅ繝壹・繧ｸ・域立繧ｹ繧ｿ繧､繝ｫ - 繧ｫ繝ｼ繝牙梛・・*/

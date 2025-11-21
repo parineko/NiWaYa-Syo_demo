@@ -1,25 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
 
-<BaseLayout title="庭アプローチの通路作り - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
-    <article class="blog-post u-section">
+<BaseLayout title="庭のアプローチ - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="庭のアプローチ" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
         <div class="container u-container">
-            <div class="blog-post-header">
-                <h1 class="blog-post-title">庭アプローチの通路作り</h1>
-            </div>
-
             <div class="blog-post-content">
-                <div class="case-study-images-grid">
-                    <figure class="case-study-image-wrapper">
-                        <img src="/images/店舗_坪庭_アプローチ2.jpg" alt="" />
+                <!-- 画像グリッド -->
+                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/店舗_坪庭_アプローチ2.jpg" alt="庭のアプローチ" style="width: 100%; height: auto; border-radius: 8px;" />
                     </figure>
-                    <figure class="case-study-image-wrapper">
-                        <img src="/images/店舗_坪庭_アプローチ1.jpg" alt="" />
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/店舗_坪庭_アプローチ1.jpg" alt="庭のアプローチ" style="width: 100%; height: auto; border-radius: 8px;" />
                     </figure>
                 </div>
 
-                <div class="blog-post-text" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
                     <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
                         機能性と外観の両方を考慮して施工いたしました。アプローチ部分の通路は、お客様が毎日通る場所ですので、使いやすさと美しさを両立させることが重要です。
                     </p>
@@ -29,18 +30,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 </div>
             </div>
 
-            <div class="blog-post-footer">
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
                 <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
             </div>
 
-            <nav class="post-navigation" aria-label="投稿ナビゲーション">
-                <a class="post-nav-link prev" href="/bamboo-fence">
-                    <span class="nav-label">前</span>
-                    <span class="nav-title">庭園の竹垣の施工</span>
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <a class="post-nav-link prev" href="/weed-sheet-gravel" style="color: #000000; text-decoration: none;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">防草シート・砂利敷き工事</span>
                 </a>
-                <a class="post-nav-link next" href="/case-stady">
-                    <span class="nav-label">次</span>
-                    <span class="nav-title">施行例一覧</span>
+                <a class="post-nav-link next" href="/shop-garden" style="color: #000000; text-decoration: none; text-align: right;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">店舗・飲食店 坪庭作り</span>
                 </a>
             </nav>
         </div>

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactCTA from '../components/ContactCTA.astro';
 import HeroSlider from '../components/HeroSlider.astro';
 import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
@@ -10,7 +9,7 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
     <HeroSlider client:load />
 
     <!-- モットーセクション（1文のみ） -->
-    <section class="motto-section u-section" style="padding: 100px 0; background: #ffffff;">
+    <section class="motto-section u-section" style="padding: 10px 0 100px 0; background: #ffffff;">
         <div class="container u-container">
             <div style="text-align: center;">
                 <h2 style="font-size: 32px; font-weight: 600; font-family: 'Noto Serif JP', serif; color: #000000; margin: 0;">
@@ -19,9 +18,6 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
             </div>
         </div>
     </section>
-
-    <!-- お問い合わせCTA -->
-    <ContactCTA />
 
     <FloatingContactButton />
 </BaseLayout>

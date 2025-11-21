@@ -3,40 +3,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 ---
 
-<BaseLayout title="庭園の竹垣の施工 - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
-    <article class="blog-post u-section">
+<BaseLayout title="庭園 竹垣施工 - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="庭園 竹垣施工" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
         <div class="container u-container">
-            <div class="blog-post-header">
-                <h1 class="blog-post-title">庭園の竹垣の施工</h1>
-            </div>
-
             <div class="blog-post-content">
-                <div class="blog-post-image">
-                    <img src="/images/竹垣施工.jpg" alt="庭園の竹垣" />
+                <!-- メイン画像 -->
+                <div class="blog-post-image" style="max-width: 1000px; margin: 0 auto 60px;">
+                    <img src="/images/竹垣施工.jpg" alt="庭園の竹垣" style="width: 100%; height: auto; border-radius: 8px;" />
                 </div>
 
-                <div class="blog-post-text" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
                     <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
                         庭園に施された竹垣は、日本の伝統的な美しさを表現しています。竹の自然な風合いと、職人の技術により、美しい竹垣を造らせていただきました。
                     </p>
                     <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
-                        お客様のご要望に合わせて、竹の種類や編み方を選定し、庭全体の雰囲気に調和する竹垣を施工いたしました。
+                        お客様のご要望に合わせて、竹の種類や編み方を選定し、庭全体の雰囲気に調和する竹垣を施工いたしました。長年愛される、美しく機能的な竹垣となっております。
                     </p>
                 </div>
             </div>
 
-            <div class="blog-post-footer">
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
                 <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
             </div>
 
-            <nav class="post-navigation" aria-label="投稿ナビゲーション">
-                <a class="post-nav-link prev" href="/shop-garden">
-                    <span class="nav-label">前</span>
-                    <span class="nav-title">店舗・飲食店 坪庭作り</span>
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <a class="post-nav-link prev" href="/bamboo-fence-renovation" style="color: #000000; text-decoration: none;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">竹垣のリフォーム</span>
                 </a>
-                <a class="post-nav-link next" href="/garden-tile">
-                    <span class="nav-label">次</span>
-                    <span class="nav-title">庭アプローチの通路作り</span>
+                <a class="post-nav-link next" href="/concrete-floor" style="color: #000000; text-decoration: none; text-align: right;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">建屋周辺（コンクリート土間）</span>
                 </a>
             </nav>
         </div>

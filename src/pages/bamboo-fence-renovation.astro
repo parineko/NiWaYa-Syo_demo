@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="竹垣のリフォーム - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="竹垣のリフォーム" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
+        <div class="container u-container">
+            <div class="blog-post-content">
+                <!-- Before/After画像 -->
+                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/takegakirifomu-01s02.jpg" alt="リフォーム前" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">Before</figcaption>
+                    </figure>
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/takegakirifomu-02s02.jpg" alt="リフォーム後" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">After</figcaption>
+                    </figure>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
+                        長年使用していた竹垣が老朽化していたため、新しい竹材を使用してリフォームいたしました。日本の伝統的な美しさを保ちながら、より耐久性の高い仕上がりに生まれ変わりました。
+                    </p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                        お客様のご要望に合わせて、竹の種類や編み方を選定し、庭全体の雰囲気に調和する竹垣を施工いたしました。リフォーム後は、美しい見た目と機能性を兼ね備えた、長く愛される竹垣となりました。
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
+                <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
+            </div>
+
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <a class="post-nav-link prev" href="/shop-garden" style="color: #000000; text-decoration: none;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">店舗・飲食店 坪庭作り</span>
+                </a>
+                <a class="post-nav-link next" href="/bamboo-fence" style="color: #000000; text-decoration: none; text-align: right;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">庭園 竹垣施工</span>
+                </a>
+            </nav>
+        </div>
+    </article>
+</BaseLayout>
+

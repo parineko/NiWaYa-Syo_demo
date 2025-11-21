@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="防草シート・砂利敷き工事 - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="防草シート・砂利敷き工事" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
+        <div class="container u-container">
+            <div class="blog-post-content">
+                <!-- Before/After画像 -->
+                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/zouen1s02.jpg" alt="施工前" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">Before</figcaption>
+                    </figure>
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/zouen2s02.jpg" alt="施工後" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">After</figcaption>
+                    </figure>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
+                        雑草が生い茂っていたお庭に、防草シートと砂利を敷き詰めることで、メンテナンスが簡単で美しい空間に生まれ変わりました。防草シートは雑草の成長を抑え、砂利は見た目も美しく、歩きやすい地面を実現します。
+                    </p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                        お客様のご要望に合わせて、砂利の種類や色を選定し、お庭全体の雰囲気に調和する仕上がりにいたしました。これにより、草刈りの手間が大幅に減り、お客様に喜んでいただいております。
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
+                <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
+            </div>
+
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <a class="post-nav-link prev" href="/tree-pruning" style="color: #000000; text-decoration: none;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">高木の剪定</span>
+                </a>
+                <a class="post-nav-link next" href="/garden-tile" style="color: #000000; text-decoration: none; text-align: right;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">庭のアプローチ</span>
+                </a>
+            </nav>
+        </div>
+    </article>
+</BaseLayout>
+

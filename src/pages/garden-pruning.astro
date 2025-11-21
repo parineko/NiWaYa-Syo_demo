@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="庭の剪定 - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="庭の剪定" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
+        <div class="container u-container">
+            <div class="blog-post-content">
+                <!-- Before/After画像 -->
+                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/niwanosentei-01s02.jpg" alt="剪定前" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">Before</figcaption>
+                    </figure>
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/niwanosentei-02s02.jpg" alt="剪定後" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">After</figcaption>
+                    </figure>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
+                        3年ほど手入れされていなかったお庭の剪定です。本来の綺麗なお庭が復活しました。長期間手入れされていない庭木は、見た目だけでなく、健康にも影響を与えることがあります。
+                    </p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                        適切な剪定により、樹木の健康を回復し、お庭全体が明るく美しくなりました。お客様には、定期的な剪定の重要性をお伝えし、今後も美しいお庭を保っていただけるようサポートしております。
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
+                <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
+            </div>
+
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="flex: 1;"></div>
+                <a class="post-nav-link next" href="/tree-pruning" style="color: #000000; text-decoration: none; text-align: right;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">高木の剪定</span>
+                </a>
+            </nav>
+        </div>
+    </article>
+</BaseLayout>
+

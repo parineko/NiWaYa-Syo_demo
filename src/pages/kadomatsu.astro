@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout title="門松・正月飾り - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
+    <PageHeader title="門松・正月飾り" />
+    
+    <article class="blog-post u-section" style="padding: 100px 0;">
+        <div class="container u-container">
+            <div class="blog-post-content">
+                <!-- 画像グリッド -->
+                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/kadomatsu.03.jpg" alt="卓上門松" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">卓上門松（4,800円）</figcaption>
+                    </figure>
+                    <figure class="case-study-image-wrapper" style="margin: 0;">
+                        <img src="/images/kadomatsu-01s03.jpg" alt="門松" style="width: 100%; height: auto; border-radius: 8px;" />
+                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">門松（設置例）</figcaption>
+                    </figure>
+                </div>
+
+                <!-- 説明文 -->
+                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif; margin-bottom: 20px;">
+                        店舗や個人邸向け、気軽に門松・正月飾りをしたい方へ。お正月の伝統的な飾りとして、新年を迎える準備をお手伝いいたします。卓上門松から大型の門松まで、お客様のご要望に合わせてご提案いたします。
+                    </p>
+                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; font-family: 'Noto Sans JP', sans-serif;">
+                        ご依頼があれば年明け7日以降に回収まで対応いたします。お正月の期間中、美しい門松で新年をお迎えください。設置から回収まで、安心してお任せください。
+                    </p>
+                </div>
+            </div>
+
+            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
+                <a href="/case-stady" class="btn btn-primary">施行例一覧に戻る</a>
+            </div>
+
+            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <a class="post-nav-link prev" href="/concrete-floor" style="color: #000000; text-decoration: none;">
+                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
+                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">建屋周辺（コンクリート土間）</span>
+                </a>
+                <div style="flex: 1;"></div>
+            </nav>
+        </div>
+    </article>
+</BaseLayout>
+

@@ -7,45 +7,15 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
 <BaseLayout title="お問い合わせ - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="contact">
     <PageHeader title="お問い合わせ" />
 
-    <section class="contact-form-section u-section u-section--alt" style="padding: 100px 0;">
+    <section class="contact-form-section u-section u-section--alt" style="padding: 10px 0 100px 0;">
         <div class="container u-container">
             <div class="contact-form-wrapper">
-                <div class="contact-info">
-                    <h2 class="section-title fade-up" style="margin-top: 40px; margin-bottom: 20px;">お問い合わせ方法</h2>
-                    <div class="divider fade-up"></div>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <h3 class="contact-method-title">お電話</h3>
-                            <p class="contact-method-content">
-                                <a href="tel:0925150747" class="contact-link">092-515-0747</a><br />
-                                受付時間：平日 9:00～18:00
-                            </p>
-                        </div>
-
-                        <div class="contact-method">
-                            <h3 class="contact-method-title">メール</h3>
-                            <p class="contact-method-content">
-                                <a href="mailto:zouen@niwaya-syo.com" class="contact-link">zouen@niwaya-syo.com</a><br />
-                                24時間受付（返信は営業時間内）
-                            </p>
-                        </div>
-
-                        <div class="contact-method">
-                            <h3 class="contact-method-title">LINE</h3>
-                            <p class="contact-method-content">
-                                <a href="https://line.me/ti/p/N0BiuufFhv" class="btn btn-line">LINE 問い合わせ</a><br />
-                                24時間受付
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form" style="text-align: center; padding: 60px 40px;">
+                <!-- Googleフォーム（一番上） -->
+                <div class="contact-form" style="text-align: center; padding: 60px 40px; margin-bottom: 60px;">
                     <h2 class="section-title fade-up" style="margin-top: 40px; margin-bottom: 20px;">お問い合わせフォーム</h2>
                     <div class="divider fade-up"></div>
                     
-                    <p style="font-size: 18px; line-height: 1.8; color: var(--text-dark); margin-bottom: 40px;">
+                    <p style="font-size: 18px; line-height: 1.8; color: #000000; margin-bottom: 40px;">
                         お問い合わせは、下記のGoogleフォームからお願いいたします。<br />
                         お名前、メールアドレス、ご希望の内容などをご記入ください。
                     </p>
@@ -58,10 +28,34 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
                         Googleフォームでお問い合わせ
                     </a>
                     
-                    <p class="form-note" style="margin-top: 30px;">
+                    <p class="form-note" style="margin-top: 30px; font-size: 14px; color: #666666;">
                         フォームは別ウィンドウで開きます。<br />
                         お問い合わせ内容により、返信までにお時間をいただく場合がございます。
                     </p>
+                </div>
+
+                <!-- 電話・メール（でも受け付けてます） -->
+                <div class="contact-info" style="text-align: center;">
+                    <h2 class="section-title fade-up" style="margin-top: 40px; margin-bottom: 20px;">電話・メールでも受け付けております</h2>
+                    <div class="divider fade-up"></div>
+                    
+                    <div class="contact-methods" style="display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap;">
+                        <div class="contact-method">
+                            <h3 class="contact-method-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 15px;">お電話</h3>
+                            <p class="contact-method-content" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">
+                                <a href="tel:0925150747" class="contact-link" style="color: #000000; font-size: 18px; font-weight: 600;">092-515-0747</a><br />
+                                <span style="font-size: 14px;">受付時間：平日 9:00～18:00</span>
+                            </p>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3 class="contact-method-title" style="font-size: 18px; font-weight: 600; color: #000000; margin-bottom: 15px;">メール</h3>
+                            <p class="contact-method-content" style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">
+                                <a href="mailto:zouen@niwaya-syo.com" class="contact-link" style="color: #000000; font-size: 18px; font-weight: 600;">zouen@niwaya-syo.com</a><br />
+                                <span style="font-size: 14px;">24時間受付（返信は営業時間内）</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
