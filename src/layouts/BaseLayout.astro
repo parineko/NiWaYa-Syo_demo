@@ -125,36 +125,6 @@ const { title, currentPage } = Astro.props;
                 observer.observe(el);
             });
 
-            // お問い合わせフォームの処理
-            const contactForm = document.querySelector('.form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // フォームデータを取得
-                    const formData = new FormData(contactForm);
-                    const data = {};
-                    formData.forEach((value, key) => {
-                        data[key] = value;
-                    });
-                    
-                    // ここで実際の送信処理を行う（メール送信やサーバーへの送信など）
-                    // 今回はアラートで確認
-                    alert('お問い合わせありがとうございます。\n内容を確認次第、ご連絡させていただきます。');
-                    
-                    // フォームをリセット
-                    contactForm.reset();
-                });
-            }
-        });
-
-        // ページ読み込み完了後の処理
-        window.addEventListener('load', function() {
-            // 背景画像の読み込み完了を待つ
-            const wrapper = document.querySelector('.motto-section .wrapper');
-            if (wrapper) {
-                wrapper.style.opacity = '1';
-            }
         });
     </script>
 </body>
