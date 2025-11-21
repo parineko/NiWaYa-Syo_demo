@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="お問い合わせ - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="contact">
+    <div class="page-header u-section u-section--tight">
+        <div class="container u-container">
+            <h1 class="page-title">お問い合わせ</h1>
+        </div>
+    </div>
+
+    <section class="contact-form-section u-section u-section--alt">
+        <div class="container u-container">
+            <div class="contact-form-wrapper">
+                <div class="contact-info">
+                    <h2 class="section-title fade-up">お問い合わせ方法</h2>
+                    <div class="divider fade-up"></div>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h3 class="contact-method-title">お電話</h3>
+                            <p class="contact-method-content">
+                                <a href="tel:0925150747" class="contact-link">092-515-0747</a><br />
+                                受付時間：平日 9:00～18:00
+                            </p>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3 class="contact-method-title">メール</h3>
+                            <p class="contact-method-content">
+                                <a href="mailto:zouen@niwaya-syo.com" class="contact-link">zouen@niwaya-syo.com</a><br />
+                                24時間受付（返信は営業時間内）
+                            </p>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3 class="contact-method-title">LINE</h3>
+                            <p class="contact-method-content">
+                                <a href="https://line.me/ti/p/N0BiuufFhv" class="btn btn-line">LINE 問い合わせ</a><br />
+                                24時間受付
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form" style="text-align: center; padding: 60px 40px;">
+                    <h2 class="section-title fade-up">お問い合わせフォーム</h2>
+                    <div class="divider fade-up"></div>
+                    
+                    <p style="font-size: 18px; line-height: 1.8; color: var(--text-dark); margin-bottom: 40px;">
+                        お問い合わせは、下記のGoogleフォームからお願いいたします。<br />
+                        お名前、メールアドレス、ご希望の内容などをご記入ください。
+                    </p>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZ3TjafK-d-3KYDk5MFFNeHYYmlyvGWDQU_hadHvuPA0iCw/viewform?usp=header" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn btn-primary" 
+                       style="font-size: 20px; padding: 20px 50px; display: inline-block; margin-top: 20px;">
+                        Googleフォームでお問い合わせ
+                    </a>
+                    
+                    <p class="form-note" style="margin-top: 30px;">
+                        フォームは別ウィンドウで開きます。<br />
+                        お問い合わせ内容により、返信までにお時間をいただく場合がございます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

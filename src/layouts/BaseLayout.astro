@@ -1,0 +1,159 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/base.css';
+import '../styles/extra.css';
+
+interface Props {
+  title: string;
+  currentPage?: string;
+}
+
+const { title, currentPage } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Kosugi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+    <Header currentPage={currentPage} />
+    
+    <main id="content" class="site-content">
+        <slot />
+    </main>
+    
+    <Footer />
+    
+    <script is:inline>
+        // モバイルメニューの開閉
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuList = document.querySelector('.menu-list');
+
+            if (menuToggle && menuList) {
+                menuToggle.addEventListener('click', function() {
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', !isExpanded);
+                    menuList.classList.toggle('active');
+                });
+
+                // メニューリンクをクリックしたらメニューを閉じる
+                const menuLinks = menuList.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuList.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+
+                // ウィンドウリサイズ時にメニューを閉じる
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 921) {
+                        menuList.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // スクロールトップボタン
+            const scrollTopBtn = document.getElementById('scroll-top');
+            
+            if (scrollTopBtn) {
+                // スクロール位置に応じてボタンを表示/非表示
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        scrollTopBtn.classList.add('show');
+                    } else {
+                        scrollTopBtn.classList.remove('show');
+                    }
+                });
+
+                // クリックでトップにスクロール
+                scrollTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // スムーススクロール（アンカーリンク用）
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // スクロールアニメーション（Intersection Observer）
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // アニメーション対象要素を監視
+            const animateElements = document.querySelectorAll('.fade-up');
+            animateElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // お問い合わせフォームの処理
+            const contactForm = document.querySelector('.form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // フォームデータを取得
+                    const formData = new FormData(contactForm);
+                    const data = {};
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+                    
+                    // ここで実際の送信処理を行う（メール送信やサーバーへの送信など）
+                    // 今回はアラートで確認
+                    alert('お問い合わせありがとうございます。\n内容を確認次第、ご連絡させていただきます。');
+                    
+                    // フォームをリセット
+                    contactForm.reset();
+                });
+            }
+        });
+
+        // ページ読み込み完了後の処理
+        window.addEventListener('load', function() {
+            // 背景画像の読み込み完了を待つ
+            const wrapper = document.querySelector('.motto-section .wrapper');
+            if (wrapper) {
+                wrapper.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
+

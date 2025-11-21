@@ -1,0 +1,46 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+---
+
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="/">
+                <img src="/images/cropped-niwaya_syo_logo_zz.png" alt="庭や・笑" class="site-logo" />
+            </a>
+        </div>
+        <nav class="main-navigation">
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                <span class="menu-toggle-icon"></span>
+            </button>
+            <ul class="menu-list">
+                <li class={`menu-item ${currentPage === 'home' ? 'current-menu-item' : ''}`}>
+                    <a href="/">home</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'case-stady' ? 'current-menu-item' : ''}`}>
+                    <a href="/case-stady">施行例</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'prices' ? 'current-menu-item' : ''}`}>
+                    <a href="/prices">料金</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'trouble' ? 'current-menu-item' : ''}`}>
+                    <a href="/trouble">お庭でお困りの方</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'until-construction' ? 'current-menu-item' : ''}`}>
+                    <a href="/until-construction">受付から施行まで</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'contact' ? 'current-menu-item' : ''}`}>
+                    <a href="/contact">お問い合わせ</a>
+                </li>
+                <li class={`menu-item ${currentPage === 'sitemap' ? 'current-menu-item' : ''}`}>
+                    <a href="/sitemap">サイトマップ</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
