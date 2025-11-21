@@ -7,60 +7,10 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<div class="page-header">
-    <div class="container u-container">
-        <div class="page-header-row">
-            <h1 class="page-title">{title}</h1>
-            {subtitle && <p class="subtitle">{subtitle}</p>}
-        </div>
+<div class="container u-container">
+    <div class="page-header-row">
+        <h1 class="page-title">{title}</h1>
+        {subtitle && <p class="page-subtitle">{subtitle}</p>}
     </div>
 </div>
-
-<style>
-    .page-header {
-        padding: 20px 0 !important;
-        margin: 0 0 10px 0 !important;
-        background: transparent;
-    }
-    
-    .page-header-row {
-        display: flex;
-        align-items: baseline;
-        gap: 16px;
-        margin-bottom: 0;
-        flex-wrap: wrap;
-    }
-    
-    .page-header-row h1,
-    .page-header-row .page-title {
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 32px;
-        font-weight: 600;
-        font-family: 'Shippori Mincho', serif !important;
-        color: #000000;
-    }
-    
-    .page-header-row .subtitle {
-        margin: 0;
-        padding: 0;
-        font-size: 16px;
-        font-family: 'Noto Serif JP', serif !important;
-        color: #2a2a2a;
-        opacity: 0.85;
-        white-space: nowrap;
-    }
-    
-    @media (max-width: 768px) {
-        .page-header-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-        }
-        
-        .page-header-row .subtitle {
-            white-space: normal;
-        }
-    }
-</style>
 

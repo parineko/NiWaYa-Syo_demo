@@ -45,12 +45,6 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .section-title,
-.page-header h1,
-.page-header .page-title {
-    font-family: 'Shippori Mincho', serif !important;
-    font-weight: 600;
-    color: #000000;
-}
 
 /* Zen Old Mincho 用クラス */
 .zen-serif {
@@ -957,27 +951,38 @@ section:not(.u-section) {
     }
 }
 
-/* 繝壹・繧ｸ繝倥ャ繝繝ｼ */
-.page-header {
-    background: transparent !important;
-    padding: 20px 0 !important;
-    margin: 0 0 10px 0 !important;
-}
-
-.page-header h1,
-.page-header .page-title {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 32px;
-    font-weight: 600;
-    font-family: 'Shippori Mincho', serif !important;
-    color: #000000;
+/* ページヘッダー */
+.page-header-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 24px;
+    padding-top: 12px;
 }
 
 .page-title {
+    margin: 0;
+    font-family: 'Shippori Mincho', serif;
     font-size: 28px;
-    font-weight: 600;
-    color: var(--text-dark);
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 0;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    opacity: 0.85;
+    padding-bottom: 1px;
+    line-height: 1.4;
+    color: #555555;
+}
+
+@media (max-width: 768px) {
+    .page-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
 }
 
 /* グローバル余白の強制リセット */
