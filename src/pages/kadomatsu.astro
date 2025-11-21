@@ -9,16 +9,9 @@ import PageHeader from '../components/PageHeader.astro';
     <article class="blog-post u-section" style="padding: 100px 0;">
         <div class="container u-container">
             <div class="blog-post-content">
-                <!-- 画像グリッド -->
-                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
-                    <figure class="case-study-image-wrapper" style="margin: 0;">
-                        <img src="/images/kadomatsu.03.jpg" alt="卓上門松" style="width: 100%; height: auto; border-radius: 8px;" />
-                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">卓上門松（4,800円）</figcaption>
-                    </figure>
-                    <figure class="case-study-image-wrapper" style="margin: 0;">
-                        <img src="/images/kadomatsu-01s03.jpg" alt="門松" style="width: 100%; height: auto; border-radius: 8px;" />
-                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">門松（設置例）</figcaption>
-                    </figure>
+                <!-- 画像（1枚のみ） -->
+                <div class="case-study-image-wrapper" style="max-width: 500px; margin: 0 auto 60px; border-radius: 12px; overflow: hidden;">
+                    <img src="/images/kadomatsu-01s03.jpg" alt="門松" style="width: 100%; height: auto; display: block;" />
                 </div>
 
                 <!-- 説明文 -->
