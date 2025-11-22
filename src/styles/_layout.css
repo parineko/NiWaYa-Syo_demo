@@ -402,11 +402,6 @@ main > *:first-child {
         font-size: 20px;
     }
 
-    .staff-avatar img {
-        width: 150px;
-        height: 150px;
-    }
-
     .scroll-top {
         bottom: 20px;
         left: 20px;

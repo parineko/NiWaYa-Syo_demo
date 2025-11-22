@@ -455,6 +455,11 @@ small,
     .post-navigation {
         flex-direction: column;
     }
+
+    .staff-avatar img {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 @media (max-width: 544px) {

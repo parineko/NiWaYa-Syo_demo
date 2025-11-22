@@ -1,17 +1,15 @@
 ---
 interface Props {
     title: string;
-    subtitle?: string;
     images?: Array<{ src: string; alt: string; caption?: string }>;
     beforeAfter?: { before: { src: string; alt: string }; after: { src: string; alt: string } };
     description: string | string[];
-    note?: string;
     singleImageStyle?: 'default' | 'kadomatsu';
     prev?: { href: string; label: string };
     next?: { href: string; label: string };
 }
 
-const { title, subtitle, images, beforeAfter, description, note, singleImageStyle = 'default', prev, next } = Astro.props;
+const { title, images, beforeAfter, description, singleImageStyle = 'default', prev, next } = Astro.props;
 
 // 説明文を配列に統一
 const descriptionArray = Array.isArray(description) ? description : [description];
