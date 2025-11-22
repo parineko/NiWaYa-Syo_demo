@@ -17,6 +17,7 @@ const { currentPage = '' } = Astro.props;
             <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
                 <span class="menu-toggle-icon"></span>
             </button>
+            <div class="menu-overlay"></div>
             <ul class="menu-list">
                 <li class={`menu-item ${currentPage === 'home' ? 'current-menu-item' : ''}`}>
                     <a href="/">HOME</a>

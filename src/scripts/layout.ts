@@ -2,28 +2,57 @@
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const menuList = document.querySelector('.menu-list');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const body = document.body;
 
     if (menuToggle && menuList) {
-        menuToggle.addEventListener('click', function() {
+        const closeMenu = function() {
+            menuList.classList.remove('active');
+            if (menuOverlay) {
+                menuOverlay.classList.remove('active');
+            }
+            menuToggle.setAttribute('aria-expanded', 'false');
+            body.style.overflow = '';
+        };
+
+        const openMenu = function() {
+            menuList.classList.add('active');
+            if (menuOverlay) {
+                menuOverlay.classList.add('active');
+            }
+            menuToggle.setAttribute('aria-expanded', 'true');
+            body.style.overflow = 'hidden';
+        };
+
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            menuList.classList.toggle('active');
+            if (isExpanded) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
         // メニューリンクをクリックしたらメニューを閉じる
         const menuLinks = menuList.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', function() {
-                menuList.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
             });
         });
+
+        // オーバーレイをクリックしたらメニューを閉じる
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', function() {
+                closeMenu();
+            });
+        }
 
         // ウィンドウリサイズ時にメニューを閉じる
         window.addEventListener('resize', function() {
             if (window.innerWidth > 921) {
-                menuList.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                closeMenu();
             }
         });
     }
@@ -116,4 +145,5 @@ export default function initLayout() {
         initScrollAnimation();
     }
 }
+
 
