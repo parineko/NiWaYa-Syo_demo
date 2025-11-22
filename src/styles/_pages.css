@@ -948,6 +948,14 @@
     display: inline-block;
 }
 
+.contact-page-button:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .contact-page-info-box {
     margin: 0 auto;
     padding: 30px;
