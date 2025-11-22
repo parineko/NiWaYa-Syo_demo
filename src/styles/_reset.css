@@ -1,0 +1,70 @@
+/* リセット & ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif JP', serif !important;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-body);
+    background-color: var(--bg-white);
+    letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-title {
+    font-family: 'Shippori Mincho', serif !important;
+    color: var(--text-dark);
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+h2 {
+    line-height: 1.35;
+    font-weight: 600;
+}
+
+h3 {
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+h4 {
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #333333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+p,
+li,
+a {
+    color: var(--text-body);
+}
+
+/* Zen Old Mincho 用クラス */
+.zen-serif {
+    font-family: 'Zen Old Mincho', serif !important;
+    font-weight: 400;
+}
+

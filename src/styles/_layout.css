@@ -1,0 +1,349 @@
+/* Container */
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    flex-shrink: 0;
+    padding: 0 24px;
+}
+
+.site-logo {
+    height: 60px;
+    width: auto;
+}
+
+.main-navigation {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.menu-toggle-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.menu-toggle-icon::before,
+.menu-toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s;
+}
+
+.menu-toggle-icon::before {
+    top: -8px;
+}
+
+.menu-toggle-icon::after {
+    top: 8px;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon {
+    background-color: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.menu-list {
+    display: flex !important;
+    list-style: none;
+    gap: 24px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-direction: row !important;
+}
+
+.menu-item {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.menu-item a {
+    color: var(--text-color);
+    font-family: 'Noto Serif JP', serif !important;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: color 0.3s;
+    position: relative;
+    line-height: 1.4;
+    height: auto;
+}
+
+.menu-item a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000000;
+    transition: width 0.3s;
+}
+
+.menu-item a:hover,
+.menu-item.current-menu-item a {
+    color: #000000;
+}
+
+.menu-item a:hover::after,
+.menu-item.current-menu-item a::after {
+    width: 100%;
+}
+
+/* トップ画像 */
+.top-image-section {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.top-image {
+    width: 100%;
+    height: auto;
+}
+
+/* セクション共通 */
+section:not(.u-section) {
+    margin: 0;
+}
+
+/* Footer Image */
+.footer-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 0;
+}
+
+.copyright {
+    font-family: 'Noto Serif JP', serif !important;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* スクロールトップボタン（左下に配置） */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #666666;
+    border-radius: 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.scroll-top:hover {
+    background-color: #555555;
+    transform: translateY(-3px);
+}
+
+.scroll-top.show {
+    display: flex;
+}
+
+.scroll-top-icon {
+    width: 26px;
+    height: 16px;
+    fill: #ffffff;
+    color: #ffffff;
+}
+
+/* ページヘッダー */
+.page-header-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 24px;
+    padding-top: 12px;
+}
+
+.page-title {
+    margin: 0;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 0;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    opacity: 0.85;
+    padding-bottom: 1px;
+    line-height: 1.4;
+    color: #555555;
+}
+
+/* グローバル余白の強制リセット */
+section:first-of-type {
+    margin-top: 0 !important;
+    padding-top: 10px !important;
+}
+
+main > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* レスポンシブ - Header/Footer/Layout */
+@media (max-width: 921px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #f8f6ef;
+        flex-direction: column !important;
+        gap: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none !important;
+    }
+
+    .menu-list.active {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+
+    .menu-item:last-child {
+    }
+
+    .menu-item a {
+        display: block;
+        padding: 12px 0;
+    }
+
+    .motto-section .inner {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .line-button-mobile {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 544px) {
+    .site-logo {
+        height: 45px;
+    }
+
+    .header-container {
+        padding: 10px 15px;
+    }
+
+    .logo-container {
+        padding: 0 16px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .motto-section {
+        padding: 60px 0;
+    }
+
+    .motto-section .inner {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .motto h3 {
+        font-size: 20px;
+    }
+
+    .staff-avatar img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .scroll-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+

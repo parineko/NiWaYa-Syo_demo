@@ -1,0 +1,474 @@
+/* Section Title */
+.section-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0 0 32px;
+}
+
+/* Divider */
+.divider {
+    width: 100px;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 32px auto 48px;
+}
+
+.divider + * {
+    margin-top: 32px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border-radius: 4px;
+    font-family: 'Noto Serif JP', serif !important;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary {
+    background: #666666;
+    color: #ffffff;
+    border: none;
+    border-radius: 9999px;
+    padding: 18px 40px;
+    font-family: 'Noto Serif JP', serif !important;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.contact-button-animated,
+.btn-primary.contact-button-animated,
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.contact-button-animated:hover,
+.btn-primary.contact-button-animated:hover,
+.btn-primary:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-line {
+    background-color: #06C755;
+}
+
+.btn-line:hover {
+    background-color: #05a844;
+}
+
+.btn--outline,
+.u-btn--outline {
+    background: transparent;
+    color: #000000;
+    border: 2px solid #666666;
+}
+
+.btn--outline:hover,
+.u-btn--outline:hover {
+    background: #666666;
+    color: #ffffff;
+}
+
+.btn-line,
+.u-btn-line {
+    background: #666666;
+    color: #ffffff !important;
+}
+
+/* Staff Card */
+.staff-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.staff-card.u-card {
+    padding: 24px 32px;
+    align-items: center;
+    gap: 16px;
+}
+
+.staff-avatar {
+    margin-bottom: 0;
+}
+
+.staff-avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    filter: brightness(1.05) contrast(1.05);
+    transition: filter 0.25s ease;
+}
+
+.staff-name {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Shippori Mincho', serif !important;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.staff-name .niwa {
+    display: inline-block;
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+.staff-bio {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.staff-bio p {
+    font-size: 15px;
+}
+
+/* Price Table */
+.price-table-wrapper {
+    margin: 20px 0;
+    overflow-x: auto;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    margin: 0 auto;
+    table-layout: fixed;
+}
+
+.price-table thead {
+    background-color: #666666;
+    color: var(--bg-white);
+}
+
+.price-table tr {
+    min-height: 48px;
+}
+
+.price-table th {
+    padding: 15px 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table th:first-child {
+    width: 65%;
+}
+
+.price-table th:last-child {
+    width: 35%;
+}
+
+.price-table thead tr:first-child th:first-child {
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table thead tr:first-child th:last-child {
+    border-top: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.price-table th:first-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table th:last-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+.price-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    font-size: 15px;
+    color: var(--text-color);
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.price-table td:first-child {
+    width: 65%;
+}
+
+.price-table td:last-child {
+    width: 35%;
+}
+
+.price-table td:first-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table td:last-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:last-child td {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:last-child td:first-child {
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:last-child td:last-child {
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.price-table tbody tr:hover {
+    background-color: var(--bg-light);
+}
+
+.price-note {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border-left: 4px solid #666666;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+small,
+.price-note,
+.price-note p,
+.form-note,
+.case-study-note {
+    font-family: 'Noto Serif JP', serif !important;
+}
+
+/* Trouble Item */
+.trouble-item {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.trouble-item-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.trouble-item-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Testimonials */
+.testimonials-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0;
+    display: grid;
+    gap: 20px;
+}
+
+.testimonial-item {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-title {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Shippori Mincho', serif !important;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.testimonial-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* Case Study Card */
+.case-study-card {
+    background-color: var(--bg-white);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.case-study-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.case-study-card .case-study-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+
+.case-study-card .case-study-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.case-study-card:hover .case-study-image img {
+    transform: scale(1.05);
+}
+
+.case-study-content {
+    padding: 20px;
+}
+
+.case-study-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.case-study-excerpt {
+    color: var(--text-dark);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Post Navigation */
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.post-nav-link {
+    flex: 1;
+    min-width: 260px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: background-color 0.3s;
+}
+
+.post-nav-link:hover {
+    background-color: var(--bg-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.post-nav-link .nav-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.post-nav-link .nav-title {
+    font-size: 18px;
+    line-height: 1.4;
+    font-family: 'Shippori Mincho', serif;
+}
+
+.post-nav-link.next {
+    text-align: right;
+}
+
+/* レスポンシブ - Components */
+@media (max-width: 768px) {
+    /* 料金表のモバイル表示 */
+    .price-table-wrapper {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .price-table {
+        font-size: 14px;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: 12px 12px;
+        font-size: 14px;
+    }
+
+    .post-nav-link {
+        min-width: auto;
+    }
+
+    .post-navigation {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 544px) {
+    .price-table {
+        font-size: 14px;
+    }
+
+    .price-table th,
+    .price-table td {
+        padding: 10px;
+    }
+
+    .post-nav-link {
+        padding: 15px;
+    }
+}
+
