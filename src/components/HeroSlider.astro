@@ -159,15 +159,3 @@ const heroImages = [
   }
 </style>
 
-<script>
-  import initHeroSlider from '../scripts/initHeroSlider';
-  
-  if (typeof window !== 'undefined') {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initHeroSlider);
-    } else {
-      initHeroSlider();
-    }
-  }
-</script>
-

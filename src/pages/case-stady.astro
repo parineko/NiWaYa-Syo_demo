@@ -11,9 +11,21 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
     <!-- 主要施工例スライダー -->
     <section class="case-study-slider-section u-section case-study-slider-page-section">
         <div class="container u-container case-study-slider-page-container">
-            <CaseStudySlider client:load />
+            <CaseStudySlider />
         </div>
     </section>
 
     <FloatingContactButton currentPage="case-stady" />
+
+    <script>
+        import initCaseStudySlider from '../scripts/initCaseStudySlider';
+        
+        if (typeof window !== 'undefined') {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCaseStudySlider);
+            } else {
+                initCaseStudySlider();
+            }
+        }
+    </script>
 </BaseLayout>
