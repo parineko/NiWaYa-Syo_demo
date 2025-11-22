@@ -1078,6 +1078,7 @@ main > *:first-child {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border: 1px solid #e0e0e0;
     margin: 0 auto;
+    table-layout: fixed;
 }
 
 .price-table thead {
@@ -1097,6 +1098,14 @@ main > *:first-child {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
     border-top: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
+}
+
+.price-table th:first-child {
+    width: 65%;
+}
+
+.price-table th:last-child {
+    width: 35%;
 }
 
 .price-table thead tr:first-child th:first-child {
@@ -1125,6 +1134,16 @@ main > *:first-child {
     font-size: 15px;
     color: var(--text-color);
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.price-table td:first-child {
+    width: 65%;
+}
+
+.price-table td:last-child {
+    width: 35%;
 }
 
 .price-table td:first-child {
