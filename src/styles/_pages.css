@@ -964,6 +964,21 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+    .contact-methods {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .contact-form,
+    .contact-info {
+        padding: 20px !important;
+    }
+    
+    .section-title {
+        font-size: 24px !important;
+    }
+}
+
 /* Prices Page - インラインスタイルのクラス化 */
 .prices-page-section {
     padding: 10px 0 100px 0;
@@ -1030,6 +1045,39 @@
     background: #ffffff;
 }
 
+.process-page-title {
+    font-size: 28px;
+}
+
+.process-page-steps-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.process-page-step-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border-left: 4px solid #666666;
+}
+
+.process-page-step-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 8px;
+    font-family: 'Shippori Mincho', serif;
+}
+
+.process-page-step-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2a2a2a;
+    margin: 0;
+}
+
 /* About Page - インラインスタイルのクラス化 */
 .about-page-motto-section {
     padding: 10px 0 100px 0;
@@ -1047,6 +1095,10 @@
     line-height: 1.8;
     color: #2a2a2a;
     margin: 0 0 20px 0;
+}
+
+.about-page-motto-text:last-child {
+    margin: 0;
 }
 
 .about-page-work-scene-section {
