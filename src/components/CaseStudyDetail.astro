@@ -1,0 +1,95 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+    images?: Array<{ src: string; alt: string; caption?: string }>;
+    beforeAfter?: { before: { src: string; alt: string }; after: { src: string; alt: string } };
+    description: string | string[];
+    note?: string;
+    singleImageStyle?: 'default' | 'kadomatsu';
+    prev?: { href: string; label: string };
+    next?: { href: string; label: string };
+}
+
+const { title, subtitle, images, beforeAfter, description, note, singleImageStyle = 'default', prev, next } = Astro.props;
+
+// 説明文を配列に統一
+const descriptionArray = Array.isArray(description) ? description : [description];
+---
+
+<article class="blog-post u-section case-study-detail-section">
+    <div class="container u-container">
+        <div class="blog-post-content">
+            <!-- Before/After画像 -->
+            {beforeAfter && (
+                <div class="case-study-images-grid case-study-detail-images-grid">
+                    <figure class="case-study-image-wrapper case-study-detail-image-wrapper">
+                        <img src={beforeAfter.before.src} alt={beforeAfter.before.alt} class="case-study-detail-image" />
+                        <figcaption class="case-study-detail-figcaption">Before</figcaption>
+                    </figure>
+                    <figure class="case-study-image-wrapper case-study-detail-image-wrapper">
+                        <img src={beforeAfter.after.src} alt={beforeAfter.after.alt} class="case-study-detail-image" />
+                        <figcaption class="case-study-detail-figcaption">After</figcaption>
+                    </figure>
+                </div>
+            )}
+
+            <!-- 単一画像（先にチェック） -->
+            {images && images.length === 1 && !beforeAfter && singleImageStyle === 'default' && (
+                <div class="blog-post-image case-study-detail-single-image">
+                    <img src={images[0].src} alt={images[0].alt} />
+                </div>
+            )}
+            {images && images.length === 1 && !beforeAfter && singleImageStyle === 'kadomatsu' && (
+                <div class="case-study-image-wrapper case-study-detail-kadomatsu-image">
+                    <img src={images[0].src} alt={images[0].alt} />
+                </div>
+            )}
+
+            <!-- 画像グリッド（Before/After以外、2枚以上の場合のみ） -->
+            {images && images.length > 1 && !beforeAfter && (
+                <div class="case-study-images-grid case-study-detail-images-grid">
+                    {images.map((image) => (
+                        <figure class="case-study-image-wrapper case-study-detail-image-wrapper">
+                            <img src={image.src} alt={image.alt} class="case-study-detail-image" />
+                            {image.caption && (
+                                <figcaption class="case-study-detail-figcaption">{image.caption}</figcaption>
+                            )}
+                        </figure>
+                    ))}
+                </div>
+            )}
+
+            <!-- 説明文 -->
+            <div class="blog-post-text case-study-detail-text-wrapper">
+                {descriptionArray.map((para, index) => (
+                    <p class="case-study-detail-text">
+                        {para}
+                    </p>
+                ))}
+            </div>
+        </div>
+
+        <div class="blog-post-footer case-study-detail-footer">
+            <a href="/case-stady" class="btn btn-primary contact-button-animated">施行例一覧に戻る</a>
+        </div>
+
+        <nav class="post-navigation case-study-detail-nav" aria-label="投稿ナビゲーション">
+            {prev ? (
+                <a class="post-nav-link prev case-study-detail-nav-link" href={prev.href}>
+                    <span class="nav-label case-study-detail-nav-label">← 前</span>
+                    <span class="nav-title case-study-detail-nav-title">{prev.label}</span>
+                </a>
+            ) : (
+                <div class="case-study-detail-nav-spacer"></div>
+            )}
+            {next && (
+                <a class="post-nav-link next case-study-detail-nav-link" href={next.href}>
+                    <span class="nav-label case-study-detail-nav-label">次 →</span>
+                    <span class="nav-title case-study-detail-nav-title">{next.label}</span>
+                </a>
+            )}
+        </nav>
+    </div>
+</article>
+

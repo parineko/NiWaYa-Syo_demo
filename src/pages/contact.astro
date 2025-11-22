@@ -7,52 +7,51 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
 <BaseLayout title="お問い合わせ - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="contact">
     <PageHeader title="お問い合わせ" subtitle="小さなことでも構いません。まずはお気軽にお問い合わせください。" />
 
-    <section class="contact-form-section u-section" style="padding: 10px 0 100px 0; background: #ffffff;">
+    <section class="contact-form-section u-section contact-page-section">
         <div class="container u-container">
-            <div class="contact-form-wrapper" style="max-width: 800px; margin: 0 auto;">
+            <div class="contact-form-wrapper contact-page-wrapper">
                 <!-- Googleフォーム -->
-                <div class="contact-form" style="margin: 0 auto 30px; padding: 30px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #666666; text-align: center;">
-                    <h2 class="section-title" style="font-size: 32px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; text-align: center; margin: 0 0 20px 0;">お問い合わせフォーム</h2>
+                <div class="contact-form contact-page-form-box">
+                    <h2 class="section-title contact-page-title">お問い合わせフォーム</h2>
 
-                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 25px; font-family: 'Noto Serif JP', serif;">
+                    <p class="contact-page-text">
                         お名前・メールアドレス・ご相談内容だけで送信できます。<br />
                         基本は翌営業日までにご返信いたします。<br />
                         （Googleフォームは別ウィンドウで開きます）
                     </p>
                     
-                    <div style="margin-top: 25px;">
+                    <div class="contact-page-button-wrapper">
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqZ3TjafK-d-3KYDk5MFFNeHYYmlyvGWDQU_hadHvuPA0iCw/viewform?usp=header" 
                            target="_blank" 
                            rel="noopener noreferrer" 
-                           class="btn btn-primary contact-button-animated" 
-                           style="font-size: 18px; padding: 18px 40px; display: inline-block;">
+                           class="btn btn-primary contact-button-animated contact-page-button">
                             Googleフォームでお問い合わせ
                         </a>
                     </div>
                 </div>
 
                 <!-- 電話・メール -->
-                <div class="contact-info" style="margin: 0 auto; padding: 30px; background: #f8f8f8; border-radius: 8px; border-left: 4px solid #666666; text-align: center;">
-                    <h2 class="section-title" style="font-size: 32px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; text-align: center; margin: 0 0 20px 0;">電話・メールでのお問い合わせ</h2>
+                <div class="contact-info contact-page-info-box">
+                    <h2 class="section-title contact-page-title">電話・メールでのお問い合わせ</h2>
                     
-                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 25px; font-family: 'Noto Serif JP', serif;">
+                    <p class="contact-page-text">
                         フォームが難しい場合やお急ぎの方は、電話・メールでも受付けております。<br />
                         営業時間外のご連絡は翌営業日に順次ご返信いたします。
                     </p>
                     
-                    <div class="contact-methods" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
-                        <div class="contact-method" style="padding: 25px; background: #ffffff; border-radius: 8px; text-align: center;">
-                            <h3 class="contact-method-title" style="font-size: 20px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; margin-bottom: 15px;">お電話</h3>
-                            <p style="font-size: 14px; color: #2a2a2a; font-family: 'Noto Serif JP', serif; margin-bottom: 20px;">受付時間：平日 9:00～18:00</p>
-                            <a href="tel:0925150747" class="btn btn-primary contact-button-animated" style="font-size: 18px; padding: 18px 40px; display: inline-block;">
+                    <div class="contact-methods contact-page-methods-grid">
+                        <div class="contact-method contact-page-method-box">
+                            <h3 class="contact-method-title contact-page-method-title">お電話</h3>
+                            <p class="contact-page-method-text">受付時間：平日 9:00～18:00</p>
+                            <a href="tel:0925150747" class="btn btn-primary contact-button-animated contact-page-button">
                                 092-515-0747
                             </a>
                         </div>
 
-                        <div class="contact-method" style="padding: 25px; background: #ffffff; border-radius: 8px; text-align: center;">
-                            <h3 class="contact-method-title" style="font-size: 20px; font-weight: 600; font-family: 'Shippori Mincho', serif; color: #000000; margin-bottom: 15px;">メール</h3>
-                            <p style="font-size: 14px; color: #2a2a2a; font-family: 'Noto Serif JP', serif; margin-bottom: 20px;">24時間受付（返信は営業時間内）</p>
-                            <a href="mailto:zouen@niwaya-syo.com" class="btn btn-primary contact-button-animated" style="font-size: 18px; padding: 18px 40px; display: inline-block;">
+                        <div class="contact-method contact-page-method-box">
+                            <h3 class="contact-method-title contact-page-method-title">メール</h3>
+                            <p class="contact-page-method-text">24時間受付（返信は営業時間内）</p>
+                            <a href="mailto:zouen@niwaya-syo.com" class="btn btn-primary contact-button-animated contact-page-button">
                                 zouen@niwaya-syo.com
                             </a>
                         </div>

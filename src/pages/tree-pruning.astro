@@ -1,52 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import CaseStudyDetail from '../components/CaseStudyDetail.astro';
 ---
 
 <BaseLayout title="高木の剪定 - 福岡 粕屋の造園 庭の事なら「庭や・笑」">
     <PageHeader title="高木の剪定" />
     
-    <article class="blog-post u-section" style="padding: 100px 0;">
-        <div class="container u-container">
-            <div class="blog-post-content">
-                <!-- Before/After画像 -->
-                <div class="case-study-images-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto 60px;">
-                    <figure class="case-study-image-wrapper" style="margin: 0;">
-                        <img src="/images/takagisentei-01s02.jpg" alt="剪定前" style="width: 100%; height: auto; border-radius: 8px;" />
-                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">Before</figcaption>
-                    </figure>
-                    <figure class="case-study-image-wrapper" style="margin: 0;">
-                        <img src="/images/takagisentei-02s02.jpg" alt="剪定後" style="width: 100%; height: auto; border-radius: 8px;" />
-                        <figcaption style="text-align: center; margin-top: 10px; color: #2a2a2a; font-size: 14px;">After</figcaption>
-                    </figure>
-                </div>
-
-                <!-- 説明文 -->
-                <div class="blog-post-text" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
-                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a; margin-bottom: 20px;">
-                        お客様が手の届かない高木の剪定依頼です。自然な雰囲気を保ちながら、剪定の好みを細かくお伺いし作業しました。高木の剪定は安全に配慮しながら、樹形を美しく整えることが重要です。
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.8; color: #2a2a2a;">
-                        お客様のご要望に合わせて、樹木の健康を保ちながら、見た目も美しく整える剪定を心がけています。剪定後は、お庭全体がすっきりと明るくなり、お客様に喜んでいただいております。
-                    </p>
-                </div>
-            </div>
-
-            <div class="blog-post-footer" style="text-align: center; margin-top: 60px;">
-                <a href="/case-stady" class="btn btn-primary contact-button-animated">施行例一覧に戻る</a>
-            </div>
-
-            <nav class="post-navigation" aria-label="投稿ナビゲーション" style="display: flex; justify-content: space-between; margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <a class="post-nav-link prev" href="/garden-pruning" style="color: #000000; text-decoration: none;">
-                    <span class="nav-label" style="font-size: 14px; color: #666666;">← 前</span>
-                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">庭の剪定</span>
-                </a>
-                <a class="post-nav-link next" href="/weed-sheet-gravel" style="color: #000000; text-decoration: none; text-align: right;">
-                    <span class="nav-label" style="font-size: 14px; color: #666666;">次 →</span>
-                    <span class="nav-title" style="display: block; margin-top: 5px; font-weight: 600;">防草シート・砂利敷き工事</span>
-                </a>
-            </nav>
-        </div>
-    </article>
+    <CaseStudyDetail
+        title="高木の剪定"
+        beforeAfter={{
+            before: { src: '/images/takagisentei-01s02.jpg', alt: '剪定前' },
+            after: { src: '/images/takagisentei-02s02.jpg', alt: '剪定後' }
+        }}
+        description={[
+            'お客様が手の届かない高木の剪定依頼です。自然な雰囲気を保ちながら、剪定の好みを細かくお伺いし作業しました。高木の剪定は安全に配慮しながら、樹形を美しく整えることが重要です。',
+            'お客様のご要望に合わせて、樹木の健康を保ちながら、見た目も美しく整える剪定を心がけています。剪定後は、お庭全体がすっきりと明るくなり、お客様に喜んでいただいております。'
+        ]}
+        prev={{ href: '/garden-pruning', label: '庭の剪定' }}
+        next={{ href: '/weed-sheet-gravel', label: '防草シート・砂利敷き工事' }}
+    />
 </BaseLayout>
 
