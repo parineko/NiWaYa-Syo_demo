@@ -23,26 +23,53 @@ const isHome = currentPage === 'home';
             </button>
             <div class="menu-overlay"></div>
             <ul class="menu-list">
-                <li class="menu-item">
-                    <a href={isHome ? "#trouble" : "/#trouble"}>お悩み</a>
+                <li class="menu-drawer-header">
+                    <span class="drawer-logo-text">庭や・笑</span>
+                    <span class="drawer-sub">福岡・粕屋の造園・庭木剪定</span>
                 </li>
                 <li class="menu-item">
-                    <a href={isHome ? "#reason" : "/#reason"}>選ばれる理由</a>
+                    <a href={isHome ? "#trouble" : "/#trouble"}>
+                        <span>お庭のお悩み</span>
+                        <span class="menu-item-en">TROUBLES</span>
+                    </a>
                 </li>
                 <li class="menu-item">
-                    <a href={isHome ? "#service" : "/#service"}>サービス・料金</a>
+                    <a href={isHome ? "#reason" : "/#reason"}>
+                        <span>選ばれる理由</span>
+                        <span class="menu-item-en">WHY CHOOSE US</span>
+                    </a>
                 </li>
                 <li class="menu-item">
-                    <a href={isHome ? "#works" : "/#works"}>施工例</a>
+                    <a href={isHome ? "#service" : "/#service"}>
+                        <span>サービス・料金</span>
+                        <span class="menu-item-en">SERVICES & PRICES</span>
+                    </a>
                 </li>
                 <li class="menu-item">
-                    <a href={isHome ? "#about" : "/#about"}>庭や・笑について</a>
+                    <a href={isHome ? "#works" : "/#works"}>
+                        <span>施工実績</span>
+                        <span class="menu-item-en">PORTFOLIO</span>
+                    </a>
                 </li>
                 <li class="menu-item">
-                    <a href={isHome ? "#faq" : "/#faq"}>よくある質問</a>
+                    <a href={isHome ? "#about" : "/#about"}>
+                        <span>庭や・笑について</span>
+                        <span class="menu-item-en">ABOUT US</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href={isHome ? "#faq" : "/#faq"}>
+                        <span>よくある質問</span>
+                        <span class="menu-item-en">FAQ</span>
+                    </a>
                 </li>
                 <li class="menu-item menu-item--cta">
-                    <a href={isHome ? "#contact" : "/#contact"} class="header-cta-btn">無料相談・見積もり</a>
+                    <a href={isHome ? "#contact" : "/#contact"} class="header-cta-btn">無料相談・お見積もり</a>
+                </li>
+                <li class="menu-drawer-contact">
+                    <p class="drawer-tel-label">お電話でのご相談（通話無料）</p>
+                    <a href="tel:0925150747" class="drawer-tel-link">092-515-0747</a>
+                    <p class="drawer-tel-time">受付：平日 9:00〜18:00</p>
                 </li>
             </ul>
         </nav>
@@ -139,7 +166,16 @@ const isHome = currentPage === 'home';
     background-color: #2b332d;
   }
 
-  /* ヘッダー内CTAボタン */
+  .menu-item-en {
+    display: none;
+  }
+
+  .menu-drawer-header,
+  .menu-drawer-contact {
+    display: none;
+  }
+
+  /* ヘッダー内CTAボタン（PC） */
   .header-cta-btn {
     background: #4a5d4e !important;
     color: #ffffff !important;
@@ -157,6 +193,9 @@ const isHome = currentPage === 'home';
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
+  /* ---------------------------------------
+     スマホ（920px以下）の和モダンドロワー
+  --------------------------------------- */
   @media (max-width: 920px) {
     .logo-link {
       height: 38px;
@@ -168,21 +207,119 @@ const isHome = currentPage === 'home';
     .header-container {
       padding: 10px 16px;
     }
-    .site-header--home .menu-list .menu-item a {
-      color: #333333;
-      text-shadow: none;
+
+    :global(.menu-overlay) {
+      background-color: rgba(10, 15, 12, 0.75) !important;
+      backdrop-filter: blur(6px) !important;
     }
-    .site-header--home .menu-list .menu-item a:hover {
-      color: #4a5d4e;
+
+    :global(.menu-list) {
+      width: 320px !important;
+      max-width: 86vw !important;
+      background: rgba(20, 26, 22, 0.98) !important;
+      backdrop-filter: blur(20px) !important;
+      padding: 70px 24px 40px !important;
+      box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5) !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
+
+    .menu-drawer-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .drawer-logo-text {
+      font-size: 1.5rem;
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.1em;
+    }
+
+    .drawer-sub {
+      font-size: 0.75rem;
+      color: #a8d5af;
+      margin-top: 4px;
+    }
+
+    .menu-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .site-header--home .menu-list .menu-item a,
+    .menu-list .menu-item a {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 4px !important;
+      color: #f0f5f1 !important;
+      font-family: 'Shippori Mincho', serif !important;
+      font-size: 1.05rem !important;
+      font-weight: 500 !important;
+      text-shadow: none !important;
+      background: transparent !important;
+    }
+
+    .menu-item-en {
+      display: block !important;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: sans-serif;
+    }
+
+    .site-header--home .menu-list .menu-item a:hover,
+    .menu-list .menu-item a:hover {
+      color: #a8d5af !important;
+      padding-left: 8px !important;
+    }
+
     .menu-item--cta {
-      margin-top: 12px;
+      margin-top: 24px;
+      border-bottom: none !important;
     }
+
     .header-cta-btn {
-      display: inline-block;
+      display: block !important;
       text-align: center;
       width: 100%;
-      padding: 12px !important;
+      padding: 14px !important;
+      font-size: 0.95rem !important;
+      background: #4a5d4e !important;
+      color: #ffffff !important;
+    }
+
+    .menu-drawer-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .drawer-tel-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0 0 6px;
+    }
+
+    .drawer-tel-link {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #a8d5af;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .drawer-tel-time {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 4px 0 0;
     }
   }
 </style>
