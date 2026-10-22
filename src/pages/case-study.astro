@@ -97,6 +97,11 @@ const allCaseStudies = [
       <div class="fade-up">
         <CaseStudySlider />
       </div>
+
+      <div class="case-study-bottom-nav fade-up">
+        <a href="/" class="u-btn">&larr; トップページに戻る</a>
+        <a href="/#contact" class="u-btn u-btn--outline">無料相談・お見積もりはこちら</a>
+      </div>
     </div>
   </section>
 
@@ -125,6 +130,11 @@ const allCaseStudies = [
             </a>
           </article>
         ))}
+      </div>
+
+      <div class="case-study-bottom-nav fade-up">
+        <a href="/" class="u-btn">&larr; トップページに戻る</a>
+        <a href="/#contact" class="u-btn u-btn--outline">無料相談・お見積もりはこちら</a>
       </div>
     </div>
   </section>
@@ -245,6 +255,14 @@ const allCaseStudies = [
     display: inline-flex;
     align-items: center;
     gap: 4px;
+  }
+
+  .case-study-bottom-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+    flex-wrap: wrap;
   }
 </style>
 

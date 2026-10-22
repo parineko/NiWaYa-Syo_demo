@@ -10,8 +10,8 @@ const troubles = [
     tag: '剪定・枝払い',
     title: '木が伸びすぎて手が届かない・危険',
     desc: '「2階の窓まで伸びた」「電線やお隣に届きそう」「台風で倒れないか心配」。ご自身では危険な高所作業も安全に剪定・伐採します。',
-    img: '/images/takagisentei-01s02.jpg',
-    alt: '伸び放題になった庭木・高木のBefore写真'
+    img: '/images/niwanosentei-01s02.jpg',
+    alt: '伸び放題になった庭木のBefore写真'
   },
   {
     tag: '雑草・草むしり',
@@ -21,11 +21,11 @@ const troubles = [
     alt: '雑草が生い茂った庭のBefore写真'
   },
   {
-    tag: '枝の越境・手入れ',
+    tag: '枝の越境・荒れた庭',
     title: '庭木がボサボサ・隣家に越境している',
-    desc: 'ご近所迷惑になる前に何とかしたい。木本来の健康と風通しを考慮し、自然な美しさを引き出す透かし剪定でさっぱり仕上げます。',
-    img: '/images/niwanosentei-01s02.jpg',
-    alt: '枝が密集してボサボサになった庭木のBefore写真'
+    desc: 'ご近所迷惑になる前に何とかしたい。手入れが追いつかず荒れてしまったお庭も、プロの手でスッキリ清潔に整えます。',
+    img: '/images/zouen5s02.jpg',
+    alt: '手入れが行き届かず荒れたお庭のBefore写真'
   },
   {
     tag: 'フェンス・竹垣',
@@ -95,7 +95,7 @@ const steps = [
   {
     num: 'STEP 01',
     title: 'お問い合わせ・無料相談',
-    desc: 'お電話・公式LINE・WEBフォームよりお気軽にご連絡ください。「木を1本だけ切りたい」でも大歓迎です。'
+    desc: '公式LINE・お電話・WEBフォームよりお気軽にご連絡ください。「木を1本だけ切りたい」でも大歓迎です。'
   },
   {
     num: 'STEP 02',
@@ -339,27 +339,28 @@ const faqs = [
     </div>
   </section>
 
-  <!-- ⑧ よくあるご質問（FAQ） -->
+  <!-- ⑧ よくあるご質問（FAQ：アコーディオン折りたたみ開閉） -->
   <section class="section section-faq" id="faq">
     <div class="u-container">
       <div class="section-badge-wrap fade-up">
         <span class="section-badge">FAQ</span>
         <h2 class="section-headline">よくあるご質問</h2>
-        <p class="section-subheadline">お客様からよくいただくご質問にお答えしています。</p>
+        <p class="section-subheadline">気になる質問をタップすると回答が開きます。</p>
       </div>
 
       <div class="faq-list">
-        {faqs.map((f) => (
-          <div class="faq-item u-card fade-up">
-            <div class="faq-question">
+        {faqs.map((f, idx) => (
+          <details class={`faq-item u-card fade-up delay-${(idx + 1) * 100}`}>
+            <summary class="faq-summary">
               <span class="faq-q-badge">Q</span>
-              <h3 class="faq-q-text">{f.q}</h3>
-            </div>
+              <span class="faq-q-text">{f.q}</span>
+              <span class="faq-toggle-icon"></span>
+            </summary>
             <div class="faq-answer">
               <span class="faq-a-badge">A</span>
               <p class="faq-a-text">{f.a}</p>
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </div>
@@ -409,7 +410,7 @@ const faqs = [
           </div>
         </div>
 
-        <!-- ③ ページ内直接お問い合わせフォーム（Googleフォーム外部遷移ではなくページ内で完結） -->
+        <!-- ③ ページ内直接お問い合わせフォーム -->
         <div class="inline-form-box" id="inline-form">
           <div class="inline-form-header">
             <h3>WEBからのお問い合わせ（24時間受付）</h3>
@@ -947,26 +948,44 @@ const faqs = [
     margin: 0;
   }
 
-  /* FAQ */
+  /* ---------------------------------------
+     ⑧ FAQ（アコーディオン折りたたみ開閉）
+  --------------------------------------- */
   .faq-list {
     max-width: 840px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
 
   .faq-item {
-    padding: 24px 28px;
+    padding: 0;
     border-radius: 12px;
     background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.25s ease;
   }
 
-  .faq-question {
+  .faq-item[open] {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-color: #d4e3d6;
+  }
+
+  .faq-summary {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
-    margin-bottom: 12px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+
+  .faq-summary::-webkit-details-marker {
+    display: none;
   }
 
   .faq-q-badge {
@@ -984,18 +1003,60 @@ const faqs = [
   }
 
   .faq-q-text {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #2b332d;
     margin: 0;
     line-height: 1.45;
+    flex-grow: 1;
+  }
+
+  /* プラス・マイナス開閉アイコン */
+  .faq-toggle-icon {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .faq-toggle-icon::before,
+  .faq-toggle-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #4a5d4e;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* 横棒 */
+  .faq-toggle-icon::before {
+    top: 9px;
+    left: 2px;
+    width: 16px;
+    height: 2px;
+  }
+
+  /* 縦棒 */
+  .faq-toggle-icon::after {
+    top: 2px;
+    left: 9px;
+    width: 2px;
+    height: 16px;
+  }
+
+  /* 開いたとき：縦棒が消えてマイナスに */
+  .faq-item[open] .faq-toggle-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
   }
 
   .faq-answer {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding-left: 40px;
+    padding: 16px 24px 22px 64px;
+    border-top: 1px dashed #e8f0e9;
+    background: #fafcfb;
   }
 
   .faq-a-badge {
@@ -1006,7 +1067,7 @@ const faqs = [
   }
 
   .faq-a-text {
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     color: #555555;
     line-height: 1.75;
     margin: 0;
@@ -1329,6 +1390,10 @@ const faqs = [
   @media (max-width: 768px) {
     .section {
       padding: 60px 0;
+    }
+
+    .faq-answer {
+      padding-left: 24px;
     }
 
     .form-row {

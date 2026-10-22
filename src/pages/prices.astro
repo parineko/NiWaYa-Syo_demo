@@ -118,6 +118,10 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
                                         <td>草刈（平方メートル当たり）</td>
                                         <td>￥200～</td>
                                     </tr>
+                                    <tr>
+                                        <td>芝刈（平方メートル当たり）</td>
+                                        <td>￥250～</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -155,9 +159,24 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
                         ※ 詳細な料金については、お問い合わせフォームまたはお電話でお問い合わせください。
                     </p>
                 </div>
+
+                <div class="page-bottom-actions">
+                    <a href="/" class="u-btn">&larr; トップページに戻る</a>
+                    <a href="/#contact" class="u-btn u-btn--outline">無料相談・お見積もりはこちら</a>
+                </div>
             </div>
         </div>
     </section>
 
     <FloatingContactButton currentPage="prices" />
 </BaseLayout>
+
+<style>
+  .page-bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+</style>

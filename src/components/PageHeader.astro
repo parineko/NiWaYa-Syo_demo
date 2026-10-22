@@ -8,9 +8,55 @@ const { title, subtitle } = Astro.props;
 ---
 
 <div class="container u-container">
+    <div class="page-header-nav">
+        <a href="/" class="back-home-link" aria-label="トップページへ戻る">
+            <span class="back-arrow">&larr;</span>
+            <span class="back-text">トップページへ戻る</span>
+        </a>
+    </div>
     <div class="page-header-row">
         <h1 class="page-title">{title}</h1>
         {subtitle && <p class="page-subtitle">{subtitle}</p>}
     </div>
 </div>
 
+<style>
+  .page-header-nav {
+    padding: 16px 0 8px;
+  }
+
+  .back-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4a5d4e;
+    text-decoration: none;
+    padding: 6px 14px 6px 10px;
+    border-radius: 999px;
+    background: #edf4ee;
+    transition: all 0.25s ease;
+  }
+
+  .back-home-link:hover {
+    background: #4a5d4e;
+    color: #ffffff;
+    transform: translateX(-3px);
+  }
+
+  .back-arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+
+  .back-home-link:hover .back-arrow {
+    transform: translateX(-2px);
+  }
+
+  .back-text {
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing: 0.05em;
+  }
+</style>

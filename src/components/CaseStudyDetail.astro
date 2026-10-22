@@ -68,7 +68,9 @@ const descriptionArray = Array.isArray(description) ? description : [description
             </div>
         </div>
 
-        <div class="blog-post-footer case-study-detail-footer fade-up">
+        <!-- 戻るボタン（トップに戻る＆一覧に戻るの2本立て） -->
+        <div class="detail-actions-box fade-up">
+            <a href="/" class="u-btn">&larr; トップページに戻る</a>
             <a href="/case-study" class="u-btn u-btn--outline">施工例一覧に戻る</a>
         </div>
 
@@ -90,3 +92,13 @@ const descriptionArray = Array.isArray(description) ? description : [description
         </nav>
     </div>
 </article>
+
+<style>
+  .detail-actions-box {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+</style>
