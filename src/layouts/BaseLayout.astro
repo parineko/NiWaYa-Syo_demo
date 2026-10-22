@@ -17,14 +17,160 @@ import 'swiper/css/effect-fade';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
   currentPage?: string;
 }
 
 const {
   title,
-  description = "福岡・粕屋の造園・庭木剪定・エクステリアなら「庭や・笑（にわやしょう）」。笑顔が活きる空間に。1本からの庭木剪定、造園、竹垣、防草シートなど丁寧に対応いたします。",
+  description = "福岡県粕屋町・福岡市近郊の造園・庭木剪定・伐採・草刈り・お庭清掃なら「庭や・笑（にわやしょう）」。庭木1本の剪定から伐採・抜根、防草シート・砂利敷き、竹垣、土間コンクリート、門松まで。地域密着・適正価格で丁寧に対応いたします。現地調査・お見積もり無料。",
+  keywords = "庭木剪定,剪定,伐採,抜根,草刈り,除草,庭掃除,お庭の清掃,剪定枝処分,ゴミ回収処分,防草シート,砂利敷き,竹垣,造園,坪庭,エクステリア,外構,土間コンクリート,門松,福岡県,糟屋郡,粕屋町,篠栗町,志免町,須恵町,新宮町,久山町,宇美町,福岡市東区,福岡市博多区,福岡市,古賀市,大野城市,春日市,太宰府市,福津市,宗像市,庭や笑,にわやしょう",
+  ogImage = "/images/niwaya_topImg.jpg",
+  ogType = "website",
   currentPage
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://niwaya-syo.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const fullOgImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).href;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+      "@id": `${siteUrl}/#business`,
+      "name": "庭や・笑（にわやしょう）",
+      "alternateName": ["庭や笑", "にわやしょう", "Niwaya Syo", "庭や 笑"],
+      "url": siteUrl,
+      "logo": `${siteUrl}/images/title.png`,
+      "image": [
+        `${siteUrl}/images/niwaya_topImg.jpg`,
+        `${siteUrl}/images/sagyoutyuu-01s03.jpg`,
+        `${siteUrl}/images/approach_01.jpg`
+      ],
+      "telephone": "092-515-0747",
+      "priceRange": "¥¥",
+      "currenciesAccepted": "JPY",
+      "paymentAccepted": "現金, 銀行振込",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "811-2304",
+        "addressRegion": "福岡県",
+        "addressLocality": "糟屋郡粕屋町",
+        "streetAddress": "大字仲原2653-1",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.6231,
+        "longitude": 130.4735
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "08:30",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡粕屋町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡篠栗町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡志免町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡須恵町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡新宮町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡久山町" },
+        { "@type": "AdministrativeArea", "name": "福岡県糟屋郡宇美町" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市東区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市博多区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市中央区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市南区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市城南区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市早良区" },
+        { "@type": "AdministrativeArea", "name": "福岡県福岡市西区" },
+        { "@type": "AdministrativeArea", "name": "福岡県古賀市" },
+        { "@type": "AdministrativeArea", "name": "福岡県大野城市" },
+        { "@type": "AdministrativeArea", "name": "福岡県春日市" },
+        { "@type": "AdministrativeArea", "name": "福岡県太宰府市" },
+        { "@type": "AdministrativeArea", "name": "福岡県福津市" },
+        { "@type": "AdministrativeArea", "name": "福岡県宗像市" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "造園・庭木管理サービス一覧",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "庭木の剪定（低木・中木・高木・松の剪定）",
+              "description": "低木1本700円から対応。高木剪定、松の手入れ、生垣の刈り込み、透かし剪定など樹種や成長に合わせた丁寧な剪定を行います。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "庭木の伐採・抜根",
+              "description": "大きくなりすぎた庭木、枯れ木、隣家に越境している危険木の伐採、根元の掘削・抜根処分まで安全第一で対応いたします。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "草刈り・除草・お庭の清掃・剪定枝ゴミ回収処分",
+              "description": "お庭全体の草むしりや機械草刈り、落ち葉の清掃、作業で生じた剪定枝やゴミの回収・処分までワンストップで承ります。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "防草シート施工・砂利敷き",
+              "description": "雑草が生えないお庭づくり。高耐久防草シートと化粧砂利・砕石の敷設工事で日々の草むしりの手間を大幅に軽減します。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "竹垣施工・修繕リフォーム",
+              "description": "天然竹垣（建仁寺垣・御簾垣・四ツ目垣）から高耐久な人工強化竹垣の新規施工・老朽化による張り替えリフォーム工事。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "造園・坪庭・アプローチ外構エクステリア",
+              "description": "和風・洋風庭園の設計施工、店舗や住宅の坪庭づくり、敷石・延段・飛び石アプローチ工事、植栽工事。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "土間コンクリート工事・駐車場舗装",
+              "description": "お庭の一部を使いやすい駐車場にする土間コンクリート打設工事、スロープや目地施工。"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "門松の製作・販売・配達設置",
+              "description": "年末年始を彩る伝統的な本格門松（天然竹・松・梅・南天等）の製作・配達・設置および年明けの回収。"
+            }
+          }
+        ]
+      }
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -34,12 +180,32 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <meta name="description" content={description}>
+    <meta name="keywords" content={keywords}>
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href={canonicalUrl}>
+    
+    <!-- ファビコン -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
+    <!-- Open Graph (OGP) -->
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
-    <meta property="og:type" content="website">
+    <meta property="og:type" content={ogType}>
+    <meta property="og:url" content={canonicalUrl}>
+    <meta property="og:image" content={fullOgImageUrl}>
     <meta property="og:site_name" content="庭や・笑（にわやしょう）">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={fullOgImageUrl}>
     
+    <!-- 構造化データ (Schema.org JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
     <!-- フォント読み込みの最適化（ウェイトを絞って高速化・チラつき防止） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

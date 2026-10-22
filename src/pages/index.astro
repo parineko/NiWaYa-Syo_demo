@@ -137,13 +137,28 @@ const faqs = [
     a: '福岡県糟屋郡（粕屋町、篠栗町、志免町、須恵町、新宮町、久山町、宇美町）を中心に、福岡市、古賀市、大野城市、春日市など福岡都市圏全域に対応しております。近郊エリアの方もお気軽にご相談ください。'
   }
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
 ---
 
 <BaseLayout
   title="福岡・粕屋の造園・庭木剪定なら「庭や・笑」（にわやしょう）"
-  description="福岡県粕屋の造園・庭木剪定「庭や・笑」。低木1本700円〜の明朗会計。職人直営で中間マージンなし。お庭の剪定、草刈り、防草シート、竹垣などお庭のお悩みを丁寧に解決します。現地調査・見積無料。"
+  description="福岡県粕屋町の造園・庭木剪定「庭や・笑（にわやしょう）」。低木1本700円〜の明朗会計。職人直営で中間マージンなし。庭木の剪定、伐採・抜根、草刈り・除草・庭清掃処分、防草シート・砂利敷き、竹垣、土間コンクリートまで丁寧に対応。現地調査・お見積もり無料。"
   currentPage="home"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <!-- ① ファーストビュー（HeroSlider 100dvh） -->
   <HeroSlider />
 

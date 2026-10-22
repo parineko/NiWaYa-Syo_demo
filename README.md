@@ -1,288 +1,214 @@
-# 庭や・笑 ウェブサイト（Astro版）
+# 庭や・笑（にわやしょう）公式サイト - AstroモダンLP
 
-福岡県粕屋の造園業「庭や・笑」の公式ウェブサイト。Astroフレームワークを使用した静的サイトジェネレーターで構築されています。
+福岡県糟屋郡粕屋町を拠点とする造園・庭木剪定「庭や・笑（にわやしょう）」の公式ウェブサイトです。  
+高速かつSEOに強い静的サイトジェネレーター「Astro」を使用し、1ページ完結型の洗練された和モダンLP（ランディングページ）と、詳細をじっくり見渡せるサブページ群（料金表・施工事例カタログ・各施工詳細・会社概要）をシームレスに統合したハイブリッドアーキテクチャで構築されています。
 
-## 📋 プロジェクト概要
+---
 
-このプロジェクトは、HTML版の「庭や・笑」ウェブサイトをAstroフレームワークで再構築したものです。モダンな開発体験とパフォーマンス最適化を実現しています。
+## 🌿 コンセプトと特徴
 
-## 📊 プロジェクト統計
+- **デザイン方針**: 「笑顔が活きる空間に」を体現する、清潔感と温かみのある和モダンデザイン（アースグリーン `#4a5d4e`、アクセントテラコッタ `#c97d60`、高品質フォント「Noto Serif JP」「Shippori Mincho」）。
+- **完全レスポンシブ**: スマートフォンでの文字の美しさを最優先に設計。見出しや本文の不自然な1文字改行を防ぐ `word-break: keep-all;` と `<br class="sp-only" />` を徹底。
+- **デザイン・見栄えを変えずにコードでSEOを最大化**:
+  - 庭木剪定（低木/中木/高木）、伐採・抜根、草刈り・除草・庭清掃掃除・剪定枝ゴミ回収処分、防草シート・砂利敷き、竹垣施工・改修、造園・坪庭・アプローチ外構、土間コンクリート、門松まで全サービスをコードレベルで網羅。
+  - 福岡県糟屋郡（粕屋町、篠栗町、志免町、須恵町、新宮町、久山町、宇美町）、福岡市（東区、博多区、中央区、南区、城南区、早良区、西区）、古賀市、大野城市、春日市、太宰府市、福津市、宗像市など福岡都市圏の地名を構造化データ・メタデータに完全実装。
 
-### ファイル構成と行数（最新）
+---
 
-**スタイルファイル**
-- `src/styles/base.css`: **1,631行** ⚠️ 要分割
-- `src/styles/extra.css`: 2行
+## 🛠️ 主な機能とUIコンポーネント
 
-**レイアウト・コンポーネント**
-- `src/layouts/BaseLayout.astro`: 132行
-- `src/components/HeroSlider.astro`: 156行
-- `src/components/CaseStudySlider.astro`: 154行
-- `src/components/FloatingContactButton.astro`: 84行
-- `src/components/Header.astro`: 40行
-- `src/components/Footer.astro`: 14行
-- `src/components/PageHeader.astro`: 13行
+### 1. ファーストビュー (`HeroSlider.astro`)
+- **100dvhフルスクリーン設計**: モバイルブラウザのアドレスバー伸縮に対応したビューポート高さ。
+- **心地よいカメラワーク**:
+  - スライド1：横長パノラマ写真の緩やかな左右ドリフト（41%〜53%の自然な移動。画面酔いを防ぐ低速移動）。
+  - スライド2：中心フォーカスの緩やかなズーム。
+  - スライド3：逆方向への左右水平ドリフト（53%〜41%）。
+- **タイポグラフィ**: 縦書きと横書きの調和、キャッチコピー「笑顔が活きる空間に」。
 
-**ページファイル（15ページ）**
-- `src/pages/prices.astro`: 163行
-- `src/pages/about.astro`: 93行
-- `src/pages/contact.astro`: 76行
-- `src/pages/trouble.astro`: 62行
-- `src/pages/tree-pruning.astro`: 47行
-- `src/pages/bamboo-fence-renovation.astro`: 47行
-- `src/pages/weed-sheet-gravel.astro`: 47行
-- `src/pages/concrete-floor.astro`: 47行
-- `src/pages/garden-tile.astro`: 45行
-- `src/pages/garden-pruning.astro`: 44行
-- `src/pages/shop-garden.astro`: 44行
-- `src/pages/bamboo-fence.astro`: 40行
-- `src/pages/kadomatsu.astro`: 37行
-- `src/pages/index.astro`: 27行
-- `src/pages/case-stady.astro`: 19行
+### 2. お悩み共感セクション (`#trouble`)
+- 4つのリアル現場Before写真カード（剪定・枝払い、雑草・草むしり、枝の越境・荒れた庭、フェンス・竹垣）。
+- 絵文字を排除し、職人直営ならではのリアルなBefore写真でユーザーの共感を醸成。
 
-**スクリプト**
-- `src/scripts/initCaseStudySlider.ts`: 29行
-- `src/scripts/initHeroSlider.ts`: 21行
+### 3. 選ばれる3つの安心 (`#reason`)
+- 01: 低木1本700円〜の明朗会計
+- 02: 職人直営・中間マージンゼロ
+- 03: ご近所への気配りと徹底したマナー・清掃
 
-**その他**
-- `src/env.d.ts`: 1行
+### 4. サービス案内 & 料金表 (`#service` & `/prices`)
+- トップページでの代表的4大サービスカード（剪定・伐採、防草シート・砂利敷き、造園・坪庭、竹垣施工）。
+- `/prices` サブページ：低木・中木・高木ごとの詳細料金表、伐採・抜根、ゴミ処分料（軽トラック1台 ¥6,000）、防草工事、竹垣などの詳細一覧。
+- **スマート復帰機能**: `/prices` 内の「戻る」ボタンからトップページの `/#service` アンカーへダイレクトにスムーズスクロール復帰。
 
-**合計**: 約3,115行（27ファイル、コメント・空行含む）
+### 5. 施工実績カルーセル & カタログ (`#works` & `/case-study`)
+- **トップページ (`CaseStudySlider.astro`)**:
+  - スマートフォンで隣のカードがチラ見えするモダンなPeek-Throughカルーセル（`slidesPerView: 1.22`、両端カード `scale(0.94)`、`opacity: 0.68`）。
+  - 直感的なスワイプ操作で次々と実績を閲覧可能。
+- **施工事例一覧ページ (`/case-study.astro`)**:
+  - トップの横スライダーと重複する操作感を解消し、全9件を上から下へじっくり見渡せる縦型カタログフィード形式。
+  - 各事例にBefore/Afterタグ、施工概要、詳細ページへのリンクを配置。
+- **施工例個別ページ（全9ページ）**:
+  - `garden-pruning`（庭の剪定）
+  - `tree-pruning`（高木の剪定）
+  - `weed-sheet-gravel`（防草シート・砂利敷き）
+  - `bamboo-fence-renovation`（竹垣のリフォーム）
+  - `bamboo-fence`（庭園 竹垣施工）
+  - `concrete-floor`（コンクリート土間施工）
+  - `shop-garden`（店舗・飲食店 坪庭作り）
+  - `garden-tile`（庭のアプローチ）
+  - `kadomatsu`（門松・正月飾り）
+  - 各詳細ページの「戻る」ボタンは `/#works` アンカーへダイレクト復帰。
 
-## 🚀 セットアップ
+### 6. 代表プロフィール・理念 (`#about` & `/about`)
+- 代表・権藤氏の顔写真アバターを正方形角丸（`border-radius: 14px;`, 95px × 110px）に調整し、胸元ではなく顔が中央に収まるよう `object-position: center 20%` で最適化。
+- サブページ `/about` からも `/#about` アンカーへスムーズ復帰。
 
-### 必要な環境
+### 7. よくある質問アコーディオン (`#faq`)
+- HTML5標準の `<details>` / `<summary>` を活用した軽量・高速アコーディオン。
+- 質問をタップすると、プラス（＋）アイコンがマイナス（ー）へ滑らかに回転変形。
+- Googleリッチスニペット対応の `FAQPage` 構造化データ（JSON-LD）を同時出力。
 
-- Node.js 18.0.0 以上
-- npm または yarn
+### 8. 3大導線お問い合わせセクション (`#contact`)
+- **公式LINE相談**: 「写真を撮って送るだけ」の最短見積もり導線。
+- **お電話相談**: `092-515-0747`（タップ発信対応、平日9:00〜18:00）。
+- **WEB直接送信フォーム**: 
+  - 外部のGoogleフォーム画面へ遷移させず、自社ページ内のフォームから直接送信可能。
+  - 非表示の `iframe` を送信ターゲット（`target="hidden_iframe"`）とすることで、ページリロードなしで「送信完了メッセージ」へ滑らかに切り替え。
 
-### インストール
+### 9. 快適なナビゲーション & モーダル
+- **固定ヘッダー & ドロワーメニュー (`Header.astro`)**:
+  - 背景透過からスクロールで白背景へ切り替わるヘッダー。
+  - スマホ用ハンバーガーメニュー展開時は「TROUBLES」「PORTFOLIO」「CONTACT」などの英語サブテキストを統一。
+- **フローティングコンタクトボタン (`FloatingContactButton.astro`)**:
+  - ファーストビューのアニメーション終了後に下からスライドイン。
+  - 最下部のコンタクトセクション（`#contact`）に到達すると邪魔にならないよう自動フェードアウト。
+- **TOPへ戻るボタン (`Footer.astro`)**:
+  - 画面左下に配置された、控えめで洗練されたダークグラスモーフィズム・サークルボタン。
+- **プライバシーポリシーモーダル (`PrivacyPolicyModal.astro`)**:
+  - フッターリンクからいつでも開閉できるクリーンなモーダルウィンドウ。
+- **ローディングスクリーン (`LoadingScreen.astro`)**:
+  - 初回アクセス時のみ美しいオープニングアニメーション（700ms）。
+  - サブページからハッシュ（`/#service`、`/#works`等）付きで戻ってきた際や、同一セッション内の再訪時はスプラッシュを即座にスキップし、目的のセクションへ素早くスクロール。
 
-```bash
-# 依存関係のインストール
-npm install
-```
+---
 
-### 開発サーバーの起動
+## 🔍 SEO & 構造化データ設計
 
-```bash
-# 開発サーバーを起動（http://localhost:4321）
-npm run dev
-# または
-npm start
-```
+Google検索エンジンおよびSNSでの集客・インデックスを最大化するコードレベルの実装を行っています。
 
-### ビルド
+### 1. Schema.org JSON-LD 構造化データ
+- **`HomeAndConstructionBusiness` / `LocalBusiness`** (`BaseLayout.astro`):
+  - 店舗名：庭や・笑（にわやしょう）
+  - 住所：福岡県糟屋郡粕屋町大字仲原2653-1（位置情報 `geo` 付き）
+  - 電話番号：`092-515-0747`
+  - 営業時間：月〜土 8:30〜18:00
+  - 対応エリア (`areaServed`)：福岡県糟屋郡（粕屋町、篠栗町、志免町、須恵町、新宮町、久山町、宇美町）、福岡市（東区、博多区、中央区、南区、城南区、早良区、西区）、古賀市、大野城市、春日市、太宰府市、福津市、宗像市など計20自治体を網羅。
+  - サービスカタログ (`hasOfferCatalog`)：庭木の剪定、伐採・抜根、草刈り・除草・庭清掃掃除・剪定枝ゴミ回収処分、防草シート・砂利敷き、竹垣施工・改修、造園・坪庭・アプローチ外構、土間コンクリート、門松製作設置。
+- **`FAQPage`** (`index.astro`):
+  - 5つのよくある質問と回答をマークアップ。検索結果でのFAQリッチリザルト表示に対応。
+- **`BreadcrumbList`** (`PageHeader.astro`):
+  - 全サブページで「ホーム > 該当ページ名」のパンくずリスト構造化データを自動出力。
 
-```bash
-# 本番用ビルド
-npm run build
-```
+### 2. メタタグ・OGP・Twitter Card
+- 全ページ固有の `title`、`description`、`keywords`、`robots`（`index, follow, max-image-preview:large`）を設定。
+- 動的 `canonical` タグ（`https://niwaya-syo.com/...`）による重複コンテンツ防止。
+- Open Graph（`og:title`、`og:description`、`og:image`、`og:url`、`og:site_name`、`og:locale`）。
+- Twitter Card（`summary_large_image`）。
 
-### プレビュー
+### 3. クローラー支援ファイル
+- `public/robots.txt`: 全クローラーへのクロール許可およびサイトマップ指定。
+- `public/sitemap.xml`: 全16ルートの最新更新日・優先度（`priority`）・更新頻度（`changefreq`）を記述。
+- `public/favicon.png`: ブラウザブックマーク・検索結果用ファビコン。
 
-```bash
-# ビルド後のプレビュー
-npm run preview
-```
+---
 
-## 📁 プロジェクト構成
+## 📁 ディレクトリ構成
 
 ```
 page_astro_version/
+├── public/                     # 静的配信アセット
+│   ├── favicon.png             # サイトファビコン
+│   ├── robots.txt              # クローラー設定
+│   ├── sitemap.xml             # XMLサイトマップ（全16ページ）
+│   └── images/                 # 最適化済み画像アセット群
+│       ├── archive/            # 元画像・アーカイブ画像
+│       └── photopea/           # ロゴ・素材ファイル
 ├── src/
-│   ├── components/          # 再利用可能なコンポーネント（6ファイル）
-│   │   ├── CaseStudySlider.astro (154行)
-│   │   ├── FloatingContactButton.astro (84行)
-│   │   ├── Footer.astro (14行)
-│   │   ├── Header.astro (40行)
-│   │   ├── HeroSlider.astro (156行)
-│   │   └── PageHeader.astro (13行)
-│   ├── layouts/            # レイアウトコンポーネント（1ファイル）
-│   │   └── BaseLayout.astro (132行)
-│   ├── pages/              # ページファイル（15ページ）
-│   │   ├── index.astro (27行) - トップページ
-│   │   ├── about.astro (93行) - 会社について
-│   │   ├── case-stady.astro (19行) - 施工例一覧
-│   │   ├── prices.astro (163行) - 料金表
-│   │   ├── trouble.astro (62行) - お庭でお困りの方へ
-│   │   ├── contact.astro (76行) - お問い合わせ
-│   │   └── [個別施工例ページ 9件: 37-47行]
-│   │       ├── garden-pruning.astro (44行)
-│   │       ├── tree-pruning.astro (47行)
-│   │       ├── weed-sheet-gravel.astro (47行)
-│   │       ├── garden-tile.astro (45行)
-│   │       ├── bamboo-fence.astro (40行)
-│   │       ├── bamboo-fence-renovation.astro (47行)
-│   │       ├── shop-garden.astro (44行)
-│   │       ├── concrete-floor.astro (47行)
-│   │       └── kadomatsu.astro (37行)
-│   ├── scripts/            # TypeScriptスクリプト（2ファイル）
-│   │   ├── initCaseStudySlider.ts (29行)
-│   │   └── initHeroSlider.ts (21行)
-│   └── styles/             # スタイルシート（2ファイル）
-│       ├── base.css (1,631行) ⚠️ 要分割
-│       └── extra.css (2行)
-├── public/                 # 静的ファイル
-│   └── images/            # 画像ファイル（50+ファイル）
+│   ├── components/             # Astroコンポーネント
+│   │   ├── CaseStudyDetail.astro       # 施工事例個別ページ共通レイアウト
+│   │   ├── CaseStudySlider.astro       # トップページ用Peekカルーセル
+│   │   ├── FloatingContactButton.astro # スクロール連動フローティング問い合わせボタン
+│   │   ├── Footer.astro                # フッター & サークル型TOPへ戻るボタン
+│   │   ├── Header.astro                # 固定ヘッダー & ドロワーメニュー
+│   │   ├── HeroSlider.astro            # 100dvhフルスクリーンヒーロースライダー
+│   │   ├── LoadingScreen.astro         # オープニングアニメーション & ハッシュスキップ制御
+│   │   ├── PageHeader.astro            # サブページ共通ヘッダー（戻るボタン & パンくずJSON-LD）
+│   │   └── PrivacyPolicyModal.astro    # プライバシーポリシーモーダル
+│   ├── layouts/
+│   │   └── BaseLayout.astro            # 全体共通レイアウト（SEOメタ・JSON-LD・フォント最適化）
+│   ├── pages/                          # ルーティング（全16ページ）
+│   │   ├── index.astro                 # トップページ（メインLP）
+│   │   ├── prices.astro                # 料金表・費用目安
+│   │   ├── case-study.astro            # 施工事例一覧（縦型カタログ）
+│   │   ├── case-stady.astro            # 旧URLリダイレクト用
+│   │   ├── about.astro                 # 庭や・笑について
+│   │   ├── contact.astro               # お問い合わせ窓口
+│   │   ├── trouble.astro               # お庭でお困りの方へ
+│   │   ├── garden-pruning.astro        # 施工例：庭の剪定
+│   │   ├── tree-pruning.astro          # 施工例：高木の剪定
+│   │   ├── weed-sheet-gravel.astro     # 施工例：防草シート・砂利敷き
+│   │   ├── bamboo-fence-renovation.astro # 施工例：竹垣リフォーム
+│   │   ├── bamboo-fence.astro          # 施工例：庭園竹垣施工
+│   │   ├── concrete-floor.astro        # 施工例：コンクリート土間
+│   │   ├── shop-garden.astro           # 施工例：店舗・飲食店坪庭
+│   │   ├── garden-tile.astro           # 施工例：庭のアプローチ
+│   │   └── kadomatsu.astro             # 施工例：門松・正月飾り
+│   ├── scripts/
+│   │   └── layout.ts                   # ヘッダー・ドロワー・モーダル等制御スクリプト
+│   └── styles/
+│       ├── _variables.css              # デザイントークン（カラー、フォント、余白）
+│       ├── _reset.css                  # リセットCSS & スムーズスクロール設定
+│       ├── _layout.css                 # コンテナ・共通グリッドレイアウト
+│       ├── _utilities.css              # ユーティリティクラス
+│       ├── _components.css             # 汎用UIパーツ（ボタン、カード等）
+│       ├── _pages.css                  # サブページ個別スタイル
+│       └── extra.css                   # プロジェクト固有追加スタイル
+├── astro.config.mjs            # Astro設定ファイル（サイトURL: https://niwaya-syo.com）
 ├── package.json
-├── astro.config.mjs
-└── README.md
+└── README.md                   # 本ドキュメント
 ```
 
-## 🛠️ 技術スタック
-
-- **フレームワーク**: Astro 4.0+
-- **スタイリング**: CSS3（カスタム）
-- **スライダー**: Swiper.js 11.0+
-- **フォント**: 
-  - Noto Serif JP（本文）
-  - Shippori Mincho（見出し）
-  - Zen Old Mincho（装飾テキスト）
-- **ビルドツール**: Vite（Astro内蔵）
-- **出力形式**: 静的サイト（Static Site Generation）
-
-## 📄 ページ一覧
-
-### メインページ
-- `/` - トップページ（ヒーロースライダー、モットー）
-- `/about` - 庭や笑について（スタッフ紹介、お客様の声、作業風景）
-- `/case-stady` - 施工例一覧（スライダー形式）
-- `/prices` - 料金表（剪定、伐採、消毒・除草・防草工事、庭工事）
-- `/trouble` - お庭でお困りの方へ（お困りごと、ご依頼の流れ）
-- `/contact` - お問い合わせ（Googleフォーム、電話・メール）
-
-### 個別施工例ページ（9ページ）
-- `/garden-pruning` - 庭の剪定
-- `/tree-pruning` - 高木の剪定
-- `/weed-sheet-gravel` - 防草シート・砂利
-- `/garden-tile` - 庭のタイル
-- `/bamboo-fence` - 竹垣
-- `/bamboo-fence-renovation` - 竹垣リフォーム
-- `/shop-garden` - 店舗の坪庭
-- `/concrete-floor` - コンクリート土間
-- `/kadomatsu` - 門松・正月飾り
-
-## 🎨 デザインの特徴
-
-- **ミニマルデザイン**: 職人・高級感を重視したシンプルなデザイン
-- **統一されたフォント**: ページ全体で一貫したフォント指定
-- **レスポンシブデザイン**: モバイル・タブレット・デスクトップ対応
-- **アクセシビリティ**: セマンティックHTMLと適切なARIA属性
-- **統一されたボタンスタイル**: すべてのボタンで同じホバーアニメーション
-- **統一された料金表デザイン**: すべての料金表で列幅が統一（65% / 35%）
-
-## 🔧 開発ガイドライン
-
-### コンポーネントの追加
-
-新しいコンポーネントは `src/components/` に `.astro` ファイルとして作成します。
-
-**主要コンポーネント:**
-- `PageHeader`: ページタイトルとサブタイトル
-- `FloatingContactButton`: 右下の固定お問い合わせボタン
-- `HeroSlider`: トップページのヒーロースライダー
-- `CaseStudySlider`: 施工例一覧のスライダー
-
-### スタイルの追加
-
-- **グローバルスタイル**: `src/styles/base.css`（1,631行）
-- **追加スタイル**: `src/styles/extra.css`（予備、現在は空）
-
-**スタイルの特徴:**
-- 統一されたカラーパレット（CSS変数使用）
-- レスポンシブ対応のメディアクエリ
-- アニメーション（fade-up、スライダー）
-
-### 画像の追加
-
-画像ファイルは `public/images/` に配置し、パスは `/images/ファイル名` で参照します。
-
-### ページの追加
-
-新しいページは `src/pages/` に `.astro` ファイルとして作成します。ファイル名がそのままURLパスになります。
-
-**ページテンプレート:**
-```astro
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
 
-<BaseLayout title="ページタイトル" currentPage="ページID">
-    <PageHeader title="タイトル" subtitle="サブタイトル" />
-    
-    <!-- コンテンツ -->
-    
-    <FloatingContactButton currentPage="ページID" />
-</BaseLayout>
-```
+## 💻 開発・ビルドコマンド
 
-## 📝 主要機能
+### 必要な環境
+- Node.js 18.0.0 以上
+- npm
 
-### スライダー機能
-- **HeroSlider**: トップページのヒーロー画像スライダー（Swiper.js使用）
-- **CaseStudySlider**: 施工例一覧のスライダー（Swiper.js使用）
-
-### インタラクティブ要素
-- **モバイルメニュー**: レスポンシブ対応のハンバーガーメニュー
-- **スクロールトップボタン**: ページ下部のスクロールトップ機能
-- **スムーススクロール**: アンカーリンクのスムーススクロール
-- **フェードインアニメーション**: Intersection Observerを使用したスクロールアニメーション
-
-### 料金表機能
-- 統一されたデザイン（列幅: 65% / 35%）
-- レスポンシブ対応
-- ホバーエフェクト
-
-## 🐛 トラブルシューティング
-
-### 開発サーバーが起動しない
+### コマンド一覧
 
 ```bash
-# node_modulesを削除して再インストール
-rm -rf node_modules package-lock.json
+# プロジェクトディレクトリへ移動
+cd page_astro_version
+
+# 依存関係のインストール（初回のみ）
 npm install
-```
 
-### ビルドエラー
+# 開発サーバー起動（http://localhost:4321）
+npm run dev
 
-```bash
-# キャッシュをクリア
-rm -rf .astro dist
+# 本番用静的ビルド（dist/ に全16静的HTML・アセットを出力）
 npm run build
+
+# ビルド成果物のローカルプレビュー
+npm run preview
 ```
-
-### スタイルが適用されない
-
-- `BaseLayout.astro` でスタイルが正しくインポートされているか確認
-- ブラウザのキャッシュをクリア
-- 開発サーバーを再起動
-
-### スライダーが動作しない
-
-- `client:load` ディレクティブが正しく設定されているか確認
-- ブラウザのコンソールでエラーを確認
-
-## 🔄 今後の改善提案
-
-### 優先度: 高
-1. **`base.css`の分割**: 1,631行のファイルを機能別に分割（components.css, layout.css, pages.css等）
-2. **個別施工例ページのコンポーネント化**: 9ページの重複コードを1つのコンポーネントに統合
-
-### 優先度: 中
-3. **`BaseLayout.astro`のJavaScript分離**: HTMLとJavaScriptを分離して保守性を向上
-4. **インラインスタイルのCSSクラス化**: インラインスタイルをCSSクラスに移行
-
-### 優先度: 低
-5. **TypeScript型定義の追加**: 型安全性の向上
-6. **ユーティリティ関数の抽出**: 再利用可能な関数の作成
-
-## 📞 お問い合わせ
-
-プロジェクトに関する質問や問題がある場合は、開発チームまでお問い合わせください。
 
 ---
 
-© 2024 庭や・笑 All rights reserved.
+## 🚢 デプロイ先について
+
+本プロジェクトは `dist/` ディレクトリに完全な静的HTML/CSS/JS/画像を生成するため、あらゆる静的ホスティングサービスにそのままデプロイ可能です。
+- **Firebase Hosting** / **Cloudflare Pages** / **Vercel** / **Netlify** / **GitHub Pages** / **レンタルサーバー（ロリポップ、エックスサーバー等）**
+
+© 2025 庭や・笑（にわやしょう） All Rights Reserved.

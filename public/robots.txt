@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://niwaya-syo.com/sitemap.xml
