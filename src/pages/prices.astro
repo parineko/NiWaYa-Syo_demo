@@ -5,7 +5,12 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
 ---
 
 <BaseLayout title="料金 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="prices">
-    <PageHeader title="料金" subtitle="まずはお気軽にご相談ください。剪定は一本からでも対応します。" />
+    <PageHeader
+        title="料金一覧"
+        subtitle="まずはお気軽にご相談ください。剪定は一本からでも対応します。"
+        backHref="/#service"
+        backText="トップページ（料金案内）に戻る"
+    />
 
     <section class="prices-section u-section prices-page-section">
         <div class="container u-container">
@@ -161,7 +166,7 @@ import FloatingContactButton from '../components/FloatingContactButton.astro';
                 </div>
 
                 <div class="page-bottom-actions">
-                    <a href="/" class="u-btn">&larr; トップページに戻る</a>
+                    <a href="/#service" class="u-btn">&larr; トップページ（料金案内）に戻る</a>
                     <a href="/#contact" class="u-btn u-btn--outline">無料相談・お見積もりはこちら</a>
                 </div>
             </div>

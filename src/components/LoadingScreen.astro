@@ -1,5 +1,5 @@
 ---
-// 和モダン・オープニングローディング画面
+// 和モダン・オープニングローディング画面（セクション復帰時はスムーズにスキップ）
 ---
 
 <div id="loading-screen" class="loading-screen" aria-hidden="true">
@@ -84,7 +84,7 @@
     letter-spacing: 0.25em;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
-    padding-left: 0.25em; /* 文字間隔のバランス調整 */
+    padding-left: 0.25em;
   }
 
   @keyframes spin {
@@ -110,8 +110,13 @@
     const loader = document.getElementById('loading-screen');
     if (!loader) return;
 
+    // ハッシュ（#service, #works等）または直前の離脱セクションを判定
+    const targetHash = window.location.hash || sessionStorage.getItem('niwaya_return_hash');
+    const isReturningToSection = Boolean(targetHash && targetHash.length > 1);
+
+    // 途中のセクションに戻る場合はローディング待機をスキップして即座に表示
+    const minDisplayTime = isReturningToSection ? 60 : 700;
     const startTime = Date.now();
-    const minDisplayTime = 700; // 最低表示時間（上質な演出を感じさせる時間）
 
     const hideLoader = () => {
       const elapsed = Date.now() - startTime;
@@ -119,8 +124,22 @@
 
       setTimeout(() => {
         loader.classList.add('is-loaded');
-        // 本編開始イベントを発火（ヒーローアニメーション等のトリガー）
         window.dispatchEvent(new CustomEvent('page-loaded'));
+
+        // 該当セクションへヘッダー高さを考慮して正確にスクロール移動
+        if (targetHash) {
+          try {
+            const targetEl = document.querySelector(targetHash);
+            if (targetEl) {
+              sessionStorage.removeItem('niwaya_return_hash');
+              setTimeout(() => {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 100);
+            }
+          } catch (e) {
+            // 無効なセレクタ対策
+          }
+        }
       }, remaining);
     };
 
@@ -128,11 +147,9 @@
       hideLoader();
     } else {
       window.addEventListener('load', hideLoader);
-      // 安全策：最長2.5秒で強制解除
       setTimeout(hideLoader, 2500);
     }
   }
 
   handleLoading();
 </script>
-

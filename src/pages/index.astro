@@ -1523,8 +1523,33 @@ const faqs = [
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFormSubmit);
+    document.addEventListener('DOMContentLoaded', () => {
+      initFormSubmit();
+      initSectionMemory();
+    });
   } else {
     initFormSubmit();
+    initSectionMemory();
+  }
+
+  // 下層ページ（料金表・施工例など）へ移動する際、戻り先セクションをメモリ（セッションストレージ）に記録
+  function initSectionMemory() {
+    document.querySelectorAll('a[href*="/prices"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        sessionStorage.setItem('niwaya_return_hash', '#service');
+      });
+    });
+
+    document.querySelectorAll('a[href*="/case-study"], a[href*="/garden-pruning"], a[href*="/tree-pruning"], a[href*="/weed-sheet-gravel"], a[href*="/garden-tile"], a[href*="/shop-garden"], a[href*="/bamboo-fence"], a[href*="/concrete-floor"], a[href*="/kadomatsu"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        sessionStorage.setItem('niwaya_return_hash', '#works');
+      });
+    });
+
+    document.querySelectorAll('a[href*="/about"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        sessionStorage.setItem('niwaya_return_hash', '#about');
+      });
+    });
   }
 </script>

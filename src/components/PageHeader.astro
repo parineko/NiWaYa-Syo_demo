@@ -2,16 +2,23 @@
 interface Props {
   title: string;
   subtitle?: string;
+  backHref?: string;
+  backText?: string;
 }
 
-const { title, subtitle } = Astro.props;
+const {
+  title,
+  subtitle,
+  backHref = "/",
+  backText = "トップページに戻る"
+} = Astro.props;
 ---
 
 <div class="container u-container">
     <div class="page-header-nav">
-        <a href="/" class="back-home-link" aria-label="トップページへ戻る">
+        <a href={backHref} class="back-home-link" aria-label={backText}>
             <span class="back-arrow">&larr;</span>
-            <span class="back-text">トップページへ戻る</span>
+            <span class="back-text">{backText}</span>
         </a>
     </div>
     <div class="page-header-row">
