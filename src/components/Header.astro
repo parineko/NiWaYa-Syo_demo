@@ -4,13 +4,17 @@ interface Props {
 }
 
 const { currentPage = '' } = Astro.props;
+const isHome = currentPage === 'home';
 ---
 
-<header class="site-header">
+<header class={`site-header ${isHome ? 'site-header--home' : ''}`} id="main-header">
     <div class="header-container">
         <div class="logo-container">
-            <a href="/">
-                <img src="/images/title.png" alt="庭や・笑" class="site-logo" />
+            <a href="/" class="logo-link" aria-label="庭や・笑 ホームへ">
+                <!-- 白文字ロゴ（暗い背景・透過時用） -->
+                <img src="/images/title_white.png" alt="庭や・笑" class="site-logo site-logo--white" />
+                <!-- 通常の黒文字ロゴ（白背景用） -->
+                <img src="/images/title.png" alt="庭や・笑" class="site-logo site-logo--dark" />
             </a>
         </div>
         <nav class="main-navigation">
@@ -22,8 +26,8 @@ const { currentPage = '' } = Astro.props;
                 <li class={`menu-item ${currentPage === 'home' ? 'current-menu-item' : ''}`}>
                     <a href="/">HOME</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'case-stady' ? 'current-menu-item' : ''}`}>
-                    <a href="/case-stady">施行例</a>
+                <li class={`menu-item ${currentPage === 'case-study' || currentPage === 'case-stady' ? 'current-menu-item' : ''}`}>
+                    <a href="/case-study">施工例</a>
                 </li>
                 <li class={`menu-item ${currentPage === 'prices' ? 'current-menu-item' : ''}`}>
                     <a href="/prices">料金</a>
@@ -42,3 +46,126 @@ const { currentPage = '' } = Astro.props;
     </div>
 </header>
 
+<style>
+  .logo-link {
+    position: relative;
+    display: inline-block;
+    height: 60px;
+  }
+
+  .site-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  /* デフォルト（下層ページ等）: 黒文字ロゴを表示、白ロゴは非表示 */
+  .site-logo--white {
+    display: none;
+  }
+  .site-logo--dark {
+    display: block;
+  }
+
+  /* トップページ専用のオーバーレイヘッダー */
+  .site-header--home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* トップページ初期状態: 白文字ロゴを表示、黒文字ロゴを非表示 */
+  .site-header--home:not(.is-scrolled) .site-logo--white {
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  }
+  .site-header--home:not(.is-scrolled) .site-logo--dark {
+    display: none;
+  }
+
+  .site-header--home .menu-item a {
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .site-header--home .menu-item a:hover {
+    color: #a8d5af;
+  }
+
+  .site-header--home .menu-toggle-icon,
+  .site-header--home .menu-toggle-icon::before,
+  .site-header--home .menu-toggle-icon::after {
+    background-color: #ffffff;
+  }
+
+  /* スクロール時: 白背景になり黒文字ロゴに切り替え */
+  .site-header--home.is-scrolled {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .site-header--home.is-scrolled .site-logo--white {
+    display: none;
+  }
+  .site-header--home.is-scrolled .site-logo--dark {
+    display: block;
+  }
+
+  .site-header--home.is-scrolled .menu-item a {
+    color: #2b332d;
+    text-shadow: none;
+  }
+
+  .site-header--home.is-scrolled .menu-item a:hover {
+    color: #4a5d4e;
+  }
+
+  .site-header--home.is-scrolled .menu-toggle-icon,
+  .site-header--home.is-scrolled .menu-toggle-icon::before,
+  .site-header--home.is-scrolled .menu-toggle-icon::after {
+    background-color: #2b332d;
+  }
+
+  @media (max-width: 920px) {
+    .site-header--home .menu-list .menu-item a {
+      color: #333333;
+      text-shadow: none;
+    }
+    .site-header--home .menu-list .menu-item a:hover {
+      color: #4a5d4e;
+    }
+  }
+</style>
+
+<script>
+  function initHeaderScroll() {
+    const header = document.getElementById('main-header');
+    if (!header || !header.classList.contains('site-header--home')) return;
+
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderScroll);
+  } else {
+    initHeaderScroll();
+  }
+</script>

@@ -1,39 +1,411 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSlider from '../components/HeroSlider.astro';
+import CaseStudySlider from '../components/CaseStudySlider.astro';
 import FloatingContactButton from '../components/FloatingContactButton.astro';
+
+const services = [
+  {
+    title: '庭木の剪定・伐採',
+    desc: '低木1本700円から丁寧に対応。自然な樹形を生かし、四季を楽しめる庭に整えます。',
+    img: '/images/niwanosentei-02s02.jpg',
+    link: '/garden-pruning'
+  },
+  {
+    title: '造園・坪庭・アプローチ',
+    desc: '自然石や植物を取り入れ、和洋問わず暮らしに馴染む癒やしの空間をプロデュース。',
+    img: '/images/approach_02.jpg',
+    link: '/shop-garden'
+  },
+  {
+    title: '防草シート・砂利敷き',
+    desc: '面倒な草むしりから解放。景観と防犯性を両立した安心・快適な庭まわりを実現。',
+    img: '/images/zouen2s02.jpg',
+    link: '/weed-sheet-gravel'
+  },
+  {
+    title: '竹垣の施工・補修',
+    desc: '伝統の技が息づく竹垣。天然竹から耐久性の高い人工竹までご要望に合わせて施工。',
+    img: '/images/takegaki_sekou.jpg',
+    link: '/bamboo-fence'
+  }
+];
+
+const troubles = [
+  '木が高くなりすぎて自分で切れない',
+  '庭の雑草がすぐに生えて手入れが追いつかない',
+  '空き家・実家の庭をさっぱり整理したい',
+  '新築・リフォームに合わせて庭を素敵にしたい'
+];
 ---
 
-<BaseLayout title="福岡 粕屋の造園 庭の事なら「庭や・笑」（にわやしょう）" currentPage="home">
-    <!-- ヒーロースライダー -->
-    <HeroSlider />
+<BaseLayout
+  title="福岡 粕屋の造園・庭木剪定なら「庭や・笑」（にわやしょう）"
+  description="福岡県粕屋の造園業「庭や・笑（にわやしょう）」。低木1本700円からの庭木剪定、和洋造園、坪庭、竹垣、防草シート施工など。笑顔が活きる庭づくりをお手伝いします。"
+  currentPage="home"
+>
+  <!-- ヒーロースライダー -->
+  <HeroSlider />
 
-    <!-- モットーセクション -->
-    <section class="motto-section u-section index-page-motto-section">
-        <div class="container u-container">
-            <div class="index-page-motto-wrapper">
-                <p class="index-page-motto-text">
-                    庭の魅力を丁寧に引き出し、整えるお手伝いをしています。
-                </p>
-                <p class="index-page-motto-text index-page-motto-text-last">
-                    剪定・造園・お手入れまで幅広く対応いたします。
-                </p>
-            </div>
+  <!-- コンセプト／モットーセクション -->
+  <section class="concept-section u-section" id="concept">
+    <div class="u-container">
+      <div class="concept-box fade-up">
+        <span class="concept-tag">CONCEPT</span>
+        <h2 class="concept-title">笑顔が活きる空間に</h2>
+        <p class="concept-text">
+          私たちにとって庭とは、暮らしのそばで四季を映し、人の心を穏やかに整えてくれる場所です。<br>
+          眺め、佇み、語らい、季節を味わう。<br>
+          和・洋にとらわれず、お客様の生活スタイルに合わせたお庭をご提案いたします。
+        </p>
+        <div class="concept-btn-wrapper">
+          <a href="/about" class="u-btn u-btn--outline">庭や・笑について詳しく知る</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <FloatingContactButton currentPage="home" />
+  <!-- 提供サービス案内 -->
+  <section class="services-section u-section u-section--alt">
+    <div class="u-container">
+      <div class="section-header fade-up">
+        <span class="section-subtitle">SERVICES</span>
+        <h2 class="section-title">庭や・笑のサービス案内</h2>
+        <p class="section-description">一本の剪定から大規模なお庭のリノベーションまで、誠心誠意対応いたします。</p>
+      </div>
 
-    <script>
-        import initHeroSlider from '../scripts/initHeroSlider';
-        
-        if (typeof window !== 'undefined') {
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initHeroSlider);
-            } else {
-                initHeroSlider();
-            }
-        }
-    </script>
+      <div class="services-grid u-grid">
+        {services.map((service, index) => (
+          <div class={`service-card u-card fade-up delay-${(index + 1) * 100}`}>
+            <div class="service-image-box">
+              <img src={service.img} alt={service.title} class="service-image" loading="lazy" />
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">{service.title}</h3>
+              <p class="service-desc">{service.desc}</p>
+              <a href={service.link} class="service-link">
+                施工例を見る <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="services-cta fade-up">
+        <a href="/prices" class="u-btn">料金案内をすべて見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 施工例スライダー -->
+  <section class="case-studies-section u-section">
+    <div class="u-container">
+      <div class="section-header fade-up">
+        <span class="section-subtitle">WORKS</span>
+        <h2 class="section-title">施工実績</h2>
+        <p class="section-description">これまでに手掛けたお庭やお手入れの実績をご紹介します。</p>
+      </div>
+
+      <div class="fade-up">
+        <CaseStudySlider />
+      </div>
+
+      <div class="works-all-link fade-up">
+        <a href="/case-study" class="u-btn u-btn--outline">すべての施工例を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- お困りごと解決セクション -->
+  <section class="trouble-cta-section u-section u-section--alt">
+    <div class="u-container">
+      <div class="trouble-box u-card fade-up">
+        <div class="trouble-content">
+          <span class="section-subtitle">TROUBLE</span>
+          <h2 class="trouble-heading">こんなお庭のお悩み、ありませんか？</h2>
+          <ul class="trouble-list">
+            {troubles.map((trouble) => (
+              <li class="trouble-item">
+                <span class="check-icon">&#10003;</span>
+                <span>{trouble}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="trouble-lead">
+            小さなご相談でも親身にお伺いします。お気軽にお声がけください。
+          </p>
+          <a href="/trouble" class="u-btn">お困りの方へ・解決事例を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせセクション -->
+  <section class="contact-cta-section u-section">
+    <div class="u-container">
+      <div class="contact-cta-card u-card fade-up">
+        <span class="section-subtitle">CONTACT</span>
+        <h2 class="contact-cta-title">お庭のこと、まずはお気軽にご相談ください</h2>
+        <p class="contact-cta-desc">
+          現地調査・お見積もりは無料です。剪定1本・草刈りだけでも喜んでお伺いします。
+        </p>
+        <div class="contact-cta-actions">
+          <a href="/contact" class="u-btn">お問い合わせフォームへ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フローティング連絡ボタン -->
+  <FloatingContactButton currentPage="home" />
 </BaseLayout>
 
+<style>
+  /* コンセプトセクション */
+  .concept-section {
+    padding: 70px 0 50px;
+  }
+
+  .concept-box {
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .concept-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #4a5d4e;
+    margin-bottom: 12px;
+  }
+
+  .concept-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .concept-text {
+    font-size: 1.05rem;
+    line-height: 2.1;
+    color: #444444;
+    font-family: 'Noto Serif JP', serif;
+    margin-bottom: 32px;
+  }
+
+  /* セクション見出し共通 */
+  .section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .section-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #4a5d4e;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin-bottom: 14px;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.8;
+  }
+
+  /* サービスカード */
+  .services-section {
+    padding: 80px 0;
+  }
+
+  .service-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-image-box {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-image {
+    transform: scale(1.06);
+  }
+
+  .service-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .service-title {
+    font-size: 1.25rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    color: #2b332d;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .service-link {
+    font-weight: 600;
+    color: #4a5d4e;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s ease;
+  }
+
+  .service-link:hover {
+    gap: 10px;
+    color: #2b332d;
+  }
+
+  .services-cta,
+  .works-all-link {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* 施工例セクション */
+  .case-studies-section {
+    padding: 80px 0;
+  }
+
+  /* お困りごとセクション */
+  .trouble-cta-section {
+    padding: 80px 0;
+  }
+
+  .trouble-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: #ffffff;
+    border-top: 4px solid #4a5d4e;
+  }
+
+  .trouble-heading {
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin: 8px 0 24px;
+  }
+
+  .trouble-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .trouble-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    color: #333333;
+  }
+
+  .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #e9f0ea;
+    color: #4a5d4e;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .trouble-lead {
+    font-size: 0.95rem;
+    color: #666666;
+    margin-bottom: 24px;
+  }
+
+  /* お問い合わせCTA */
+  .contact-cta-section {
+    padding: 80px 0 100px;
+  }
+
+  .contact-cta-card {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 32px;
+    background: linear-gradient(135deg, #f7faf7 0%, #edf3ee 100%);
+    border: 1px solid #dbe6dc;
+  }
+
+  .contact-cta-title {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin: 10px 0 16px;
+  }
+
+  .contact-cta-desc {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .trouble-box {
+      padding: 32px 20px;
+    }
+    .contact-cta-card {
+      padding: 40px 20px;
+    }
+  }
+</style>

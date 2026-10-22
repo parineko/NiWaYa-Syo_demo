@@ -1,31 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import CaseStudySlider from '../components/CaseStudySlider.astro';
-import FloatingContactButton from '../components/FloatingContactButton.astro';
+// 旧URL（/case-stady）からのリダイレクト用
 ---
-
-<BaseLayout title="施行例 - 福岡 粕屋の造園 庭の事なら「庭や・笑」" currentPage="case-stady">
-    <PageHeader title="施行例" subtitle="これまでに承った施工事例の一部をご紹介します。" />
-
-    <!-- 主要施工例スライダー -->
-    <section class="case-study-slider-section u-section case-study-slider-page-section">
-        <div class="container u-container case-study-slider-page-container">
-            <CaseStudySlider />
-        </div>
-    </section>
-
-    <FloatingContactButton currentPage="case-stady" />
-
-    <script>
-        import initCaseStudySlider from '../scripts/initCaseStudySlider';
-        
-        if (typeof window !== 'undefined') {
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initCaseStudySlider);
-            } else {
-                initCaseStudySlider();
-            }
-        }
-    </script>
-</BaseLayout>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=/case-study">
+    <title>リダイレクト中...</title>
+</head>
+<body>
+    <p><a href="/case-study">施工例ページへ移動しています...</a></p>
+</body>
+</html>

@@ -93,26 +93,27 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    background: #666666;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    background: #4a5d4e;
     color: #ffffff;
     box-shadow: var(--u-shadow-soft);
 }
 
 .u-btn:hover {
     transform: translateY(-2px);
-    background: #555555;
+    background: #3a4a3e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .u-btn--outline {
     background: transparent;
-    border: 2px solid #666666;
-    color: #000000;
+    border: 2px solid #4a5d4e;
+    color: #4a5d4e;
     box-shadow: none;
 }
 
 .u-btn--outline:hover {
-    background: #666666;
+    background: #4a5d4e;
     color: #ffffff;
 }
 
@@ -136,57 +137,41 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Animations */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-up {
+/* ---------------------------------------
+   Animations & Transitions（チラつき防止・滑らかなフェード）
+--------------------------------------- */
+.fade-up,
+.fade-in-left,
+.fade-in-right {
     opacity: 0;
-    transform: translateY(10px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
-.fade-up.is-visible {
-    animation: fadeUp 0.6s ease-out forwards;
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.fade-up {
+    transform: translateY(24px);
 }
 
 .fade-in-left {
-    animation: fadeInLeft 0.6s ease-out;
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    transform: translateX(-24px);
 }
 
 .fade-in-right {
-    animation: fadeInRight 0.6s ease-out;
+    transform: translateX(24px);
 }
+
+.fade-up.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* アニメーション遅延用クラス */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
 
 /* レスポンシブ - Utilities */
 @media (max-width: 768px) {
@@ -210,4 +195,3 @@
         display: block;
     }
 }
-

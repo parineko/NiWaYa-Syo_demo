@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CaseStudySlider from '../components/CaseStudySlider.astro';
+import FloatingContactButton from '../components/FloatingContactButton.astro';
+
+const allCaseStudies = [
+  {
+    id: 'garden-pruning',
+    title: '庭の剪定',
+    category: '剪定・手入れ',
+    image: '/images/niwanosentei-02s02.jpg',
+    desc: '伸びすぎた枝を落とし、樹木本来の美しさと日当たりを改善。',
+    link: '/garden-pruning'
+  },
+  {
+    id: 'tree-pruning',
+    title: '高木の剪定',
+    category: '高木・伐採',
+    image: '/images/takagisentei-02s02.jpg',
+    desc: '手の届かない大きな木も、安全かつスピーディに剪定・伐採します。',
+    link: '/tree-pruning'
+  },
+  {
+    id: 'weed-sheet-gravel',
+    title: '防草シート・砂利敷き工事',
+    category: '防草・美観',
+    image: '/images/zouen2s02.jpg',
+    desc: '雑草対策の決定版。高耐久シートと厳選砂利で清潔なお庭を保ちます。',
+    link: '/weed-sheet-gravel'
+  },
+  {
+    id: 'garden-tile',
+    title: '庭のアプローチ・通路',
+    category: '外構・アプローチ',
+    image: '/images/approach_02.jpg',
+    desc: '毎日通る場所だからこそ、歩きやすく美観に優れた動線を設計。',
+    link: '/garden-tile'
+  },
+  {
+    id: 'shop-garden',
+    title: '店舗・飲食店 坪庭作り',
+    category: '坪庭・商業',
+    image: '/images/momiji.jpg',
+    desc: '訪れるお客様の目を和ませる、情緒豊かな和モダン坪庭をプロデュース。',
+    link: '/shop-garden'
+  },
+  {
+    id: 'bamboo-fence-renovation',
+    title: '竹垣のリフォーム',
+    category: '竹垣・リフォーム',
+    image: '/images/takegakirifomu-02s02.jpg',
+    desc: '傷んだ生竹の垣根を、美しい人工竹垣へと改修して長持ちに。',
+    link: '/bamboo-fence-renovation'
+  },
+  {
+    id: 'bamboo-fence',
+    title: '庭園 竹垣新設施工',
+    category: '竹垣・新設',
+    image: '/images/takegaki_sekou.jpg',
+    desc: 'お庭の目隠しや格式を高める、職人技の本格竹垣工事。',
+    link: '/bamboo-fence'
+  },
+  {
+    id: 'concrete-floor',
+    title: 'コンクリート土間施工',
+    category: '土間・駐車場',
+    image: '/images/konkuritodoma-02s02.jpg',
+    desc: '駐車場や物置スペースなど、頑丈で手入れの楽な土間コンクリート。',
+    link: '/concrete-floor'
+  },
+  {
+    id: 'kadomatsu',
+    title: '門松・正月飾り',
+    category: '季節・門松',
+    image: '/images/kadomatsu-01s03.jpg',
+    desc: '新年の幕開けを華やかに祝う、縁起の良い本格門松の製作・設置。',
+    link: '/kadomatsu'
+  }
+];
+---
+
+<BaseLayout
+  title="施工例 - 福岡 粕屋の造園 庭の事なら「庭や・笑」"
+  description="福岡県粕屋の造園「庭や・笑」の施工実績一覧。庭木剪定、高木伐採、防草シート・砂利敷き、坪庭、竹垣、土間工事などの事例をご紹介します。"
+  currentPage="case-study"
+>
+  <PageHeader title="施工実績" subtitle="これまでに承った施工事例の一部をご紹介します。" />
+
+  <!-- ハイライトスライダー -->
+  <section class="u-section">
+    <div class="u-container">
+      <div class="section-title-wrap fade-up">
+        <span class="sub-label">PICKUP</span>
+        <h2 class="sub-heading">注目の施工事例</h2>
+      </div>
+      <div class="fade-up">
+        <CaseStudySlider />
+      </div>
+    </div>
+  </section>
+
+  <!-- 施工例一覧グリッド -->
+  <section class="u-section u-section--alt">
+    <div class="u-container">
+      <div class="section-title-wrap fade-up">
+        <span class="sub-label">ARCHIVE</span>
+        <h2 class="sub-heading">施工事例一覧</h2>
+        <p class="section-subtext">気になる施工内容をクリックすると詳しい施工内容・写真をご覧いただけます。</p>
+      </div>
+
+      <div class="case-grid u-grid">
+        {allCaseStudies.map((item, index) => (
+          <article class={`case-card u-card fade-up delay-${((index % 3) + 1) * 100}`}>
+            <a href={item.link} class="case-card-link">
+              <div class="case-card-img-wrap">
+                <span class="case-category-badge">{item.category}</span>
+                <img src={item.image} alt={item.title} class="case-card-img" loading="lazy" />
+              </div>
+              <div class="case-card-content">
+                <h3 class="case-card-title">{item.title}</h3>
+                <p class="case-card-desc">{item.desc}</p>
+                <span class="case-card-btn">事例を見る &rarr;</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FloatingContactButton currentPage="case-study" />
+</BaseLayout>
+
+<style>
+  .section-title-wrap {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .sub-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #4a5d4e;
+    margin-bottom: 8px;
+  }
+
+  .sub-heading {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin: 0 0 10px;
+  }
+
+  .section-subtext {
+    font-size: 0.95rem;
+    color: #666666;
+  }
+
+  .case-grid {
+    margin-top: 24px;
+  }
+
+  .case-card {
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .case-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .case-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .case-card-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .case-category-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(43, 51, 45, 0.85);
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  .case-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .case-card:hover .case-card-img {
+    transform: scale(1.06);
+  }
+
+  .case-card-content {
+    padding: 22px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .case-card-title {
+    font-size: 1.2rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    color: #2b332d;
+    margin-bottom: 10px;
+  }
+
+  .case-card-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+
+  .case-card-btn {
+    font-weight: 600;
+    color: #4a5d4e;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+</style>
+

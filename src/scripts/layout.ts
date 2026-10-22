@@ -34,7 +34,7 @@ function initMobileMenu() {
             }
         });
 
-        // メニューリンクをクリックしたらメニューを閉じる
+        // メニューリンククリック時にメニューを閉じる
         const menuLinks = menuList.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -42,14 +42,14 @@ function initMobileMenu() {
             });
         });
 
-        // オーバーレイをクリックしたらメニューを閉じる
+        // オーバーレイクリック時にメニューを閉じる
         if (menuOverlay) {
             menuOverlay.addEventListener('click', function() {
                 closeMenu();
             });
         }
 
-        // ウィンドウリサイズ時にメニューを閉じる
+        // ウィンドウサイズ変更時にメニューを閉じる
         window.addEventListener('resize', function() {
             if (window.innerWidth > 921) {
                 closeMenu();
@@ -70,7 +70,7 @@ function initScrollTop() {
             } else {
                 scrollTopBtn.classList.remove('show');
             }
-        });
+        }, { passive: true });
 
         // クリックでトップにスクロール
         scrollTopBtn.addEventListener('click', function() {
@@ -87,7 +87,7 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href !== '#' && href.length > 1) {
+            if (href && href !== '#' && href.length > 1) {
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -103,12 +103,21 @@ function initSmoothScroll() {
 
 // スクロールアニメーション（Intersection Observer）
 function initScrollAnimation() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    const animateElements = document.querySelectorAll('.fade-up, .fade-in-left, .fade-in-right');
+    if (!animateElements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        // IntersectionObserver非対応ブラウザは即座に表示
+        animateElements.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observerOptions: IntersectionObserverInit = {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
@@ -117,10 +126,14 @@ function initScrollAnimation() {
         });
     }, observerOptions);
 
-    // アニメーション対象要素を監視
-    const animateElements = document.querySelectorAll('.fade-up');
     animateElements.forEach(el => {
-        observer.observe(el);
+        // 初期ビューポート内にある場合は即座に表示してチラつきを防止
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+        } else {
+            observer.observe(el);
+        }
     });
 }
 
@@ -130,20 +143,16 @@ export default function initLayout() {
         return;
     }
     
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            initMobileMenu();
-            initScrollTop();
-            initSmoothScroll();
-            initScrollAnimation();
-        });
-    } else {
-        // DOMContentLoadedが既に発火している場合
+    const run = () => {
         initMobileMenu();
         initScrollTop();
         initSmoothScroll();
         initScrollAnimation();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+    } else {
+        run();
     }
 }
-
-

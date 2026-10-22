@@ -22,13 +22,13 @@ const caseStudies = [
   {
     id: 'garden-tile',
     title: '庭のアプローチ',
-    image: '/images/店舗_坪庭_アプローチ2.jpg',
+    image: '/images/approach_02.jpg',
     link: '/garden-tile'
   },
   {
     id: 'shop-garden',
     title: '店舗･飲食店 坪庭作り',
-    image: '/images/紅葉.jpg',
+    image: '/images/momiji.jpg',
     link: '/shop-garden'
   },
   {
@@ -40,7 +40,7 @@ const caseStudies = [
   {
     id: 'bamboo-fence',
     title: '庭園 竹垣施工',
-    image: '/images/竹垣施工.jpg',
+    image: '/images/takegaki_sekou.jpg',
     link: '/bamboo-fence'
   },
   {
@@ -64,10 +64,12 @@ const caseStudies = [
       {caseStudies.map((caseStudy) => (
         <div class="swiper-slide">
           <div class="case-study-slide">
-            <img src={caseStudy.image} alt={caseStudy.title} class="case-study-slide-image" />
+            <div class="case-study-image-box">
+              <img src={caseStudy.image} alt={caseStudy.title} class="case-study-slide-image" loading="lazy" />
+            </div>
             <div class="case-study-slide-content">
               <h3 class="case-study-slide-title">{caseStudy.title}</h3>
-              <a href={caseStudy.link} class="btn btn-primary contact-button-animated case-study-slide-button">詳しく見る</a>
+              <a href={caseStudy.link} class="u-btn u-btn--outline case-study-slide-button">詳しく見る</a>
             </div>
           </div>
         </div>
@@ -81,77 +83,153 @@ const caseStudies = [
   .case-study-slider-wrapper {
     position: relative;
     width: 100%;
-    padding: 0 20px;
     margin: 0;
   }
 
   .case-study-swiper {
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 40px !important;
+  }
+
+  .case-study-swiper:not(.swiper-initialized) .swiper-wrapper {
+    display: flex;
+    gap: 24px;
+    overflow-x: hidden;
+  }
+
+  .case-study-swiper:not(.swiper-initialized) .swiper-slide {
+    flex: 0 0 32%;
+    min-width: 280px;
   }
 
   .case-study-slide {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 100%;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 8px;
     background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .case-study-slide:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .case-study-image-box {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
   }
 
   .case-study-slide-image {
     width: 100%;
-    height: 80%;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .case-study-slide:hover .case-study-slide-image {
+    transform: scale(1.05);
   }
 
   .case-study-slide-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    padding: 30px;
+    padding: 24px 20px;
     text-align: center;
+    background: #ffffff;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
   }
 
   .case-study-slide-title {
-    font-size: 24px;
+    font-size: 1.15rem;
     font-weight: 600;
     font-family: 'Shippori Mincho', serif !important;
-    color: #000000;
-    margin: 0 0 20px 0;
+    color: #2b332d;
+    margin: 0;
   }
 
   .case-study-slide-button {
-    display: inline-block;
+    font-size: 0.9rem;
+    padding: 8px 24px;
+    min-height: 38px;
   }
 
-  .swiper-pagination {
-    bottom: 10px !important;
+  :global(.case-study-swiper .swiper-pagination) {
+    bottom: 0 !important;
   }
 
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background: #666666;
-    opacity: 0.5;
+  :global(.case-study-swiper .swiper-pagination-bullet) {
+    width: 8px;
+    height: 8px;
+    background: #4a5d4e !important;
+    opacity: 0.3;
+    transition: all 0.3s ease;
   }
 
-  .swiper-pagination-bullet-active {
+  :global(.case-study-swiper .swiper-pagination-bullet-active) {
     opacity: 1;
-    background: #666666;
+    width: 24px;
+    border-radius: 4px;
   }
 
   @media (max-width: 768px) {
-    .case-study-slide {
-      height: 500px;
+    .case-study-image-box {
+      height: 200px;
     }
-
-    .case-study-slide-title {
-      font-size: 20px;
+    .case-study-slide-content {
+      padding: 18px 14px;
     }
   }
 </style>
 
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, Pagination } from 'swiper/modules';
+
+  function initCaseStudySlider() {
+    const swiperEl = document.querySelector('.case-study-swiper');
+    if (!swiperEl || (swiperEl as any).swiper) return;
+
+    new Swiper('.case-study-swiper', {
+      modules: [Autoplay, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 24,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.case-study-swiper .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 28,
+        }
+      },
+      loop: true,
+      speed: 600,
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCaseStudySlider);
+  } else {
+    initCaseStudySlider();
+  }
+</script>

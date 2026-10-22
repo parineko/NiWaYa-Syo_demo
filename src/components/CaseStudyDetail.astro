@@ -17,17 +17,17 @@ const descriptionArray = Array.isArray(description) ? description : [description
 
 <article class="blog-post u-section case-study-detail-section">
     <div class="container u-container">
-        <div class="blog-post-content">
+        <div class="blog-post-content fade-up">
             <!-- Before/After画像 -->
             {beforeAfter && (
                 <div class="case-study-images-grid case-study-detail-images-grid">
                     <figure class="case-study-image-wrapper case-study-detail-image-wrapper">
                         <img src={beforeAfter.before.src} alt={beforeAfter.before.alt} class="case-study-detail-image" />
-                        <figcaption class="case-study-detail-figcaption">Before</figcaption>
+                        <figcaption class="case-study-detail-figcaption">施工前（Before）</figcaption>
                     </figure>
                     <figure class="case-study-image-wrapper case-study-detail-image-wrapper">
                         <img src={beforeAfter.after.src} alt={beforeAfter.after.alt} class="case-study-detail-image" />
-                        <figcaption class="case-study-detail-figcaption">After</figcaption>
+                        <figcaption class="case-study-detail-figcaption">施工後（After）</figcaption>
                     </figure>
                 </div>
             )}
@@ -60,7 +60,7 @@ const descriptionArray = Array.isArray(description) ? description : [description
 
             <!-- 説明文 -->
             <div class="blog-post-text case-study-detail-text-wrapper">
-                {descriptionArray.map((para, index) => (
+                {descriptionArray.map((para) => (
                     <p class="case-study-detail-text">
                         {para}
                     </p>
@@ -68,14 +68,14 @@ const descriptionArray = Array.isArray(description) ? description : [description
             </div>
         </div>
 
-        <div class="blog-post-footer case-study-detail-footer">
-            <a href="/case-stady" class="btn btn-primary contact-button-animated">施行例一覧に戻る</a>
+        <div class="blog-post-footer case-study-detail-footer fade-up">
+            <a href="/case-study" class="u-btn u-btn--outline">施工例一覧に戻る</a>
         </div>
 
-        <nav class="post-navigation case-study-detail-nav" aria-label="投稿ナビゲーション">
+        <nav class="post-navigation case-study-detail-nav fade-up" aria-label="投稿ナビゲーション">
             {prev ? (
                 <a class="post-nav-link prev case-study-detail-nav-link" href={prev.href}>
-                    <span class="nav-label case-study-detail-nav-label">← 前</span>
+                    <span class="nav-label case-study-detail-nav-label">← 前の事例</span>
                     <span class="nav-title case-study-detail-nav-title">{prev.label}</span>
                 </a>
             ) : (
@@ -83,11 +83,10 @@ const descriptionArray = Array.isArray(description) ? description : [description
             )}
             {next && (
                 <a class="post-nav-link next case-study-detail-nav-link" href={next.href}>
-                    <span class="nav-label case-study-detail-nav-label">次 →</span>
+                    <span class="nav-label case-study-detail-nav-label">次の事例 →</span>
                     <span class="nav-title case-study-detail-nav-title">{next.label}</span>
                 </a>
             )}
         </nav>
     </div>
 </article>
-
