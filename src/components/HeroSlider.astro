@@ -120,19 +120,20 @@ const heroImages = [
     transition: transform 6s ease-out;
   }
 
-  /* Swiperのアクティブスライドでゆっくりズームする上質演出 */
-  :global(.swiper-slide-active) .hero-slide-image {
+  /* 2枚目以降のスライド：Swiperアクティブ時に上品にズーム */
+  :global(.swiper-slide-active) .hero-slide:not(.is-first-slide) .hero-slide-image {
     transform: scale(1.08);
   }
 
   /* ---------------------------------------
      1枚目のストーリー仕立てオープニング演出
-     ① 画像フェードイン → ② 暗転 → ③ 文字フェードイン
+     ① 画像フェードイン＆横パンスライド → ② 暗転 → ③ 文字フェードイン
   --------------------------------------- */
   /* 初期待機状態（ローディング中） */
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-slide-image {
     opacity: 0;
-    transform: scale(1.12);
+    object-position: 8% 50%;
+    transform: scale(1.05);
   }
 
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-overlay {
@@ -149,11 +150,50 @@ const heroImages = [
     transform: translateY(10px);
   }
 
-  /* ① 画像フェードイン (0s - 1.2s) */
+  /* ① 画像フェードイン ＆ 横長写真を全体見渡せるパンスライドカメラワーク */
   .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
     opacity: 1;
-    transform: scale(1.0);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 5s ease-out;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* PC向けカメラワーク（優雅な左右パン） */
+  @media (min-width: 769px) {
+    .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
+      animation: heroCameraPanDesktop 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroCameraPanDesktop {
+      0% {
+        object-position: 25% 50%;
+        transform: scale(1.03) translate3d(-1%, 0, 0);
+      }
+      100% {
+        object-position: 75% 50%;
+        transform: scale(1.08) translate3d(1%, 0, 0);
+      }
+    }
+  }
+
+  /* スマホ向けカメラワーク（横長写真の端から端までしっかり見せるダイナミックスライド） */
+  @media (max-width: 768px) {
+    .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
+      animation: heroCameraPanMobile 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroCameraPanMobile {
+      0% {
+        object-position: 5% 50%;
+        transform: scale(1.04);
+      }
+      50% {
+        object-position: 50% 50%;
+        transform: scale(1.08);
+      }
+      100% {
+        object-position: 95% 50%;
+        transform: scale(1.04);
+      }
+    }
   }
 
   /* ② 暗転オーバーレイが深まる (0.5s - 1.6s) */

@@ -379,7 +379,7 @@ const faqs = [
 
         <!-- 3つの問い合わせ方法（手軽さ順：LINE → 電話 → フォーム） -->
         <div class="contact-channels-grid">
-          <!-- ① 公式LINE（写真送信で最短・最も手軽） -->
+          <!-- ① 公式LINE（写真送信でかんたん・手軽） -->
           <div class="channel-card channel-card--line">
             <div class="channel-badge">一番かんたん・写真で概算見積もり</div>
             <div class="channel-icon-wrap">
@@ -388,7 +388,7 @@ const faqs = [
               </svg>
             </div>
             <h3 class="channel-title">LINEで写真見積もり</h3>
-            <p class="channel-desc">気になるお庭の写真をスマホで撮って送るだけ！最短30分で概算お見積もりをお返しします。</p>
+            <p class="channel-desc">気になるお庭の写真をスマホで撮って送るだけ！写真を確認後、スムーズに概算をお伝えします。</p>
             <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="line-action-btn">
               <span>公式LINEで相談する</span>
               <span class="line-btn-sub">（友だち追加・無料）</span>
@@ -402,7 +402,7 @@ const faqs = [
               📞
             </div>
             <h3 class="channel-title">お電話で無料相談</h3>
-            <p class="channel-desc">作業内容や日程のご相談など、直接職人が丁寧にお伺いします。通話料無料。</p>
+            <p class="channel-desc">作業内容や日程のご相談など、直接職人が丁寧にお伺いします。お気軽にお電話ください。</p>
             <a href="tel:0925150747" class="tel-action-btn">
               <span class="tel-num-main">092-515-0747</span>
               <span class="tel-time-note">平日 9:00〜18:00 受付</span>
@@ -449,7 +449,10 @@ const faqs = [
               <button type="submit" class="u-btn form-submit-button">
                 この内容で無料相談・見積もりを送信する
               </button>
-              <p class="form-privacy-note">※しつこい営業や勧誘は一切いたしません。個人情報は厳重に管理いたします。</p>
+              <p class="form-privacy-note">
+                ※しつこい営業や勧誘は一切いたしません。入力いただいた個人情報は適切に管理いたします。<br class="sp-only" />
+                （<button type="button" class="privacy-modal-trigger-btn" data-open-privacy>プライバシーポリシーはこちら</button>）
+              </p>
             </div>
 
             <div class="form-success-msg" id="form-success-msg" style="display: none;">
@@ -1351,6 +1354,25 @@ const faqs = [
     font-size: 0.78rem;
     color: #888888;
     margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  .privacy-modal-trigger-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-family: inherit;
+    color: #55775c;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .privacy-modal-trigger-btn:hover {
+    color: #2b4530;
   }
 
   .form-success-msg {

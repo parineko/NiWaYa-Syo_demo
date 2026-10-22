@@ -1,7 +1,10 @@
 ---
 ---
 <footer class="site-footer">
-    <div class="container u-container">
+    <div class="container u-container footer-container">
+        <div class="footer-links">
+            <button type="button" class="footer-privacy-btn" data-open-privacy>プライバシーポリシー</button>
+        </div>
         <p class="copyright">©︎ 2025　 庭や笑 　All rights Reserved.</p>
     </div>
 </footer>
@@ -12,3 +15,30 @@
         <path d="M13 0 L26 16 L22 16 L13 6 L4 16 L0 16 Z" fill="currentColor"/>
     </svg>
 </div>
+
+<style>
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 16px;
+  }
+  .footer-links {
+    margin-bottom: 2px;
+  }
+  .footer-privacy-btn {
+    background: transparent;
+    border: none;
+    color: #8b998e;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 4px 8px;
+  }
+  .footer-privacy-btn:hover {
+    color: #d1ded4;
+  }
+</style>
