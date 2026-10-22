@@ -4,267 +4,625 @@ import HeroSlider from '../components/HeroSlider.astro';
 import CaseStudySlider from '../components/CaseStudySlider.astro';
 import FloatingContactButton from '../components/FloatingContactButton.astro';
 
-const services = [
+// お悩みリスト
+const troubles = [
   {
-    title: '庭木の剪定・伐採',
-    desc: '低木1本700円から丁寧に対応。自然な樹形を生かし、四季を楽しめる庭に整えます。',
-    img: '/images/niwanosentei-02s02.jpg',
-    link: '/garden-pruning'
+    icon: '🌳',
+    title: '木が高くなりすぎて手が届かない',
+    desc: '放置して大きくなりすぎた庭木や高木。台風で倒れないか心配、自分では危険で切れない。'
   },
   {
-    title: '造園・坪庭・アプローチ',
-    desc: '自然石や植物を取り入れ、和洋問わず暮らしに馴染む癒やしの空間をプロデュース。',
-    img: '/images/approach_02.jpg',
-    link: '/shop-garden'
+    icon: '🌿',
+    title: '雑草が次々生えて草むしりが追いつかない',
+    desc: '毎年の草むしりで腰が痛い。防草シートや砂利敷きで、手入れのいらないスッキリした庭にしたい。'
   },
   {
-    title: '防草シート・砂利敷き',
-    desc: '面倒な草むしりから解放。景観と防犯性を両立した安心・快適な庭まわりを実現。',
-    img: '/images/zouen2s02.jpg',
-    link: '/weed-sheet-gravel'
+    icon: '🏠',
+    title: '枝が道路やお隣に越境してしまっている',
+    desc: 'ご近所トラブルになる前に、越境した枝を綺麗に整えたい。一本だけ切ってほしい。'
   },
   {
-    title: '竹垣の施工・補修',
-    desc: '伝統の技が息づく竹垣。天然竹から耐久性の高い人工竹までご要望に合わせて施工。',
-    img: '/images/takegaki_sekou.jpg',
-    link: '/bamboo-fence'
+    icon: '🎍',
+    title: '空き家や実家の庭が荒れてしまっている',
+    desc: '実家の庭の管理ができない。遠方に住んでいるため、定期的な手入れや整理を頼みたい。'
   }
 ];
 
-const troubles = [
-  '木が高くなりすぎて自分で切れない',
-  '庭の雑草がすぐに生えて手入れが追いつかない',
-  '空き家・実家の庭をさっぱり整理したい',
-  '新築・リフォームに合わせて庭を素敵にしたい'
+// 選ばれる理由
+const reasons = [
+  {
+    num: '01',
+    title: '低木1本700円〜の明朗会計',
+    lead: 'お見積もり後の不当な追加料金は一切ありません',
+    desc: '「植木屋さんは高そう」「いくらかかるか不安」というお客様のために、明確な料金基準を設定。事前にお見積もりを提示し、ご納得いただいてから着工いたします。'
+  },
+  {
+    num: '02',
+    title: '職人直営！中間マージンゼロ',
+    lead: '下請けを通さないから適正価格＆高品質な施工',
+    desc: '大手ハウスメーカーや仲介業者を介さない職人直営店です。中間手数料がかからないため、適正価格で経験豊富な職人が責任を持って丁寧にお手入れいたします。'
+  },
+  {
+    num: '03',
+    title: '地元・粕屋密着の丁寧な作業＆近隣配慮',
+    lead: '作業後の徹底した掃除・ゴミ処分まで手を抜きません',
+    desc: '福岡・粕屋エリア密着だからスピーディに対応。作業中の安全配慮はもちろん、ご近所様へのご挨拶、切った枝葉の片付け・清掃まで誠意を込めて行います。'
+  }
+];
+
+// サービス一覧と料金目安
+const services = [
+  {
+    title: '庭木の剪定・伐採',
+    price: '低木1本 ¥700〜 / 中木 ¥2,500〜',
+    desc: '自然の樹形を生かした美しい剪定。日当たりや風通しを改善し、木を健康に保ちます。危険な大木の伐採も対応。',
+    img: '/images/niwanosentei-02s02.jpg',
+    features: ['低木1m未満：¥700', '中木2〜3m：¥2,500', '伐採：¥1,000〜', 'ゴミ処理対応']
+  },
+  {
+    title: '防草シート・砂利敷き',
+    price: '草刈り ¥200/㎡〜 / 防草シート ¥800/㎡〜',
+    desc: '面倒な草むしりから解放！高耐久な防草シートと美しい砂利で、雑草を防ぎながら防犯性と美観を高めます。',
+    img: '/images/zouen2s02.jpg',
+    features: ['高耐久シート使用', '厳選砂利から選択', '整地・転圧込み', '部分施工もOK']
+  },
+  {
+    title: '造園・坪庭・アプローチ',
+    price: 'ご予算に合わせて無料プランニング',
+    desc: '自然石や植栽を活かした和モダンな庭づくり。店舗や住宅のデッドスペースをおしゃれな癒やしの空間へ。',
+    img: '/images/approach_02.jpg',
+    features: ['和風・洋風対応', 'アプローチ通路', '照明・石組み', 'メンテナンス提案']
+  },
+  {
+    title: '竹垣の施工・補修',
+    price: '現地無料調査にてお見積もり',
+    desc: '格式高い天然竹の垣根から、高耐久で色褪せない人工竹垣まで。目隠しや庭のアクセントに職人技で施工。',
+    img: '/images/takegaki_sekou.jpg',
+    features: ['建仁寺垣・御簾垣', '傷んだ竹垣の改修', '人工竹で長持ち', '目隠し・境界フェンス']
+  }
+];
+
+// 流れ
+const steps = [
+  {
+    num: 'STEP 01',
+    title: 'お問い合わせ・無料相談',
+    desc: 'お電話・LINE・WEBフォームよりお気軽にご連絡ください。「木を1本だけ切りたい」でも大歓迎です。'
+  },
+  {
+    num: 'STEP 02',
+    title: '現地調査・無料お見積もり',
+    desc: 'お庭を拝見し、ご希望やご予算を丁寧にヒアリング。明確なお見積もりを提示します（お断りいただいても費用は一切不要）。'
+  },
+  {
+    num: 'STEP 03',
+    title: 'ご契約・施工開始',
+    desc: '日程を調整の上、経験豊富な職人が丁寧・安全に施工。屋外作業のため、当日のご不在でも施工可能です。'
+  },
+  {
+    num: 'STEP 04',
+    title: 'ご確認・お支払い',
+    desc: '作業後の清掃まで徹底して行い、仕上がりをお客様にご確認いただいた後にお支払いとなります。'
+  }
+];
+
+// FAQ
+const faqs = [
+  {
+    q: '庭木1本だけの剪定でも頼めますか？',
+    a: 'はい、もちろん大歓迎です！「低木1本（¥700〜）」から喜んでお伺いします。小さな作業でも気兼ねなくお声がけください。'
+  },
+  {
+    q: '見積もりの後で断っても費用はかかりませんか？',
+    a: '完全無料です。現地調査やお見積もり後にご検討いただき、お断りいただいても出張料などの費用は一切かかりません。しつこい営業も行いませんのでご安心ください。'
+  },
+  {
+    q: '作業中は留守にしていても大丈夫ですか？',
+    a: 'はい、屋外の作業ですのでご不在でも施工可能です。事前に作業内容を確認させていただき、完了後に作業箇所の写真等でご報告することも可能です。'
+  },
+  {
+    q: '切った枝や抜いた草の処分もお願いできますか？',
+    a: 'はい、剪定枝や刈り取った雑草の回収・処分まで承ります（軽トラック1台 ¥6,000）。掃除まで丁寧に行い、お庭をすっきり清潔な状態にしてお引き渡しいたします。'
+  },
+  {
+    q: '対応エリアはどこまでですか？',
+    a: '福岡県糟屋郡（粕屋町、篠栗町、志免町、須恵町、新宮町、久山町、宇美町）を中心に、福岡市、古賀市、大野城市、春日市など福岡都市圏全域に対応しております。近郊エリアの方もお気軽にご相談ください。'
+  }
 ];
 ---
 
 <BaseLayout
-  title="福岡 粕屋の造園・庭木剪定なら「庭や・笑」（にわやしょう）"
-  description="福岡県粕屋の造園業「庭や・笑（にわやしょう）」。低木1本700円からの庭木剪定、和洋造園、坪庭、竹垣、防草シート施工など。笑顔が活きる庭づくりをお手伝いします。"
+  title="福岡・粕屋の造園・庭木剪定なら「庭や・笑」（にわやしょう）"
+  description="福岡県粕屋の造園・庭木剪定「庭や・笑」。低木1本700円〜の明朗会計。職人直営で中間マージンなし。お庭の剪定、草刈り、防草シート、竹垣などお庭のお悩みを丁寧に解決します。現地調査・見積無料。"
   currentPage="home"
 >
-  <!-- ヒーロースライダー -->
+  <!-- ① ファーストビュー（HeroSlider 100dvh） -->
   <HeroSlider />
 
-  <!-- コンセプト／モットーセクション -->
-  <section class="concept-section u-section" id="concept">
+  <!-- ② お悩み共感セクション -->
+  <section class="section section-trouble" id="trouble">
     <div class="u-container">
-      <div class="concept-box fade-up">
-        <span class="concept-tag">CONCEPT</span>
-        <h2 class="concept-title">笑顔が活きる空間に</h2>
-        <p class="concept-text">
-          私たちにとって庭とは、暮らしのそばで四季を映し、人の心を穏やかに整えてくれる場所です。<br>
-          眺め、佇み、語らい、季節を味わう。<br>
-          和・洋にとらわれず、お客様の生活スタイルに合わせたお庭をご提案いたします。
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">TROUBLES</span>
+        <h2 class="section-headline">こんなお庭のお悩み、ありませんか？</h2>
+        <p class="section-subheadline">些細なことでも大丈夫です。庭のプロがすべて丁寧に解決いたします。</p>
+      </div>
+
+      <div class="trouble-cards-grid u-grid">
+        {troubles.map((t, idx) => (
+          <div class={`trouble-card u-card fade-up delay-${(idx + 1) * 100}`}>
+            <div class="trouble-card-icon">{t.icon}</div>
+            <h3 class="trouble-card-title">{t.title}</h3>
+            <p class="trouble-card-desc">{t.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="trouble-solution-box fade-up">
+        <p class="solution-lead">
+          お庭の草木は、放っておくとどんどん手入れが大変になります。<br class="pc-only" />
+          <strong>「庭や・笑」なら、一本の剪定・草刈りだけでも喜んで駆けつけます！</strong>
         </p>
-        <div class="concept-btn-wrapper">
-          <a href="/about" class="u-btn u-btn--outline">庭や・笑について詳しく知る</a>
-        </div>
+        <a href="#contact" class="u-btn">まずはお気軽に無料相談する</a>
       </div>
     </div>
   </section>
 
-  <!-- 提供サービス案内 -->
-  <section class="services-section u-section u-section--alt">
+  <!-- ③ 庭や・笑が選ばれる3つの安心 -->
+  <section class="section section-reasons u-section--alt" id="reason">
     <div class="u-container">
-      <div class="section-header fade-up">
-        <span class="section-subtitle">SERVICES</span>
-        <h2 class="section-title">庭や・笑のサービス案内</h2>
-        <p class="section-description">一本の剪定から大規模なお庭のリノベーションまで、誠心誠意対応いたします。</p>
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">WHY CHOOSE US</span>
+        <h2 class="section-headline">庭や・笑が選ばれる3つの安心</h2>
+        <p class="section-subheadline">大手にはない小回りの良さと、職人直営ならではの誠実な対応をお約束します。</p>
+      </div>
+
+      <div class="reasons-list">
+        {reasons.map((r, idx) => (
+          <div class="reason-row u-card fade-up">
+            <div class="reason-num-col">
+              <span class="reason-number">{r.num}</span>
+              <span class="reason-label">REASON</span>
+            </div>
+            <div class="reason-content-col">
+              <h3 class="reason-title">{r.title}</h3>
+              <p class="reason-lead">{r.lead}</p>
+              <p class="reason-desc">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ サービス案内＆料金表 -->
+  <section class="section section-services" id="service">
+    <div class="u-container">
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">SERVICES & PRICES</span>
+        <h2 class="section-headline">サービス案内と料金の目安</h2>
+        <p class="section-subheadline">事前の明朗お見積もりを徹底。追加料金の心配なく安心してご依頼いただけます。</p>
       </div>
 
       <div class="services-grid u-grid">
-        {services.map((service, index) => (
-          <div class={`service-card u-card fade-up delay-${(index + 1) * 100}`}>
-            <div class="service-image-box">
-              <img src={service.img} alt={service.title} class="service-image" loading="lazy" />
+        {services.map((s, idx) => (
+          <div class={`service-box u-card fade-up delay-${(idx + 1) * 100}`}>
+            <div class="service-img-wrap">
+              <img src={s.img} alt={s.title} class="service-img" loading="lazy" />
+              <div class="service-price-tag">{s.price}</div>
             </div>
-            <div class="service-body">
-              <h3 class="service-title">{service.title}</h3>
-              <p class="service-desc">{service.desc}</p>
-              <a href={service.link} class="service-link">
-                施工例を見る <span aria-hidden="true">&rarr;</span>
-              </a>
+            <div class="service-content">
+              <h3 class="service-box-title">{s.title}</h3>
+              <p class="service-box-desc">{s.desc}</p>
+              <ul class="service-feature-list">
+                {s.features.map(f => (
+                  <li><span class="check-mark">&#10003;</span> {f}</li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}
       </div>
 
-      <div class="services-cta fade-up">
-        <a href="/prices" class="u-btn">料金案内をすべて見る</a>
+      <!-- 詳しい料金表リンク案内 -->
+      <div class="price-banner u-card fade-up">
+        <div class="price-banner-text">
+          <h3>詳細な料金一覧もご用意しております</h3>
+          <p>木の高さや作業内容ごとの細かな価格表はこちらからご覧いただけます。</p>
+        </div>
+        <a href="/prices" class="u-btn u-btn--outline">詳細な料金表を見る</a>
       </div>
     </div>
   </section>
 
-  <!-- 施工例スライダー -->
-  <section class="case-studies-section u-section">
+  <!-- ⑤ 施工実績Before/Afterスライダー -->
+  <section class="section section-works u-section--alt" id="works">
     <div class="u-container">
-      <div class="section-header fade-up">
-        <span class="section-subtitle">WORKS</span>
-        <h2 class="section-title">施工実績</h2>
-        <p class="section-description">これまでに手掛けたお庭やお手入れの実績をご紹介します。</p>
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">PORTFOLIO</span>
+        <h2 class="section-headline">施工実績</h2>
+        <p class="section-subheadline">これまでに手掛けたお庭・剪定のビフォーアフターをご覧ください。</p>
       </div>
 
       <div class="fade-up">
         <CaseStudySlider />
       </div>
 
-      <div class="works-all-link fade-up">
-        <a href="/case-study" class="u-btn u-btn--outline">すべての施工例を見る</a>
+      <div class="works-action-wrap fade-up">
+        <a href="/case-study" class="u-btn u-btn--outline">すべての施工例を見る（全9件）</a>
       </div>
     </div>
   </section>
 
-  <!-- お困りごと解決セクション -->
-  <section class="trouble-cta-section u-section u-section--alt">
+  <!-- ⑥ ご依頼の流れ -->
+  <section class="section section-flow" id="flow">
     <div class="u-container">
-      <div class="trouble-box u-card fade-up">
-        <div class="trouble-content">
-          <span class="section-subtitle">TROUBLE</span>
-          <h2 class="trouble-heading">こんなお庭のお悩み、ありませんか？</h2>
-          <ul class="trouble-list">
-            {troubles.map((trouble) => (
-              <li class="trouble-item">
-                <span class="check-icon">&#10003;</span>
-                <span>{trouble}</span>
-              </li>
-            ))}
-          </ul>
-          <p class="trouble-lead">
-            小さなご相談でも親身にお伺いします。お気軽にお声がけください。
-          </p>
-          <a href="/trouble" class="u-btn">お困りの方へ・解決事例を見る</a>
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">FLOW</span>
+        <h2 class="section-headline">ご相談から完了までの流れ</h2>
+        <p class="section-subheadline">簡単4ステップ。無理な営業は一切ございませんのでご安心ください。</p>
+      </div>
+
+      <div class="steps-timeline">
+        {steps.map((st, idx) => (
+          <div class={`step-card u-card fade-up delay-${(idx + 1) * 100}`}>
+            <div class="step-num">{st.num}</div>
+            <h3 class="step-title">{st.title}</h3>
+            <p class="step-desc">{st.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ 代表メッセージ・想い -->
+  <section class="section section-about u-section--alt" id="about">
+    <div class="u-container">
+      <div class="about-hero-box u-card fade-up">
+        <div class="about-hero-header">
+          <span class="section-badge">ABOUT US</span>
+          <h2 class="about-hero-title">「笑顔が活きる空間に」</h2>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- お問い合わせセクション -->
-  <section class="contact-cta-section u-section">
-    <div class="u-container">
-      <div class="contact-cta-card u-card fade-up">
-        <span class="section-subtitle">CONTACT</span>
-        <h2 class="contact-cta-title">お庭のこと、まずはお気軽にご相談ください</h2>
-        <p class="contact-cta-desc">
-          現地調査・お見積もりは無料です。剪定1本・草刈りだけでも喜んでお伺いします。
+        <p class="about-lead-text">
+          私たちにとって庭とは、暮らしのそばで四季を映し、人の心を穏やかに整えてくれる場所です。<br />
+          眺め、佇み、語らい、季節を味わう。<br />
+          その場に居るだけで心が安らげる屋外空間すべてが庭だと思っています。<br />
+          和・洋にとらわれず、お客様の生活スタイルに合わせたお庭づくりを心を込めてお手伝いいたします。
         </p>
-        <div class="contact-cta-actions">
-          <a href="/contact" class="u-btn">お問い合わせフォームへ</a>
+
+        <!-- スタッフ紹介（上品なコンパクト表示） -->
+        <div class="staff-compact-grid">
+          <div class="staff-compact-card">
+            <div class="staff-compact-avatar">
+              <img src="/images/kasuya_zouen_fukuoka_001.5-300x300.jpg" alt="代表 権藤 伸一郎" />
+            </div>
+            <div class="staff-compact-info">
+              <span class="staff-role">代表</span>
+              <h4 class="staff-name-title">権藤 伸一郎</h4>
+              <p class="staff-short-bio">
+                樹形を生かした自然風な剪定が得意です。花や実、紅葉などの季節を感じて庭を楽しんでいただけるよう心を込めて作業します。
+              </p>
+            </div>
+          </div>
+
+          <div class="staff-compact-card">
+            <div class="staff-compact-avatar">
+              <img src="/images/kasuya_zouen_fukuoka_002.5-300x300.jpg" alt="職人 権藤 辰仁" />
+            </div>
+            <div class="staff-compact-info">
+              <span class="staff-role">職人</span>
+              <h4 class="staff-name-title">権藤 辰仁</h4>
+              <p class="staff-short-bio">
+                自然石を使った庭づくりが好きです。石や植物の中にちょっとした遊び心を入れ、お客様が笑顔になれるお庭を造ります。
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- フローティング連絡ボタン -->
+  <!-- ⑧ よくあるご質問（FAQ） -->
+  <section class="section section-faq" id="faq">
+    <div class="u-container">
+      <div class="section-badge-wrap fade-up">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-headline">よくあるご質問</h2>
+        <p class="section-subheadline">お客様からよくいただくご質問にお答えしています。</p>
+      </div>
+
+      <div class="faq-list">
+        {faqs.map((f, idx) => (
+          <div class="faq-item u-card fade-up">
+            <div class="faq-question">
+              <span class="faq-q-badge">Q</span>
+              <h3 class="faq-q-text">{f.q}</h3>
+            </div>
+            <div class="faq-answer">
+              <span class="faq-a-badge">A</span>
+              <p class="faq-a-text">{f.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑨ 最強のお問い合わせ・無料相談セクション -->
+  <section class="section section-contact" id="contact">
+    <div class="u-container">
+      <div class="contact-main-card u-card fade-up">
+        <span class="section-badge">CONTACT</span>
+        <h2 class="contact-main-title">お庭のこと、まずはお気軽にご相談ください</h2>
+        <p class="contact-main-lead">
+          「1本だけ切ってほしい」「いくらかかるか知りたい」など大歓迎です。<br />
+          現地調査・お見積もりは完全無料。しつこい営業は一切いたしません。
+        </p>
+
+        <div class="contact-methods-grid">
+          <!-- お電話ボタン -->
+          <div class="contact-method-card">
+            <div class="method-icon">📞</div>
+            <h3>お電話でのお問い合わせ</h3>
+            <p class="method-sub">お急ぎの方はこちら（通話無料）</p>
+            <a href="tel:0925150747" class="tel-number-btn">
+              <span class="tel-num">092-515-0747</span>
+            </a>
+            <p class="method-time">受付時間：平日 9:00〜18:00</p>
+          </div>
+
+          <!-- WEBフォームボタン -->
+          <div class="contact-method-card contact-method-card--featured">
+            <div class="featured-badge">おすすめ</div>
+            <div class="method-icon">✉️</div>
+            <h3>WEB無料お見積もり</h3>
+            <p class="method-sub">24時間いつでも受付中（翌営業日返信）</p>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdqZ3TjafK-d-3KYDk5MFFNeHYYmlyvGWDQU_hadHvuPA0iCw/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="u-btn form-submit-btn"
+            >
+              Googleフォームでお問い合わせ
+            </a>
+            <p class="method-time">お名前・ご連絡先・ご相談内容だけで簡単送信</p>
+          </div>
+        </div>
+
+        <div class="contact-email-note">
+          <p>メールでのお問い合わせ：<a href="mailto:zouen@niwaya-syo.com">zouen@niwaya-syo.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下部固定コンバージョンバー -->
   <FloatingContactButton currentPage="home" />
 </BaseLayout>
 
 <style>
-  /* コンセプトセクション */
-  .concept-section {
-    padding: 70px 0 50px;
+  /* 共通セクション */
+  .section {
+    padding: 90px 0;
   }
 
-  .concept-box {
-    max-width: 840px;
-    margin: 0 auto;
+  .section-badge-wrap {
     text-align: center;
-    padding: 20px;
+    max-width: 720px;
+    margin: 0 auto 50px;
   }
 
-  .concept-tag {
+  .section-badge {
     display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
     color: #4a5d4e;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
-  .concept-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  .section-headline {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
     font-family: 'Shippori Mincho', serif;
     font-weight: 700;
     color: #2b332d;
-    margin-bottom: 24px;
-    letter-spacing: 0.05em;
+    line-height: 1.35;
+    margin: 0 0 16px;
   }
 
-  .concept-text {
-    font-size: 1.05rem;
-    line-height: 2.1;
-    color: #444444;
-    font-family: 'Noto Serif JP', serif;
-    margin-bottom: 32px;
-  }
-
-  /* セクション見出し共通 */
-  .section-header {
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 48px;
-  }
-
-  .section-subtitle {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: #4a5d4e;
-    margin-bottom: 8px;
-  }
-
-  .section-title {
-    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
-    font-family: 'Shippori Mincho', serif;
-    font-weight: 700;
-    color: #2b332d;
-    margin-bottom: 14px;
-  }
-
-  .section-description {
+  .section-subheadline {
     font-size: 1rem;
     color: #666666;
     line-height: 1.8;
+    margin: 0;
   }
 
-  /* サービスカード */
-  .services-section {
-    padding: 80px 0;
+  /* お悩みセクション */
+  .section-trouble {
+    background-color: #fafcfb;
   }
 
-  .service-card {
+  .trouble-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .trouble-card {
+    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    border-top: 4px solid #c97d60; /* 温かみのある警告アクセント */
+    transition: transform 0.3s ease;
+  }
+
+  .trouble-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .trouble-card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+  }
+
+  .trouble-card-title {
+    font-size: 1.15rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    color: #2b332d;
+    margin: 0 0 12px;
+    line-height: 1.45;
+  }
+
+  .trouble-card-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .trouble-solution-box {
+    text-align: center;
+    background: linear-gradient(135deg, #edf4ee 0%, #e3ede4 100%);
+    border-radius: 16px;
+    padding: 36px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #d4e3d6;
+  }
+
+  .solution-lead {
+    font-size: 1.15rem;
+    color: #2b332d;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  /* 選ばれる理由 */
+  .reasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .reason-row {
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 16px;
+  }
+
+  .reason-num-col {
+    background: #4a5d4e;
+    color: #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+
+  .reason-number {
+    font-size: 2.8rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .reason-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    opacity: 0.8;
+    margin-top: 6px;
+  }
+
+  .reason-content-col {
+    padding: 32px 36px;
+    flex-grow: 1;
+  }
+
+  .reason-title {
+    font-size: 1.4rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    margin: 0 0 8px;
+  }
+
+  .reason-lead {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4a5d4e;
+    margin: 0 0 12px;
+  }
+
+  .reason-desc {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* サービス案内 */
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+
+  .service-box {
     padding: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .service-card:hover {
+  .service-box:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   }
 
-  .service-image-box {
+  .service-img-wrap {
+    position: relative;
     width: 100%;
     height: 220px;
     overflow: hidden;
   }
 
-  .service-image {
+  .service-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
 
-  .service-card:hover .service-image {
+  .service-box:hover .service-img {
     transform: scale(1.06);
   }
 
-  .service-body {
+  .service-price-tag {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(43, 51, 45, 0.92);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+
+  .service-content {
     padding: 24px;
     flex-grow: 1;
     display: flex;
@@ -272,140 +630,437 @@ const troubles = [
     justify-content: space-between;
   }
 
-  .service-title {
-    font-size: 1.25rem;
+  .service-box-title {
+    font-size: 1.3rem;
     font-family: 'Shippori Mincho', serif;
     font-weight: 600;
     color: #2b332d;
-    margin-bottom: 12px;
+    margin: 0 0 10px;
   }
 
-  .service-desc {
-    font-size: 0.95rem;
-    color: #555555;
+  .service-box-desc {
+    font-size: 0.9rem;
+    color: #666666;
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     flex-grow: 1;
   }
 
-  .service-link {
-    font-weight: 600;
-    color: #4a5d4e;
-    text-decoration: none;
-    display: inline-flex;
+  .service-feature-list {
+    list-style: none;
+    padding: 14px 0 0;
+    margin: 0;
+    border-top: 1px dashed #e0e0e0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .service-feature-list li {
+    font-size: 0.85rem;
+    color: #444444;
+    display: flex;
     align-items: center;
     gap: 6px;
-    transition: gap 0.2s ease;
   }
 
-  .service-link:hover {
-    gap: 10px;
+  .check-mark {
+    color: #4a5d4e;
+    font-weight: bold;
+  }
+
+  .price-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px;
+    border-radius: 12px;
+    background: #ffffff;
+    border-left: 5px solid #4a5d4e;
+    margin-top: 20px;
+  }
+
+  .price-banner-text h3 {
+    font-size: 1.15rem;
+    font-family: 'Shippori Mincho', serif;
     color: #2b332d;
+    margin: 0 0 4px;
   }
 
-  .services-cta,
-  .works-all-link {
+  .price-banner-text p {
+    font-size: 0.9rem;
+    color: #666666;
+    margin: 0;
+  }
+
+  /* 施工実績 */
+  .works-action-wrap {
     text-align: center;
     margin-top: 48px;
   }
 
-  /* 施工例セクション */
-  .case-studies-section {
-    padding: 80px 0;
-  }
-
-  /* お困りごとセクション */
-  .trouble-cta-section {
-    padding: 80px 0;
-  }
-
-  .trouble-box {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 48px 40px;
-    background: #ffffff;
-    border-top: 4px solid #4a5d4e;
-  }
-
-  .trouble-heading {
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-    font-family: 'Shippori Mincho', serif;
-    font-weight: 700;
-    color: #2b332d;
-    margin: 8px 0 24px;
-  }
-
-  .trouble-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px 0;
+  /* ご依頼の流れ */
+  .steps-timeline {
     display: grid;
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
-  .trouble-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.05rem;
-    color: #333333;
+  .step-card {
+    padding: 32px 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
   }
 
-  .check-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background-color: #e9f0ea;
+  .step-num {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
     color: #4a5d4e;
-    border-radius: 50%;
-    font-weight: bold;
-    font-size: 0.9rem;
-    flex-shrink: 0;
+    background: #edf4ee;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
   }
 
-  .trouble-lead {
-    font-size: 0.95rem;
+  .step-title {
+    font-size: 1.15rem;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 600;
+    color: #2b332d;
+    margin: 0 0 12px;
+  }
+
+  .step-desc {
+    font-size: 0.88rem;
     color: #666666;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* 代表メッセージ */
+  .about-hero-box {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 48px;
+    border-radius: 20px;
+    background: #ffffff;
+  }
+
+  .about-hero-header {
+    text-align: center;
     margin-bottom: 24px;
   }
 
-  /* お問い合わせCTA */
-  .contact-cta-section {
-    padding: 80px 0 100px;
+  .about-hero-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    color: #2b332d;
+    letter-spacing: 0.08em;
   }
 
-  .contact-cta-card {
+  .about-lead-text {
+    font-size: 1.05rem;
+    line-height: 2.1;
+    color: #444444;
+    font-family: 'Noto Serif JP', serif;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 56px 32px;
-    background: linear-gradient(135deg, #f7faf7 0%, #edf3ee 100%);
-    border: 1px solid #dbe6dc;
+    max-width: 760px;
+    margin: 0 auto 48px;
   }
 
-  .contact-cta-title {
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
+  .staff-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 40px;
+  }
+
+  .staff-compact-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .staff-compact-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid #edf4ee;
+  }
+
+  .staff-compact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .staff-role {
+    font-size: 0.75rem;
+    color: #4a5d4e;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .staff-name-title {
+    font-size: 1.25rem;
+    font-family: 'Shippori Mincho', serif;
+    color: #2b332d;
+    margin: 2px 0 8px;
+  }
+
+  .staff-short-bio {
+    font-size: 0.85rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    padding: 24px 28px;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  .faq-q-badge {
+    background: #4a5d4e;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.85rem;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .faq-q-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2b332d;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .faq-answer {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding-left: 40px;
+  }
+
+  .faq-a-badge {
+    color: #c97d60;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .faq-a-text {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* お問い合わせメイン */
+  .contact-main-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 48px;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #fafcfb 0%, #eef5f0 100%);
+    border: 1px solid #d9e6db;
+  }
+
+  .contact-main-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-family: 'Shippori Mincho', serif;
     font-weight: 700;
     color: #2b332d;
     margin: 10px 0 16px;
   }
 
-  .contact-cta-desc {
+  .contact-main-lead {
     font-size: 1rem;
     color: #555555;
     line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto 40px;
+  }
+
+  .contact-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
     margin-bottom: 32px;
   }
 
+  .contact-method-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .contact-method-card--featured {
+    border: 2px solid #4a5d4e;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    background: #4a5d4e;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 14px;
+    border-radius: 999px;
+  }
+
+  .method-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  .contact-method-card h3 {
+    font-size: 1.25rem;
+    font-family: 'Shippori Mincho', serif;
+    color: #2b332d;
+    margin: 0 0 6px;
+  }
+
+  .method-sub {
+    font-size: 0.85rem;
+    color: #777777;
+    margin: 0 0 20px;
+  }
+
+  .tel-number-btn {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2e7d32;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    transition: all 0.2s ease;
+  }
+
+  .tel-number-btn:hover {
+    background: #c8e6c9;
+    transform: scale(1.02);
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    padding: 16px !important;
+    font-size: 1rem !important;
+  }
+
+  .method-time {
+    font-size: 0.8rem;
+    color: #888888;
+    margin: 14px 0 0;
+  }
+
+  .contact-email-note {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-top: 24px;
+  }
+
+  .contact-email-note a {
+    color: #4a5d4e;
+    font-weight: 600;
+  }
+
+  /* レスポンシブ */
   @media (max-width: 768px) {
-    .trouble-box {
-      padding: 32px 20px;
+    .section {
+      padding: 60px 0;
     }
-    .contact-cta-card {
+
+    .reason-row {
+      flex-direction: column;
+    }
+
+    .reason-num-col {
+      flex-direction: row;
+      gap: 12px;
+      padding: 16px;
+      min-width: auto;
+    }
+
+    .reason-number {
+      font-size: 1.8rem;
+    }
+
+    .reason-content-col {
+      padding: 24px 20px;
+    }
+
+    .price-banner {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    .about-hero-box {
+      padding: 36px 20px;
+    }
+
+    .staff-compact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-main-card {
       padding: 40px 20px;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .pc-only {
+      display: inline;
+    }
+  }
+  @media (max-width: 768px) {
+    .pc-only {
+      display: none;
     }
   }
 </style>

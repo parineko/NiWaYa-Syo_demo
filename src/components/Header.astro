@@ -23,23 +23,26 @@ const isHome = currentPage === 'home';
             </button>
             <div class="menu-overlay"></div>
             <ul class="menu-list">
-                <li class={`menu-item ${currentPage === 'home' ? 'current-menu-item' : ''}`}>
-                    <a href="/">HOME</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#trouble" : "/#trouble"}>お悩み</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'case-study' || currentPage === 'case-stady' ? 'current-menu-item' : ''}`}>
-                    <a href="/case-study">施工例</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#reason" : "/#reason"}>選ばれる理由</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'prices' ? 'current-menu-item' : ''}`}>
-                    <a href="/prices">料金</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#service" : "/#service"}>サービス・料金</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'about' ? 'current-menu-item' : ''}`}>
-                    <a href="/about">庭や笑について</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#works" : "/#works"}>施工例</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'trouble' ? 'current-menu-item' : ''}`}>
-                    <a href="/trouble">お困りの方</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#about" : "/#about"}>庭や・笑について</a>
                 </li>
-                <li class={`menu-item ${currentPage === 'contact' ? 'current-menu-item' : ''}`}>
-                    <a href="/contact">お問い合わせ</a>
+                <li class="menu-item">
+                    <a href={isHome ? "#faq" : "/#faq"}>よくある質問</a>
+                </li>
+                <li class="menu-item menu-item--cta">
+                    <a href={isHome ? "#contact" : "/#contact"} class="header-cta-btn">無料相談・見積もり</a>
                 </li>
             </ul>
         </nav>
@@ -49,18 +52,20 @@ const isHome = currentPage === 'home';
 <style>
   .logo-link {
     position: relative;
-    display: inline-block;
-    height: 60px;
+    display: flex;
+    align-items: center;
+    height: 50px;
   }
 
   .site-logo {
-    height: 60px;
+    height: 46px;
     width: auto;
+    max-width: 250px;
+    object-fit: contain;
     display: block;
     transition: opacity 0.3s ease;
   }
 
-  /* デフォルト（下層ページ等）: 黒文字ロゴを表示、白ロゴは非表示 */
   .site-logo--white {
     display: none;
   }
@@ -81,7 +86,6 @@ const isHome = currentPage === 'home';
     transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
-  /* トップページ初期状態: 白文字ロゴを表示、黒文字ロゴを非表示 */
   .site-header--home:not(.is-scrolled) .site-logo--white {
     display: block;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
@@ -105,7 +109,7 @@ const isHome = currentPage === 'home';
     background-color: #ffffff;
   }
 
-  /* スクロール時: 白背景になり黒文字ロゴに切り替え */
+  /* スクロール時: 白背景 */
   .site-header--home.is-scrolled {
     background-color: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(12px);
@@ -135,13 +139,50 @@ const isHome = currentPage === 'home';
     background-color: #2b332d;
   }
 
+  /* ヘッダー内CTAボタン */
+  .header-cta-btn {
+    background: #4a5d4e !important;
+    color: #ffffff !important;
+    padding: 8px 18px !important;
+    border-radius: 999px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .header-cta-btn:hover {
+    background: #38483b !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
   @media (max-width: 920px) {
+    .logo-link {
+      height: 38px;
+    }
+    .site-logo {
+      height: 34px;
+      max-width: 180px;
+    }
+    .header-container {
+      padding: 10px 16px;
+    }
     .site-header--home .menu-list .menu-item a {
       color: #333333;
       text-shadow: none;
     }
     .site-header--home .menu-list .menu-item a:hover {
       color: #4a5d4e;
+    }
+    .menu-item--cta {
+      margin-top: 12px;
+    }
+    .header-cta-btn {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      padding: 12px !important;
     }
   }
 </style>
