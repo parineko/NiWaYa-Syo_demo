@@ -120,19 +120,20 @@ const heroImages = [
     transition: transform 7s cubic-bezier(0.2, 0.8, 0.4, 1);
   }
 
-  /* 全スライド共通：アクティブ時に静かにゆっくりズーム（酔わず穏やかな上質演出） */
-  :global(.swiper-slide-active) .hero-slide-image {
+  /* 2枚目・3枚目のスライド：アクティブ時に静かにゆっくりズーム */
+  :global(.swiper-slide-active) .hero-slide:not(.is-first-slide) .hero-slide-image {
     transform: scale(1.08);
   }
 
   /* ---------------------------------------
      1枚目のストーリー仕立てオープニング演出
-     ① 画像フェードイン → ② 暗転 → ③ 文字フェードイン
+     ① 画像フェードイン＆一部分の穏やかな横スライド → ② 暗転 → ③ 文字フェードイン
   --------------------------------------- */
   /* 初期待機状態（ローディング中） */
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-slide-image {
     opacity: 0;
-    transform: scale(1.02);
+    object-position: 41% 50%;
+    transform: scale(1.03) translate3d(-1.5%, 0, 0);
   }
 
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-overlay {
@@ -149,11 +150,28 @@ const heroImages = [
     transform: translateY(10px);
   }
 
-  /* ① 画像フェードイン (0s - 1.2s) ＆ ゆっくり穏やかなズーム（画面酔いを完全防止） */
+  /* ① 画像フェードイン (0s - 1.2s) ＆ 一部分だけをゆっくり横へ流す穏やかなカメラワーク（他のスライドと同等の落ち着いた速度） */
   .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
     opacity: 1;
-    transform: scale(1.08);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 8s cubic-bezier(0.2, 0.8, 0.4, 1);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: heroGentleHorizontalDrift 8s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  }
+
+  /* Swiperループで1枚目に戻ってきた際も同じ穏やかな横ドリフトを実行 */
+  :global(.swiper-slide-active) .is-first-slide .hero-slide-image {
+    animation: heroGentleHorizontalDrift 8s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  }
+
+  /* 端から端までではなく、庭園の一部分にフォーカスしてわずか10%〜12%だけ静かに横に流すアニメーション */
+  @keyframes heroGentleHorizontalDrift {
+    0% {
+      object-position: 41% 50%;
+      transform: scale(1.03) translate3d(-1.5%, 0, 0);
+    }
+    100% {
+      object-position: 53% 50%;
+      transform: scale(1.08) translate3d(1.5%, 0, 0);
+    }
   }
 
   /* ② 暗転オーバーレイが深まる (0.5s - 1.6s) */
