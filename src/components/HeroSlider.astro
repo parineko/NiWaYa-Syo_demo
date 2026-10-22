@@ -1,26 +1,26 @@
 ---
-// ヒーロー画像の配列
+// ヒーロー画像の配列（スマホ表示で不自然な改行が起きないよう配慮）
 const heroImages = [
   {
     src: '/images/sekourei_02.jpg',
     alt: '庭や・笑の施工事例',
     tag: 'GARDEN & SMILE',
-    title: '笑顔が活きる空間に',
-    subtitle: '福岡・粕屋の造園・庭木剪定・エクステリア'
+    title: '笑顔が活きる<br class="sp-only" />空間に',
+    subtitle: '福岡・粕屋の造園・庭木剪定<br class="sp-only" />エクステリア'
   },
   {
     src: '/images/fukuoka_zouen_r101.jpg',
     alt: '伝統とモダンが調和する庭園',
     tag: 'TRADITIONAL & MODERN',
-    title: '職人の技と心で整える',
-    subtitle: '四季の移ろいを愉しむ、心安らぐ庭づくり'
+    title: '職人の技と心で<br class="sp-only" />整える',
+    subtitle: '四季の移ろいを愉しむ、<br class="sp-only" />心安らぐ庭づくり'
   },
   {
     src: '/images/takegaki_sekou.jpg',
     alt: '伝統と美が息づく竹垣施工',
     tag: 'CUSTOM DESIGN',
-    title: '想いを、丁寧にかたちに',
-    subtitle: '一本の剪定から、理想のお庭プロデュースまで'
+    title: '想いを、<br class="sp-only" />丁寧にかたちに',
+    subtitle: '一本の剪定から、<br class="sp-only" />理想のお庭プロデュースまで'
   }
 ];
 ---
@@ -31,7 +31,7 @@ const heroImages = [
       {heroImages.map((image, index) => (
         <div class="swiper-slide">
           <div class={`hero-slide ${index === 0 ? 'is-first-slide' : ''}`}>
-            <!-- 背景画像（Ken Burnsアニメーション） -->
+            <!-- 背景画像（ゆっくり落ち着いたKen Burnsアニメーション） -->
             <div class="hero-image-wrap">
               <img
                 src={image.src}
@@ -48,9 +48,9 @@ const heroImages = [
             <!-- コンテンツ（文字フェードイン） -->
             <div class="hero-slide-content">
               <span class="hero-slide-tag">{image.tag}</span>
-              <h1 class="hero-title">{image.title}</h1>
+              <h1 class="hero-title"><Fragment set:html={image.title} /></h1>
               <div class="hero-divider"></div>
-              <p class="hero-subtitle">{image.subtitle}</p>
+              <p class="hero-subtitle"><Fragment set:html={image.subtitle} /></p>
             </div>
           </div>
         </div>
@@ -117,23 +117,22 @@ const heroImages = [
     object-fit: cover;
     display: block;
     transform: scale(1.0);
-    transition: transform 6s ease-out;
+    transition: transform 7s cubic-bezier(0.2, 0.8, 0.4, 1);
   }
 
-  /* 2枚目以降のスライド：Swiperアクティブ時に上品にズーム */
-  :global(.swiper-slide-active) .hero-slide:not(.is-first-slide) .hero-slide-image {
+  /* 全スライド共通：アクティブ時に静かにゆっくりズーム（酔わず穏やかな上質演出） */
+  :global(.swiper-slide-active) .hero-slide-image {
     transform: scale(1.08);
   }
 
   /* ---------------------------------------
      1枚目のストーリー仕立てオープニング演出
-     ① 画像フェードイン＆横パンスライド → ② 暗転 → ③ 文字フェードイン
+     ① 画像フェードイン → ② 暗転 → ③ 文字フェードイン
   --------------------------------------- */
   /* 初期待機状態（ローディング中） */
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-slide-image {
     opacity: 0;
-    object-position: 8% 50%;
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
   .hero-slider-wrapper:not(.is-ready) .is-first-slide .hero-overlay {
@@ -150,50 +149,11 @@ const heroImages = [
     transform: translateY(10px);
   }
 
-  /* ① 画像フェードイン ＆ 横長写真を全体見渡せるパンスライドカメラワーク */
+  /* ① 画像フェードイン (0s - 1.2s) ＆ ゆっくり穏やかなズーム（画面酔いを完全防止） */
   .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
     opacity: 1;
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* PC向けカメラワーク（優雅な左右パン） */
-  @media (min-width: 769px) {
-    .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
-      animation: heroCameraPanDesktop 14s ease-in-out infinite alternate;
-    }
-
-    @keyframes heroCameraPanDesktop {
-      0% {
-        object-position: 25% 50%;
-        transform: scale(1.03) translate3d(-1%, 0, 0);
-      }
-      100% {
-        object-position: 75% 50%;
-        transform: scale(1.08) translate3d(1%, 0, 0);
-      }
-    }
-  }
-
-  /* スマホ向けカメラワーク（横長写真の端から端までしっかり見せるダイナミックスライド） */
-  @media (max-width: 768px) {
-    .hero-slider-wrapper.is-ready .is-first-slide .hero-slide-image {
-      animation: heroCameraPanMobile 10s ease-in-out infinite alternate;
-    }
-
-    @keyframes heroCameraPanMobile {
-      0% {
-        object-position: 5% 50%;
-        transform: scale(1.04);
-      }
-      50% {
-        object-position: 50% 50%;
-        transform: scale(1.08);
-      }
-      100% {
-        object-position: 95% 50%;
-        transform: scale(1.04);
-      }
-    }
+    transform: scale(1.08);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 8s cubic-bezier(0.2, 0.8, 0.4, 1);
   }
 
   /* ② 暗転オーバーレイが深まる (0.5s - 1.6s) */
@@ -243,16 +203,18 @@ const heroImages = [
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-size: clamp(2.2rem, 5.8vw, 4.2rem);
     font-weight: 700;
     font-family: 'Shippori Mincho', serif !important;
     letter-spacing: 0.12em;
-    line-height: 1.25;
+    line-height: 1.35;
     margin: 0 0 20px 0;
     text-shadow:
       0 2px 12px rgba(0, 0, 0, 0.8),
       0 0 30px rgba(0, 0, 0, 0.5);
     color: #ffffff;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   .hero-divider {
@@ -264,7 +226,7 @@ const heroImages = [
   }
 
   .hero-subtitle {
-    font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.05rem, 2.5vw, 1.45rem);
     font-weight: 500;
     font-family: 'Noto Serif JP', serif !important;
     letter-spacing: 0.08em;
@@ -272,6 +234,8 @@ const heroImages = [
     margin: 0;
     color: #f5f8f5;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   /* ---------------------------------------
@@ -369,13 +333,18 @@ const heroImages = [
 
   @media (max-width: 768px) {
     .hero-title {
+      font-size: clamp(1.9rem, 7.5vw, 2.7rem);
       letter-spacing: 0.08em;
+      line-height: 1.38;
+      margin-bottom: 16px;
     }
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
     }
     .swiper-pagination {
-      display: none; /* スマホではスクロールインジケーターに集中 */
+      display: none;
     }
   }
 </style>

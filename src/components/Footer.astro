@@ -9,12 +9,13 @@
     </div>
 </footer>
 
-<!-- スクロールトップボタン -->
-<div id="scroll-top" class="scroll-top" aria-label="上部へスクロール">
-    <svg class="scroll-top-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 16" width="26" height="16">
-        <path d="M13 0 L26 16 L22 16 L13 6 L4 16 L0 16 Z" fill="currentColor"/>
+<!-- 洗練された和モダン・サークルスクロールトップボタン（左下固定） -->
+<button id="scroll-top" class="scroll-top" type="button" aria-label="ページ最上部へ戻る">
+    <svg class="scroll-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
-</div>
+    <span class="scroll-top-text">TOP</span>
+</button>
 
 <style>
   .footer-container {
@@ -40,5 +41,89 @@
   }
   .footer-privacy-btn:hover {
     color: #d1ded4;
+  }
+
+  /* 上質で控えめなサークルデザインのTOPへ戻るボタン */
+  :global(#scroll-top.scroll-top) {
+    position: fixed !important;
+    bottom: 26px !important;
+    left: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(30, 42, 33, 0.88) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 998 !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  :global(#scroll-top.scroll-top.show) {
+    display: flex !important;
+    animation: scrollTopFadeIn 0.3s ease-out forwards;
+  }
+
+  :global(#scroll-top.scroll-top:hover) {
+    background: #3c6e47 !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 8px 24px rgba(60, 110, 71, 0.45) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+  }
+
+  :global(#scroll-top .scroll-top-icon) {
+    width: 17px !important;
+    height: 17px !important;
+    stroke: #ffffff !important;
+    transition: transform 0.2s ease !important;
+    margin-bottom: -1px !important;
+  }
+
+  :global(#scroll-top:hover .scroll-top-icon) {
+    transform: translateY(-2px) !important;
+  }
+
+  :global(#scroll-top .scroll-top-text) {
+    font-size: 8.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    color: #c4d7c6 !important;
+    line-height: 1 !important;
+    text-indent: 0.12em;
+  }
+
+  @keyframes scrollTopFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(#scroll-top.scroll-top) {
+      bottom: 22px !important;
+      left: 16px !important;
+      width: 44px !important;
+      height: 44px !important;
+    }
+    :global(#scroll-top .scroll-top-icon) {
+      width: 15px !important;
+      height: 15px !important;
+    }
+    :global(#scroll-top .scroll-top-text) {
+      font-size: 7.5px !important;
+    }
   }
 </style>

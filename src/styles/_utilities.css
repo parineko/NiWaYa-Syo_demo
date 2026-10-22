@@ -173,8 +173,25 @@
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
 
+/* PC / スマホ 出し分け用ユーティリティ */
+.sp-only {
+    display: none !important;
+}
+
+.pc-only {
+    display: inline !important;
+}
+
 /* レスポンシブ - Utilities */
 @media (max-width: 768px) {
+    .sp-only {
+        display: inline !important;
+    }
+
+    .pc-only {
+        display: none !important;
+    }
+
     .u-section {
         padding: 48px 0;
         margin-bottom: 48px;
