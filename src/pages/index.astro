@@ -384,7 +384,9 @@ const faqs = [
   <section class="section section-contact" id="contact">
     <div class="u-container">
       <div class="contact-main-card u-card fade-up">
-        <span class="section-badge">CONTACT</span>
+        <div class="contact-badge-wrap">
+          <span class="section-badge">CONTACT</span>
+        </div>
         <h2 class="contact-main-title">
           お庭のこと、<br class="sp-only" />
           まずはお気軽にご相談ください
@@ -935,18 +937,21 @@ const faqs = [
   }
 
   .staff-compact-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
+    width: 95px;
+    height: 110px;
+    border-radius: 14px;
     overflow: hidden;
     flex-shrink: 0;
-    border: 3px solid #edf4ee;
+    border: 2px solid #e0ece2;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    background: #edf2ee;
   }
 
   .staff-compact-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
   }
 
   .staff-role {
@@ -1105,6 +1110,11 @@ const faqs = [
     border-radius: 20px;
     background: linear-gradient(135deg, #fafcfb 0%, #eef5f0 100%);
     border: 1px solid #d9e6db;
+  }
+
+  .contact-badge-wrap {
+    text-align: center;
+    margin-bottom: 6px;
   }
 
   .contact-main-title {

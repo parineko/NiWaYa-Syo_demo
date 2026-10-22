@@ -30,7 +30,7 @@ const heroImages = [
     <div class="swiper-wrapper">
       {heroImages.map((image, index) => (
         <div class="swiper-slide">
-          <div class={`hero-slide ${index === 0 ? 'is-first-slide' : ''}`}>
+          <div class={`hero-slide ${index === 0 ? 'is-first-slide' : ''} ${index === 2 ? 'is-third-slide' : ''}`}>
             <!-- 背景画像（ゆっくり落ち着いたKen Burnsアニメーション） -->
             <div class="hero-image-wrap">
               <img
@@ -120,9 +120,31 @@ const heroImages = [
     transition: transform 7s cubic-bezier(0.2, 0.8, 0.4, 1);
   }
 
-  /* 2枚目・3枚目のスライド：アクティブ時に静かにゆっくりズーム */
-  :global(.swiper-slide-active) .hero-slide:not(.is-first-slide) .hero-slide-image {
+  /* 2枚目のスライド：アクティブ時に静かにゆっくり中央ズーム */
+  :global(.swiper-slide-active) .hero-slide:not(.is-first-slide):not(.is-third-slide) .hero-slide-image {
     transform: scale(1.08);
+  }
+
+  /* 3枚目のスライド：アクティブ時に逆方向（右から左へ）一部分をゆっくり穏やかに水平スライド */
+  .is-third-slide .hero-slide-image {
+    object-position: 53% 50%;
+    transform: scale(1.03) translate3d(1.5%, 0, 0);
+  }
+
+  :global(.swiper-slide-active) .is-third-slide .hero-slide-image {
+    animation: heroGentleHorizontalDriftReverse 8s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  }
+
+  /* 3枚目：逆方向（右から左へ）の穏やかな横ドリフトアニメーション */
+  @keyframes heroGentleHorizontalDriftReverse {
+    0% {
+      object-position: 53% 50%;
+      transform: scale(1.03) translate3d(1.5%, 0, 0);
+    }
+    100% {
+      object-position: 41% 50%;
+      transform: scale(1.08) translate3d(-1.5%, 0, 0);
+    }
   }
 
   /* ---------------------------------------
