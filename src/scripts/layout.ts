@@ -42,12 +42,28 @@ function initMobileMenu() {
             });
         });
 
-        // オーバーレイクリック時にメニューを閉じる
+        // オーバーレイクリックまたはタッチ時にメニューを閉じる
         if (menuOverlay) {
             menuOverlay.addEventListener('click', function() {
                 closeMenu();
             });
+            menuOverlay.addEventListener('touchstart', function() {
+                closeMenu();
+            }, { passive: true });
         }
+
+        // メニューリストの外側タップ・クリック検知（メニュー外ならどこを触っても確実に閉じる）
+        const handleOutsideInteraction = function(e: MouseEvent | TouchEvent) {
+            if (menuList.classList.contains('active')) {
+                const target = e.target as HTMLElement | null;
+                if (target && !menuList.contains(target) && !menuToggle.contains(target)) {
+                    closeMenu();
+                }
+            }
+        };
+
+        document.addEventListener('click', handleOutsideInteraction);
+        document.addEventListener('touchstart', handleOutsideInteraction, { passive: true });
 
         // ウィンドウサイズ変更時にメニューを閉じる
         window.addEventListener('resize', function() {

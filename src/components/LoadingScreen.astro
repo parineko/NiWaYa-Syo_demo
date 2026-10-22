@@ -115,10 +115,16 @@
     const isReturningToSection = Boolean(targetHash && targetHash.length > 1);
 
     // 途中のセクションに戻る場合はローディング待機をスキップして即座に表示
-    const minDisplayTime = isReturningToSection ? 60 : 700;
+    const minDisplayTime = isReturningToSection ? 50 : 650;
     const startTime = Date.now();
+    let isLoaderHidden = false;
+    let fallbackTimer: number | undefined;
 
     const hideLoader = () => {
+      if (isLoaderHidden) return;
+      isLoaderHidden = true;
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+
       const elapsed = Date.now() - startTime;
       const remaining = Math.max(0, minDisplayTime - elapsed);
 
@@ -126,15 +132,21 @@
         loader.classList.add('is-loaded');
         window.dispatchEvent(new CustomEvent('page-loaded'));
 
-        // 該当セクションへヘッダー高さを考慮して正確にスクロール移動
+        // 該当セクションへヘッダー高さを考慮して正確にスクロール移動（初回1回のみ）
         if (targetHash) {
           try {
+            sessionStorage.removeItem('niwaya_return_hash');
             const targetEl = document.querySelector(targetHash);
             if (targetEl) {
-              sessionStorage.removeItem('niwaya_return_hash');
               setTimeout(() => {
                 targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }, 100);
+                // スクロール開始後にハッシュをURLから安全に除去し、以後の再トリガーやユーザーの自由スクロール阻害を防止
+                setTimeout(() => {
+                  if (window.location.hash) {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                  }
+                }, 300);
+              }, 60);
             }
           } catch (e) {
             // 無効なセレクタ対策
@@ -146,8 +158,8 @@
     if (document.readyState === 'complete') {
       hideLoader();
     } else {
-      window.addEventListener('load', hideLoader);
-      setTimeout(hideLoader, 2500);
+      window.addEventListener('load', hideLoader, { once: true });
+      fallbackTimer = window.setTimeout(hideLoader, 2000);
     }
   }
 

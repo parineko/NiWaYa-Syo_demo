@@ -205,7 +205,7 @@ const faqSchema = {
     <div class="u-container">
       <div class="section-badge-wrap fade-up">
         <span class="section-badge">WHY CHOOSE US</span>
-        <h2 class="section-headline">庭や・笑が選ばれる3つの安心</h2>
+        <h2 class="section-headline">庭や・笑が選ばれる<br class="sp-only" />3つの安心</h2>
         <p class="section-subheadline">
           大手にはない小回りの良さと、<br class="sp-only" />
           職人直営ならではの誠実な対応をお約束します。
@@ -332,7 +332,8 @@ const faqSchema = {
           その場に居るだけで心が安らげる、<br class="sp-only" />
           屋外空間すべてが庭だと考えています。<br /><br class="sp-only" />
           和・洋にとらわれず、<br class="sp-only" />
-          お客様の生活スタイルに合わせたお庭づくりを<br class="sp-only" />
+          お客様の生活スタイルに<br class="sp-only" />
+          合わせたお庭づくりを、<br class="sp-only" />
           心を込めてお手伝いいたします。
         </p>
 
@@ -487,7 +488,7 @@ const faqSchema = {
 
             <div class="form-submit-wrap">
               <button type="submit" class="u-btn form-submit-button">
-                無料相談・お見積もりを送信する
+                フォームを送信する
               </button>
             </div>
 
@@ -500,6 +501,21 @@ const faqSchema = {
 
           <!-- 送信完了の非同期ダミーiframe -->
           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        </div>
+
+        <!-- ④ 直接メールでのお問い合わせ（1クリックでコピー・メールアプリ起動なし） -->
+        <div class="direct-email-box fade-up">
+          <div class="direct-email-info">
+            <span class="direct-email-title">直接メールでのお問い合わせも受け付けております</span>
+            <span class="direct-email-address" id="contact-email">zouen@niwaya-syo.com</span>
+          </div>
+          <button type="button" class="direct-email-copy-btn" id="btn-copy-email" aria-label="メールアドレスをコピー">
+            <svg class="copy-svg-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span class="copy-text-label">アドレスをコピー</span>
+          </button>
         </div>
       </div>
     </div>
@@ -924,11 +940,13 @@ const faqSchema = {
   }
 
   .about-hero-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-size: clamp(1.35rem, 6.2vw, 2.6rem);
     font-family: 'Shippori Mincho', serif;
     font-weight: 700;
     color: #2b332d;
     letter-spacing: 0.08em;
+    white-space: nowrap;
+    margin: 0 auto;
   }
 
   .about-lead-text {
@@ -939,6 +957,8 @@ const faqSchema = {
     text-align: center;
     max-width: 760px;
     margin: 0 auto 48px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .staff-compact-grid {
@@ -1437,10 +1457,95 @@ const faqSchema = {
     margin: 0;
   }
 
+  /* 直接メールでのお問い合わせボックス */
+  .direct-email-box {
+    margin-top: 28px;
+    padding: 18px 24px;
+    background: #f4f8f5;
+    border: 1px dashed #b8d1bc;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .direct-email-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+  }
+
+  .direct-email-title {
+    font-size: 0.88rem;
+    color: #4a5d4e;
+    font-weight: 600;
+  }
+
+  .direct-email-address {
+    font-size: 1.08rem;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    color: #1a241c;
+    letter-spacing: 0.04em;
+    user-select: all;
+  }
+
+  .direct-email-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    background: #ffffff;
+    border: 1.5px solid #4a5d4e;
+    color: #4a5d4e;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .direct-email-copy-btn:hover {
+    background: #4a5d4e;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .direct-email-copy-btn.is-copied {
+    background: #2e7d32 !important;
+    border-color: #2e7d32 !important;
+    color: #ffffff !important;
+  }
+
   /* レスポンシブ */
   @media (max-width: 768px) {
     .section {
       padding: 60px 0;
+    }
+
+    .direct-email-box {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px 16px;
+      gap: 14px;
+    }
+
+    .direct-email-info {
+      text-align: center;
+      align-items: center;
+    }
+
+    .direct-email-copy-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 10px 16px;
     }
 
     .faq-answer {
@@ -1537,13 +1642,59 @@ const faqSchema = {
     }
   }
 
+  // メールアドレスの1クリックコピー機能（メールアプリは起動しない）
+  function initEmailCopy() {
+    const copyBtn = document.getElementById('btn-copy-email');
+    if (!copyBtn) return;
+
+    copyBtn.addEventListener('click', async () => {
+      const email = 'zouen@niwaya-syo.com';
+      const label = copyBtn.querySelector('.copy-text-label');
+
+      const showCopiedFeedback = () => {
+        if (label) {
+          const original = label.textContent;
+          label.textContent = 'コピーしました！';
+          copyBtn.classList.add('is-copied');
+          setTimeout(() => {
+            label.textContent = original;
+            copyBtn.classList.remove('is-copied');
+          }, 2000);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(email);
+          showCopiedFeedback();
+          return;
+        } catch (e) {
+          // fallback below
+        }
+      }
+
+      // フォールバックコピー処理
+      const tempArea = document.createElement('textarea');
+      tempArea.value = email;
+      tempArea.style.position = 'fixed';
+      tempArea.style.left = '-9999px';
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+      showCopiedFeedback();
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initFormSubmit();
+      initEmailCopy();
       initSectionMemory();
     });
   } else {
     initFormSubmit();
+    initEmailCopy();
     initSectionMemory();
   }
 
